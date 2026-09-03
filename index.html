@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>合同会社たでぃまる</title>
+<meta name="description" content="合同会社たでぃまるは、神奈川県横浜市を拠点に、鉄道シミュレーションゲームをはじめとするソフトウェアの企画・開発・販売と、データの収集・分析サービスを手がけています。">
+<link rel="canonical" href="https://tadimaru.com/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="合同会社たでぃまる">
+<meta property="og:description" content="鉄道シミュレーションゲームの企画・開発・販売と、データの収集・分析サービス。">
+<meta property="og:url" content="https://tadimaru.com/">
+<meta property="og:locale" content="ja_JP">
+<style>
+:root{
+  --navy:#0f2540; --navy-soft:#1b3a5f; --ink:#182430; --ink-dim:#5b6b7c;
+  --line:#dfe5ec; --bg:#ffffff; --bg-alt:#f5f7fa; --accent:#c8641e;
+  --max:1040px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:"Hiragino Kaku Gothic ProN","Yu Gothic Medium","Yu Gothic",
+              "Noto Sans JP",Meiryo,system-ui,sans-serif;
+  line-height:1.9; font-size:16px; -webkit-font-smoothing:antialiased;
+}
+a{color:var(--navy-soft)}
+.wrap{max-width:var(--max); margin:0 auto; padding:0 24px}
+
+/* header */
+header{
+  position:sticky; top:0; z-index:10; background:rgba(255,255,255,.92);
+  backdrop-filter:blur(8px); border-bottom:1px solid var(--line);
+}
+.hd{display:flex; align-items:center; justify-content:space-between; height:64px}
+.brand{font-weight:700; font-size:17px; letter-spacing:.06em; color:var(--navy); text-decoration:none}
+nav a{
+  margin-left:26px; font-size:14px; color:var(--ink-dim);
+  text-decoration:none; border-bottom:1px solid transparent; padding-bottom:2px;
+}
+nav a:hover{color:var(--navy); border-bottom-color:var(--accent)}
+.navlinks{display:flex}
+
+/* hero */
+.hero{background:var(--navy); color:#fff; padding:88px 0 76px; position:relative; overflow:hidden}
+.hero::after{
+  content:""; position:absolute; left:0; right:0; bottom:0; height:3px;
+  background:linear-gradient(90deg,var(--accent) 0 22%,transparent 22% 100%);
+}
+.hero h1{
+  font-size:clamp(26px,4.4vw,40px); line-height:1.55; margin:0 0 22px; font-weight:700;
+  letter-spacing:.02em;
+}
+.hero p{margin:0; color:#c3d2e2; font-size:clamp(14px,1.7vw,16px); max-width:46em}
+.tagline{
+  display:inline-block; font-size:13px; letter-spacing:.22em; color:var(--accent);
+  margin-bottom:20px; font-weight:700;
+}
+
+/* sections */
+section{padding:72px 0}
+section.alt{background:var(--bg-alt); border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
+h2{
+  font-size:13px; letter-spacing:.2em; color:var(--accent); margin:0 0 8px; font-weight:700;
+}
+h2 + .h2ja{font-size:clamp(21px,3vw,27px); margin:0 0 34px; font-weight:700; color:var(--navy)}
+h3{font-size:17px; margin:0 0 8px; color:var(--navy)}
+
+.grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:26px}
+.card{background:#fff; border:1px solid var(--line); border-radius:6px; padding:26px 24px}
+section.alt .card{background:#fff}
+.card p{margin:0; font-size:14.5px; color:var(--ink-dim); line-height:1.85}
+
+/* products */
+.prod{display:flex; gap:22px; padding:26px 0; border-bottom:1px solid var(--line); align-items:flex-start}
+.prod:last-child{border-bottom:none}
+.prod .meta{flex:0 0 132px}
+.badge{
+  display:inline-block; font-size:11.5px; letter-spacing:.1em; padding:3px 10px; border-radius:3px;
+  background:var(--navy); color:#fff; font-weight:700;
+}
+.badge.ea{background:var(--accent)}
+.badge.free{background:#3f7a52}
+.prod .body{flex:1; min-width:0}
+.prod p{margin:6px 0 0; font-size:14.5px; color:var(--ink-dim)}
+
+/* table */
+table{width:100%; border-collapse:collapse; font-size:15px}
+th,td{text-align:left; padding:15px 4px; border-bottom:1px solid var(--line); vertical-align:top}
+th{width:180px; color:var(--navy); font-weight:700; white-space:nowrap}
+td ol{margin:0; padding-left:1.3em}
+td ol li{margin-bottom:4px}
+
+/* contact */
+.contact-mail{font-size:19px; font-weight:700; color:var(--navy); word-break:break-all}
+
+footer{background:var(--navy); color:#93a8bf; padding:32px 0; font-size:13px}
+.ft{display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px}
+footer a{color:#c3d2e2}
+
+@media(max-width:640px){
+  .navlinks{display:none}
+  section{padding:52px 0}
+  .hero{padding:60px 0 52px}
+  .prod{flex-direction:column; gap:10px}
+  .prod .meta{flex:none}
+  th,td{display:block; width:auto; border-bottom:none; padding:2px 0}
+  th{padding-top:16px}
+  td{padding-bottom:14px; border-bottom:1px solid var(--line)}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap hd">
+    <a class="brand" href="/">合同会社たでぃまる</a>
+    <nav class="navlinks">
+      <a href="#business">事業内容</a>
+      <a href="#products">製品</a>
+      <a href="#company">会社概要</a>
+      <a href="#contact">お問い合わせ</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="tagline">TADIMARU LLC</div>
+    <h1>つくり込むほど面白い。<br>そういうソフトウェアをつくる。</h1>
+    <p>合同会社たでぃまるは、神奈川県横浜市を拠点とするソフトウェア開発会社です。
+       鉄道の運行を題材にしたシミュレーションゲームを中心に、企画から開発・販売・運営までを自社で一貫して行っています。</p>
+  </div>
+</div>
+
+<section id="business">
+  <div class="wrap">
+    <h2>BUSINESS</h2>
+    <div class="h2ja">事業内容</div>
+    <div class="grid">
+      <div class="card">
+        <h3>ゲームの企画・開発・販売</h3>
+        <p>PC向けのシミュレーションゲームを企画・開発し、Steam を通じて世界に向けて販売しています。
+           リリース後も継続的にアップデートを重ね、遊びを育てていく開発を大切にしています。</p>
+      </div>
+      <div class="card">
+        <h3>ソフトウェアの受託開発</h3>
+        <p>業務システムやツールの設計・開発を承ります。
+           シミュレーション開発で培った、複雑な条件を扱う設計を得意としています。</p>
+      </div>
+      <div class="card">
+        <h3>データの収集・分析</h3>
+        <p>映像解析による通行量調査など、現地データの取得から集計・分析までを一貫して行います。
+           計測の設計段階からご相談いただけます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="products">
+  <div class="wrap">
+    <h2>PRODUCTS</h2>
+    <div class="h2ja">製品</div>
+
+    <div class="prod">
+      <div class="meta"><span class="badge">発売中</span></div>
+      <div class="body">
+        <h3>運行管理シミュレーター</h3>
+        <p>ダイヤの乱れに向き合いながら、指令席から列車の運行をさばく運行管理シミュレーター。
+           信号や進路を操作し、遅れをどう回復させるかを考えるゲームです。Steam にて配信中。</p>
+        <p><a href="https://tadimaru.github.io/steam-support/" target="_blank" rel="noopener">遊び方ガイド・サポート →</a></p>
+      </div>
+    </div>
+
+    <div class="prod">
+      <div class="meta"><span class="badge ea">早期アクセス</span></div>
+      <div class="body">
+        <h3>鉄道運行管理シミュレーターPro</h3>
+        <p>より本格的な運行管理をめざした上位シリーズ。複数路線・多数の列車を同時に扱い、
+           自分でダイヤを組み立てて運行させることができます。Steam にて早期アクセス配信中。</p>
+        <p><a href="https://tadimaru.github.io/pro-support/" target="_blank" rel="noopener">遊び方ガイド・サポート →</a></p>
+      </div>
+    </div>
+
+    <div class="prod">
+      <div class="meta"><span class="badge free">無償公開</span></div>
+      <div class="body">
+        <h3>鉄道運転シミュレーター向け 路線データ</h3>
+        <p>フリーの鉄道運転シミュレーター向けに、路線データを制作し無償で公開しています。
+           実際の走行感覚の再現を目標に、継続的に更新しています。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="company">
+  <div class="wrap">
+    <h2>COMPANY</h2>
+    <div class="h2ja">会社概要</div>
+    <table>
+      <tr><th>商号</th><td>合同会社たでぃまる</td></tr>
+      <tr><th>英文表記</th><td>Tadimaru LLC</td></tr>
+      <tr><th>所在地</th><td>〒220-0072<br>神奈川県横浜市西区浅間町一丁目4番3号 ウィザードビル402</td></tr>
+      <tr><th>代表社員</th><td>多田 竜太</td></tr>
+      <tr><th>設立</th><td>2025年11月7日</td></tr>
+      <tr><th>法人番号</th><td>7020003029739</td></tr>
+      <tr><th>事業年度</th><td>10月1日 〜 翌年9月30日</td></tr>
+      <tr><th>事業目的</th><td>
+        <ol>
+          <li>コンピュータのソフトウェア及びハードウェアの企画、研究、開発、設計、製造、販売、保守、リース、賃貸及び輸出入並びにそれらに関するコンサルティング業務</li>
+          <li>インターネット等の通信ネットワーク及び電子技術を利用した各種情報提供サービス及び情報収集サービス</li>
+          <li>通信販売業務</li>
+          <li>情報の収集、分析、管理及び処理サービス業、情報提供サービス業並びに情報処理に関する研究開発</li>
+          <li>前各号に附帯関連する一切の事業</li>
+        </ol>
+      </td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="alt" id="contact">
+  <div class="wrap">
+    <h2>CONTACT</h2>
+    <div class="h2ja">お問い合わせ</div>
+    <p>製品に関するお問い合わせ、開発のご依頼、取材のご相談などは、下記までご連絡ください。</p>
+    <p class="contact-mail"><a href="mailto:support@tadimaru.com">support@tadimaru.com</a></p>
+    <p style="font-size:14px;color:var(--ink-dim);margin-top:4px">
+      内容によっては、お返事までにお時間をいただく場合がございます。あらかじめご了承ください。</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap ft">
+    <div>&copy; 2026 合同会社たでぃまる</div>
+    <div><a href="mailto:support@tadimaru.com">support@tadimaru.com</a></div>
+  </div>
+</footer>
+
+</body>
+</html>
