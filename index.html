@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>合同会社たでぃまる</title>
-<meta name="description" content="合同会社たでぃまるは、神奈川県横浜市を拠点に、鉄道シミュレーションゲームをはじめとするソフトウェアの企画・開発・販売と、データの収集・分析サービスを手がけています。">
+<meta name="description" content="合同会社たでぃまるは、神奈川県横浜市を拠点に、鉄道シミュレーションゲームや資格試験の学習アプリをはじめとするソフトウェアの企画・開発・販売と、データの収集・分析サービスを手がけています。">
 <link rel="canonical" href="https://tadimaru.com/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="合同会社たでぃまる">
-<meta property="og:description" content="鉄道シミュレーションゲームの企画・開発・販売と、データの収集・分析サービス。">
+<meta property="og:description" content="鉄道シミュレーションゲームと資格試験の学習アプリの企画・開発・販売、データの収集・分析サービス。">
 <meta property="og:url" content="https://tadimaru.com/">
 <meta property="og:locale" content="ja_JP">
 <style>
@@ -67,7 +67,7 @@ h2{
 h2 + .h2ja{font-size:clamp(21px,3vw,27px); margin:0 0 34px; font-weight:700; color:var(--navy)}
 h3{font-size:17px; margin:0 0 8px; color:var(--navy)}
 
-.grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:26px}
+.grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(min(340px,100%),1fr)); gap:26px}
 .card{background:#fff; border:1px solid var(--line); border-radius:6px; padding:26px 24px}
 section.alt .card{background:#fff}
 .card p{margin:0; font-size:14.5px; color:var(--ink-dim); line-height:1.85}
@@ -81,9 +81,48 @@ section.alt .card{background:#fff}
   background:var(--navy); color:#fff; font-weight:700;
 }
 .badge.ea{background:var(--accent)}
-.badge.free{background:#3f7a52}
 .prod .body{flex:1; min-width:0}
 .prod p{margin:6px 0 0; font-size:14.5px; color:var(--ink-dim)}
+.subhead{
+  font-size:14px; font-weight:700; color:var(--navy); letter-spacing:.08em;
+  margin:40px 0 4px; padding-left:12px; border-left:3px solid var(--accent); line-height:1.4;
+}
+.h2ja + .subhead{margin-top:0}
+.subhead + div > .prod:first-child{padding-top:18px}
+.subhead + div > .prod:last-child{padding-bottom:8px}
+.badge.soon{background:#fff; color:var(--accent); box-shadow:inset 0 0 0 1.5px var(--accent)}
+
+/* apps */
+.apps{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:26px; margin-top:22px}
+.app{background:#fff; border:1px solid var(--line); border-radius:8px; padding:26px 24px; display:flex; flex-direction:column}
+.app-hd{display:flex; gap:16px; align-items:center; margin-bottom:12px}
+.app-icon{width:72px; height:72px; border-radius:17px; flex:none; box-shadow:0 1px 3px rgba(15,37,64,.18)}
+.app-hd h3{margin:4px 0 0; font-size:18px; line-height:1.45}
+.app-for{font-size:12.5px; color:var(--ink-dim); margin:0}
+.app > p{margin:0 0 20px; font-size:14.5px; color:var(--ink-dim); line-height:1.85}
+.stores{display:flex; gap:18px; flex-wrap:wrap; margin-top:auto; padding-top:18px; border-top:1px dashed var(--line)}
+.store{display:flex; flex-direction:column; align-items:center; gap:10px}
+
+/* ストアバッジ：公式画像は URL が入ったストアだけ表示（公開前に公式バッジは使わない） */
+.store-link{display:none; line-height:0}
+.store-link img{height:40px; width:auto}
+.store.live .store-link{display:block}
+.store-soon{
+  display:flex; flex-direction:column; justify-content:center; align-items:center;
+  width:135px; height:40px; border:1px dashed #b8c3cf; border-radius:7px;
+  color:var(--ink-dim); line-height:1.2; font-size:12px; font-weight:700;
+}
+.store-soon small{font-size:10px; font-weight:400}
+.store.live .store-soon{display:none}
+.qr{
+  width:110px; height:110px; display:flex; align-items:center; justify-content:center;
+  background:#fff; border:1px solid var(--line); border-radius:6px; padding:8px;
+}
+.qr svg{width:100%; height:auto; display:block}
+.store.pending .qr{
+  border-style:dashed; background:var(--bg-alt); font-size:11px; color:var(--ink-dim);
+  text-align:center; line-height:1.5;
+}
 
 /* table */
 table{width:100%; border-collapse:collapse; font-size:15px}
@@ -108,6 +147,8 @@ footer a{color:#c3d2e2}
   th,td{display:block; width:auto; border-bottom:none; padding:2px 0}
   th{padding-top:16px}
   td{padding-bottom:14px; border-bottom:1px solid var(--line)}
+  .apps{grid-template-columns:1fr}
+  .qr{display:none}  /* スマホではQRを出さず、ボタンから直接ストアへ */
 }
 </style>
 </head>
@@ -130,7 +171,8 @@ footer a{color:#c3d2e2}
     <div class="tagline">TADIMARU LLC</div>
     <h1>つくり込むほど面白い。<br>そういうソフトウェアをつくる。</h1>
     <p>合同会社たでぃまるは、神奈川県横浜市を拠点とするソフトウェア開発会社です。
-       鉄道の運行を題材にしたシミュレーションゲームを中心に、企画から開発・販売・運営までを自社で一貫して行っています。</p>
+       鉄道の運行を題材にしたシミュレーションゲームを中心に、企画から開発・販売・運営までを自社で一貫して行っています。
+       ゲームづくりで培った「続けたくなる」設計を活かし、資格試験の学習アプリも手がけています。</p>
   </div>
 </div>
 
@@ -143,6 +185,11 @@ footer a{color:#c3d2e2}
         <h3>ゲームの企画・開発・販売</h3>
         <p>PC向けのシミュレーションゲームを企画・開発し、Steam を通じて世界に向けて販売しています。
            リリース後も継続的にアップデートを重ね、遊びを育てていく開発を大切にしています。</p>
+      </div>
+      <div class="card">
+        <h3>学習アプリの企画・開発・運営</h3>
+        <p>資格試験の学習アプリを、iPhone・Android 向けに企画・開発しています。
+           スキマ時間に少しずつ、毎日続けられる学習体験をめざしています。</p>
       </div>
       <div class="card">
         <h3>ソフトウェアの受託開発</h3>
@@ -163,6 +210,8 @@ footer a{color:#c3d2e2}
     <h2>PRODUCTS</h2>
     <div class="h2ja">製品</div>
 
+    <div class="subhead">PCゲーム</div>
+    <div>
     <div class="prod">
       <div class="meta"><span class="badge">発売中</span></div>
       <div class="body">
@@ -182,14 +231,68 @@ footer a{color:#c3d2e2}
         <p><a href="https://tadimaru.github.io/pro-support/" target="_blank" rel="noopener">遊び方ガイド・サポート →</a></p>
       </div>
     </div>
+    </div>
 
-    <div class="prod">
-      <div class="meta"><span class="badge free">無償公開</span></div>
-      <div class="body">
-        <h3>鉄道運転シミュレーター向け 路線データ</h3>
-        <p>フリーの鉄道運転シミュレーター向けに、路線データを制作し無償で公開しています。
-           実際の走行感覚の再現を目標に、継続的に更新しています。</p>
+    <div class="subhead">スマートフォンアプリ</div>
+    <!--
+      ▼ ストア公開後の差し替え方法
+        各 .store の data-url にストアのURLを入れるだけ。
+        ボタンがリンクになり、QRコードが自動で表示され、上のバッジも「配信中」に切り替わる。
+        （iOS だけ先に公開した場合は、iOS の data-url だけ入れればよい）
+    -->
+    <div class="apps">
+
+      <div class="app">
+        <div class="app-hd">
+          <img class="app-icon" src="assets/apps/tokutei.png" alt="特定社労士勉強くん アイコン" width="72" height="72">
+          <div>
+            <span class="badge soon js-status">近日公開</span>
+            <h3>特定社労士勉強くん</h3>
+            <p class="app-for">特定社会保険労務士 試験対策</p>
+          </div>
+        </div>
+        <p>特定社労士（紛争解決手続代理業務試験）の学習アプリ。
+           労働関係の紛争事例と、社労士としての倫理の事例演習に、スマートフォンで取り組めます。
+           解答後は解説で論点を確認でき、間違えた問題は復習として出題し直します。</p>
+        <div class="stores">
+          <div class="store" data-store="ios" data-url="">
+            <a class="store-link"><img src="assets/badges/app-store-ja.svg" alt="App Store からダウンロード" width="109" height="40"></a>
+            <span class="store-soon"><small>App Store</small>公開準備中</span>
+            <div class="qr"></div>
+          </div>
+          <div class="store" data-store="android" data-url="">
+            <a class="store-link"><img src="assets/badges/google-play-ja.png" alt="Google Play で手に入れよう" width="135" height="40"></a>
+            <span class="store-soon"><small>Google Play</small>公開準備中</span>
+            <div class="qr"></div>
+          </div>
+        </div>
       </div>
+
+      <div class="app">
+        <div class="app-hd">
+          <img class="app-icon" src="assets/apps/sharoushi.png" alt="社労士勉強くん アイコン" width="72" height="72">
+          <div>
+            <span class="badge soon js-status">2026年10月1日 公開予定</span>
+            <h3>社労士勉強くん</h3>
+            <p class="app-for">社会保険労務士 試験対策</p>
+          </div>
+        </div>
+        <p>社会保険労務士試験の学習アプリ。1日10問から、通勤や休憩のスキマ時間で毎日続けられるように設計しました。
+           間違えた問題は忘れかけたころに出題し直し、法改正にもあわせて問題と解説を更新していきます。</p>
+        <div class="stores">
+          <div class="store" data-store="ios" data-url="">
+            <a class="store-link"><img src="assets/badges/app-store-ja.svg" alt="App Store からダウンロード" width="109" height="40"></a>
+            <span class="store-soon"><small>App Store</small>公開準備中</span>
+            <div class="qr"></div>
+          </div>
+          <div class="store" data-store="android" data-url="">
+            <a class="store-link"><img src="assets/badges/google-play-ja.png" alt="Google Play で手に入れよう" width="135" height="40"></a>
+            <span class="store-soon"><small>Google Play</small>公開準備中</span>
+            <div class="qr"></div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -236,6 +339,39 @@ footer a{color:#c3d2e2}
     <div><a href="/privacy/">プライバシーポリシー</a>　<a href="/tokusho/">特定商取引法に基づく表記</a>　<a href="/terms/">利用規約</a>　<a href="mailto:support@tadimaru.com">support@tadimaru.com</a></div>
   </div>
 </footer>
+
+<script src="assets/js/qrcode.js"></script>
+<script>
+// data-url が入っているストアだけ、リンクとQRコードを有効にする
+document.querySelectorAll('.app').forEach(function (app) {
+  var released = false;
+  app.querySelectorAll('.store').forEach(function (store) {
+    var url = store.getAttribute('data-url');
+    var link = store.querySelector('.store-link');
+    var qrBox = store.querySelector('.qr');
+    if (!url) {
+      store.classList.add('pending');
+      qrBox.textContent = '公開後に\nQRコードを\n表示します';
+      qrBox.style.whiteSpace = 'pre-line';
+      return;
+    }
+    released = true;
+    store.classList.add('live');
+    link.href = url;
+    link.target = '_blank';
+    link.rel = 'noopener';
+    var qr = qrcode(0, 'M');
+    qr.addData(url);
+    qr.make();
+    qrBox.innerHTML = qr.createSvgTag(3, 0);
+  });
+  if (released) {
+    var status = app.querySelector('.js-status');
+    status.textContent = '配信中';
+    status.className = 'badge js-status';
+  }
+});
+</script>
 
 </body>
 </html>
