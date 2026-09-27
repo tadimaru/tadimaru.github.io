@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="社労士試験の実力を、科目ごとに数字で。最初のレベル判定で現在地が分かり、解くたびにスコアとランクが動きます。7科目・約5,700問、10問ずつ何セットでも。登録不要で、無料で1日20問まで。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="社労士勉強くん — いまの実力、科目ごとに数字で">
+<meta property="og:description" content="レベル判定で現在地が分かり、解くたびにスコアとランクが動く。7科目・約5,700問、10問ずつ何セットでも。">
+<meta property="og:url" content="https://tadimaru.com/sharoushi/">
+<meta property="og:image" content="https://tadimaru.com/sharoushi/img/ogp.jpg">
+<meta property="og:site_name" content="合同会社たでぃまる">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#1f4b8e">
+<link rel="canonical" href="https://tadimaru.com/sharoushi/">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Barlow:wght@600;700&display=swap">
+<title>社労士勉強くん</title>
+<style>
+  :root{
+    --navy:#1f4b8e;
+    --navy-deep:#163a70;
+    --ink:#17213a;
+    --sub:#56627a;
+    --paper:#ffffff;
+    --wash:#f2f5fa;
+    --line:#dce3ee;
+    --chip:#dfe7f8;
+    --marker:#ffe36e;
+    --ok:#1d8a4e;
+    --on-navy:#ffffff;
+    --on-navy-sub:#c9d6ee;
+    --phone:#0e1628;
+    --shadow:0 18px 40px -18px rgba(22,58,112,.45);
+    --display:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic UI","Yu Gothic",Meiryo,sans-serif;
+    --body:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic UI","Yu Gothic",Meiryo,sans-serif;
+    --num:"Barlow","Segoe UI",system-ui,sans-serif;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --navy:#8fb0ea; --navy-deep:#1c3563; --ink:#e7ecf5; --sub:#a4b0c6;
+      --paper:#111a2b; --wash:#0b1322; --line:#26344d; --chip:#233a63;
+      --marker:rgba(255,215,80,.38); --ok:#4cc584;
+      --on-navy:#ffffff; --on-navy-sub:#b7c6e2; --phone:#000000; --shadow:0 18px 40px -18px rgba(0,0,0,.7);
+    }
+  }
+  :root[data-theme="dark"]{
+    --navy:#8fb0ea; --navy-deep:#1c3563; --ink:#e7ecf5; --sub:#a4b0c6;
+    --paper:#111a2b; --wash:#0b1322; --line:#26344d; --chip:#233a63;
+    --marker:rgba(255,215,80,.38); --ok:#4cc584;
+    --on-navy:#ffffff; --on-navy-sub:#b7c6e2; --phone:#000000; --shadow:0 18px 40px -18px rgba(0,0,0,.7);
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:var(--body);font-size:16px;line-height:1.85;
+  }
+  img{max-width:100%;display:block}
+  a{color:var(--navy)}
+  a:focus-visible,summary:focus-visible{outline:3px solid var(--marker);outline-offset:3px;border-radius:4px}
+  .wrap{max-width:1040px;margin:0 auto;padding-inline:20px}
+  section{padding-block:64px}
+  .wash{background:var(--wash)}
+  h1,h2,h3{font-family:var(--display);line-height:1.4;margin:0;text-wrap:balance}
+  h2{font-size:26px;font-weight:900;letter-spacing:.02em}
+  h3{font-size:19px;font-weight:700}
+  .eyebrow{
+    font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:.14em;
+    color:var(--navy);margin:0 0 8px;
+  }
+  .lead{color:var(--sub);margin:16px 0 0;max-width:36em}
+  mark{
+    background:linear-gradient(transparent 58%,var(--marker) 58%,var(--marker) 92%,transparent 92%);
+    color:inherit;padding:0 .08em;
+  }
+  .num{font-family:var(--num);font-variant-numeric:tabular-nums;font-weight:700}
+
+  /* 上部バー */
+  .top{
+    position:sticky;top:env(safe-area-inset-top,0px);z-index:10;
+    background:color-mix(in srgb,var(--paper) 92%,transparent);
+    backdrop-filter:saturate(1.4) blur(10px);-webkit-backdrop-filter:saturate(1.4) blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .top .wrap{display:flex;align-items:center;gap:10px;height:56px}
+  .top img{width:30px;height:30px;border-radius:8px}
+  .top b{font-family:var(--display);font-size:16px;font-weight:900}
+  .top .go{
+    margin-left:auto;font-size:13px;font-weight:700;text-decoration:none;
+    color:var(--on-navy);background:var(--navy-deep);border-radius:999px;padding:6px 14px;
+  }
+
+  /* ヒーロー */
+  .hero{padding-block:36px 56px;overflow:hidden}
+  .hero .wrap{display:grid;gap:40px}
+  .hero .wrap>*,.feat>*,.two>*{min-width:0}
+  .app-id{display:flex;align-items:center;gap:12px;margin-bottom:22px}
+  .app-id img{width:56px;height:56px;border-radius:14px;box-shadow:var(--shadow)}
+  .app-id span{display:block;font-size:12.5px;color:var(--sub);line-height:1.5}
+  .app-id b{font-family:var(--display);font-size:18px;font-weight:900;line-height:1.3}
+  .hero h1{font-size:clamp(38px,11vw,62px);font-weight:900;letter-spacing:.02em;line-height:1.3}
+  .facts{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 0;padding:0;list-style:none}
+  .facts li{
+    border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:13px;
+    background:var(--paper);white-space:nowrap;
+  }
+  .facts .num{color:var(--navy);margin-right:2px}
+
+  .stores{margin-top:26px}
+  .stores .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  .badge{display:inline-block;opacity:.45;filter:grayscale(1)}
+  .badge img{height:44px;width:auto}
+  .stores .note{font-size:13px;color:var(--sub);margin:10px 0 0}
+  .stores .note b{color:var(--ink)}
+
+  .phone{
+    justify-self:center;width:min(290px,78vw);position:relative;
+    border-radius:38px;padding:10px;background:var(--phone);box-shadow:var(--shadow);
+  }
+  .phone img{border-radius:29px;width:100%;height:auto}
+  .hero .phone{rotate:2deg}
+
+  /* ランクのはしご */
+  .ladder{margin-top:28px;border:1px solid var(--line);border-radius:16px;padding:16px 18px 12px;background:var(--paper)}
+  .ladder-hd{display:flex;align-items:baseline;justify-content:space-between;gap:4px 10px;flex-wrap:wrap}
+  .ladder-hd b{font-size:14px}
+  .ladder-hd .score{font-size:13px;color:var(--sub)}
+  .ladder-hd .score .num{font-size:22px;color:var(--navy)}
+  .ladder-hd .plus{color:var(--ok);font-family:var(--num);font-weight:700;margin-left:6px;font-size:15px}
+  .bands{display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin:10px 0 4px}
+  .band{height:10px;border-radius:5px;background:var(--line);overflow:hidden}
+  .band i{display:block;height:100%;width:var(--w,0%);background:var(--navy);border-radius:5px}
+  .band.now i{animation:grow 1.6s cubic-bezier(.2,.8,.2,1) .5s both}
+  @keyframes grow{from{width:var(--from,0%)}to{width:var(--w)}}
+  .band-lbl{display:grid;grid-template-columns:repeat(6,1fr);gap:4px;text-align:center;font-family:var(--num);font-size:13px;color:var(--sub)}
+  .band-lbl .on{color:var(--navy);font-weight:700}
+
+  /* コンセプト */
+  .concept{display:grid;gap:14px;margin-top:28px}
+  .concept div{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:20px}
+  .concept h3{font-size:17px;margin-bottom:6px}
+  .concept p{margin:0;color:var(--sub);font-size:14.5px}
+
+  /* はじめての日の流れ */
+  .flow{list-style:none;margin:30px 0 0;padding:0;display:grid}
+  .flow li{display:grid;grid-template-columns:44px 1fr;gap:14px;position:relative;padding-bottom:26px}
+  .flow li::before{content:"";position:absolute;left:21px;top:44px;bottom:0;width:2px;background:var(--line)}
+  .flow li:last-child{padding-bottom:0}
+  .flow li:last-child::before{display:none}
+  .flow .n{
+    width:44px;height:44px;border-radius:50%;display:grid;place-items:center;position:relative;
+    background:var(--navy-deep);color:var(--on-navy);font-family:var(--num);font-size:19px;font-weight:700;
+  }
+  .flow h3{font-size:17px;margin:8px 0 4px}
+  .flow p{margin:0;color:var(--sub);font-size:14.5px}
+
+  /* 機能 */
+  .feat{display:grid;gap:26px;align-items:center;padding-block:36px;border-top:1px solid var(--line)}
+  .feat:first-of-type{border-top:0}
+  .feat h3{font-size:22px;font-weight:900;margin:4px 0 12px}
+  .feat p{margin:0 0 10px;color:var(--sub);font-size:15px}
+  .feat .tag{font-family:var(--display);font-size:12.5px;font-weight:700;color:var(--navy);letter-spacing:.08em}
+  .feat .phone{width:min(250px,68vw)}
+  .kinds{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}
+  .kinds span{
+    text-align:center;border:1px solid var(--line);border-radius:10px;padding:10px 4px;
+    font-size:13px;font-weight:700;background:var(--paper);
+  }
+  .kinds span i{display:block;font-style:normal;font-family:var(--num);font-size:20px;color:var(--navy);line-height:1.3}
+
+  /* 科目 */
+  .subjects{margin-top:26px;border-top:1px solid var(--line)}
+  .subj{display:flex;align-items:baseline;gap:12px;padding:13px 2px;border-bottom:1px solid var(--line)}
+  .subj b{font-family:var(--display);font-size:16px;min-width:5.2em;flex:none}
+  .subj span{font-size:13.5px;color:var(--sub);line-height:1.6}
+  .subj.soon b{color:var(--sub)}
+  .subj.soon em{font-style:normal;font-size:11.5px;font-weight:700;color:var(--sub);border:1px solid var(--line);border-radius:999px;padding:1px 8px;margin-left:auto;white-space:nowrap}
+
+  /* スコアとランク */
+  .merits{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:14px}
+  .merits li{padding-left:16px;border-left:3px solid var(--marker);color:var(--sub);font-size:14.5px;line-height:1.75}
+  .merits b{display:block;color:var(--ink);font-family:var(--display);font-size:16px;margin-bottom:2px}
+  .rank-table{margin-top:24px;display:grid;gap:6px}
+  .rk{display:grid;grid-template-columns:32px 1fr auto;align-items:center;gap:12px;padding:10px 14px;border-radius:12px;background:var(--paper);border:1px solid var(--line)}
+  .rk .l{
+    width:32px;height:32px;border-radius:50%;display:grid;place-items:center;
+    background:var(--chip);color:var(--navy);font-family:var(--num);font-weight:700;
+  }
+  .rk p{margin:0;font-size:14px;color:var(--sub);line-height:1.5}
+  .rk .r{font-family:var(--num);font-variant-numeric:tabular-nums;font-size:14px;white-space:nowrap}
+
+  /* 料金 */
+  .plans{display:grid;gap:16px;margin-top:28px}
+  .plan{border:1px solid var(--line);border-radius:18px;padding:24px 22px;background:var(--paper)}
+  .plan.paid{border:2px solid var(--navy)}
+  .plan h3{font-size:18px}
+  .plan .price{margin:6px 0 14px;font-size:14px;color:var(--sub)}
+  .plan .price .num{font-size:30px;color:var(--ink);margin-right:2px}
+  .plan ul{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+  .plan li{padding-left:26px;position:relative;font-size:14.5px;line-height:1.7}
+  .plan li::before{
+    content:"";position:absolute;left:4px;top:.5em;width:12px;height:7px;
+    border-left:2.5px solid var(--ok);border-bottom:2.5px solid var(--ok);transform:rotate(-45deg);
+  }
+  .tiers{display:grid;margin:12px 0 16px}
+  .tier{display:flex;justify-content:space-between;align-items:baseline;gap:10px;border-bottom:1px dashed var(--line);padding:8px 0}
+  .tier b{font-size:15px}
+  .tier .num{font-size:20px}
+  .tier>span{text-align:right}
+  .tier small{display:block;font-size:12px;color:var(--sub);text-align:right;line-height:1.4}
+  .fine{font-size:12.5px;color:var(--sub);margin:18px 0 0;line-height:1.7}
+
+  /* 出典 */
+  .src{margin-top:22px;display:grid;gap:10px}
+  .src a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:12px;padding:14px 16px;background:var(--paper);color:var(--ink)}
+  .src a b{display:block;font-size:15px}
+  .src a span{font-size:12.5px;color:var(--sub)}
+  .disclaim{margin-top:22px;font-size:13px;color:var(--sub);line-height:1.8}
+
+  /* FAQ */
+  .faq{margin-top:22px;border-top:1px solid var(--line)}
+  .faq details{border-bottom:1px solid var(--line)}
+  .faq summary{cursor:pointer;list-style:none;padding:16px 30px 16px 2px;font-weight:700;font-size:15px;position:relative}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{
+    content:"";position:absolute;right:8px;top:50%;width:9px;height:9px;margin-top:-7px;
+    border-right:2px solid var(--sub);border-bottom:2px solid var(--sub);transform:rotate(45deg);transition:transform .2s;
+  }
+  .faq details[open] summary::after{transform:rotate(-135deg);margin-top:-2px}
+  .faq details p{margin:0 2px 18px;color:var(--sub);font-size:14.5px}
+
+  /* 姉妹アプリ */
+  .sister{display:flex;gap:14px;align-items:center;border:1px solid var(--line);border-radius:16px;padding:18px;background:var(--paper);margin-top:32px;text-decoration:none;color:var(--ink)}
+  .sister img{width:56px;height:56px;border-radius:14px;flex:none}
+  .sister b{display:block;font-family:var(--display);font-size:16px}
+  .sister span{font-size:13.5px;color:var(--sub);line-height:1.6;display:block}
+
+  /* 最後の呼びかけ */
+  .cta{background:var(--navy-deep);color:var(--on-navy);text-align:center}
+  .cta h2{font-size:28px}
+  .cta p{color:var(--on-navy-sub);margin:12px auto 0;max-width:30em}
+  .cta .stores .row{justify-content:center}
+  .cta .stores .note{color:var(--on-navy-sub)}
+  .cta .stores .note b{color:var(--on-navy)}
+  .cta .badge{opacity:.6}
+
+  footer{padding-block:36px calc(36px + env(safe-area-inset-bottom,0px));font-size:13px;color:var(--sub);border-top:1px solid var(--line)}
+  footer .links{display:flex;flex-wrap:wrap;gap:10px 20px;margin-bottom:18px}
+  footer a{color:var(--sub)}
+  footer p{margin:0;line-height:1.7}
+
+  /* 大きい画面 */
+  @media (min-width:760px){
+    section{padding-block:96px}
+    h2{font-size:34px}
+    .hero{padding-block:64px 90px}
+    .hero .wrap{grid-template-columns:1.15fr .85fr;align-items:center;gap:48px}
+    .concept{grid-template-columns:repeat(3,1fr)}
+    .flow{grid-template-columns:repeat(4,1fr);gap:20px}
+    .flow li{grid-template-columns:1fr;padding-bottom:0}
+    .flow li::before{left:44px;right:-20px;top:21px;bottom:auto;width:auto;height:2px}
+    .feat{grid-template-columns:1fr 280px;gap:56px;padding-block:52px}
+    .feat.rev .feat-txt{order:2}
+    .plans{grid-template-columns:1fr 1.2fr}
+    .src{grid-template-columns:repeat(3,1fr)}
+    .two{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .band.now i{animation:none}
+    .hero .phone{rotate:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="wrap">
+    <img src="img/icon.png" alt="" width="30" height="30">
+    <b>社労士勉強くん</b>
+    <a class="go" href="#get">ダウンロード</a>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <div class="app-id">
+        <img src="img/icon.png" alt="社労士勉強くん アイコン" width="56" height="56">
+        <div><b>社労士勉強くん</b><span>社会保険労務士 試験対策アプリ</span></div>
+      </div>
+      <h1>いまの実力、<br>科目ごとに<mark>数字で。</mark></h1>
+      <p class="lead">最初のレベル判定で、科目ごとの現在地が分かります。あとは10問ずつ解くたびにスコアとランクが動き、どこが伸びてどこが弱いかが数字で見えます。いま通っている講座やお手持ちのテキストで学んだことを、このアプリで確かめられます。</p>
+      <ul class="facts">
+        <li><span class="num">7</span>科目</li>
+        <li>約<span class="num">5,700</span>問</li>
+        <li>登録・ログイン不要</li>
+        <li><span class="num">10</span>問ずつ、何セットでも</li>
+        <li>無料で1日<span class="num">20</span>問</li>
+      </ul>
+
+      <div class="ladder" aria-label="10問解いたあとのスコアの動きの例">
+        <div class="ladder-hd">
+          <b>労基・安衛　8 / 10 問正解</b>
+          <span class="score">スコア <span class="num">2,638</span><span class="plus">+152</span></span>
+        </div>
+        <div class="bands">
+          <span class="band"><i style="--w:100%"></i></span>
+          <span class="band now"><i style="--w:65%;--from:55%"></i></span>
+          <span class="band"></span><span class="band"></span><span class="band"></span><span class="band"></span>
+        </div>
+        <div class="band-lbl"><span>F</span><span class="on">E</span><span>D</span><span>C</span><span>B</span><span>A</span></div>
+      </div>
+
+      <div class="stores">
+        <div class="row">
+          <span class="badge"><img src="../assets/badges/app-store-ja.svg" alt="App Store" width="120" height="44"></span>
+          <span class="badge"><img src="../assets/badges/google-play-ja.png" alt="Google Play" width="148" height="44"></span>
+        </div>
+        <p class="note"><b>近日公開</b>　iPhone・Android に対応します</p>
+      </div>
+    </div>
+    <div class="phone"><img src="img/01_home.jpg" alt="ホーム画面：おすすめの10問と、科目ごとのスコアとランク" width="600" height="1280"></div>
+  </div>
+</header>
+
+<section class="wash" id="concept">
+  <div class="wrap">
+    <p class="eyebrow">範囲が広すぎて、どこまでできているか分からない</p>
+    <h2>メインの教材はそのまま。<br>「確かめる」を、ここで。</h2>
+    <p class="lead">社労士試験は7科目・1年がかり。講座を進めるだけで手一杯になり、どの科目がどこまで定着しているのか、自分でも分からなくなります。このアプリは、その「いまどこにいるか」を数字にして、次に解くべき科目を示します。</p>
+    <div class="concept">
+      <div><h3>現在地が分かる</h3><p>最初のレベル判定で、科目ごとの実力を F〜A のランクとスコアにします。易しすぎず、難しすぎない問題から始まります。</p></div>
+      <div><h3>伸びが見える</h3><p>解くたびにスコアが動き、弱い科目がひと目で分かります。学習時間とスコアの推移は、グラフで振り返れます。</p></div>
+      <div><h3>10問ずつ、何セットでも</h3><p>1セットは10問で、通勤の数分で終わります。時間がある日は続けて何セットでも。連続日数と学習のお知らせが、明日につなげます。</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="flow">
+  <div class="wrap">
+    <p class="eyebrow">使いかた</p>
+    <h2>はじめての日の流れ</h2>
+    <ol class="flow">
+      <li><span class="n">1</span><div><h3>目指す試験を選ぶ</h3><p>2027年・2028年・2029年の試験から選びます。登録やログインはありません。</p></div></li>
+      <li><span class="n">2</span><div><h3>レベル判定</h3><p>科目ごとに四択を9問前後。分からない問題は「分からない」を選べます。</p></div></li>
+      <li><span class="n">3</span><div><h3>おすすめの10問</h3><p>ランクの低い科目から、あなたに合った難しさで出題します。1セットは1科目。続けて次のセットも解けます。</p></div></li>
+      <li><span class="n">4</span><div><h3>区切りで振り返る</h3><p>10問ごとに正解数とスコアの動き。解いた問題の解説をもう一度見られます。</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<section class="wash" id="features">
+  <div class="wrap">
+    <p class="eyebrow">できること</p>
+    <h2>解いて、確かめて、覚える。</h2>
+
+    <div class="feat">
+      <div class="feat-txt">
+        <span class="tag">レベル判定</span>
+        <h3>最初の9問で、<br>出発点が決まる。</h3>
+        <p>四択を3問ずつ解き、正答率に合わせて難しさを上げ下げしながら、その科目のいまのランクを判定します。</p>
+      </div>
+      <div class="phone"><img src="img/07_placement.jpg" alt="レベル判定の四択問題" loading="lazy" width="600" height="1280"></div>
+    </div>
+
+    <div class="feat rev">
+      <div class="feat-txt">
+        <span class="tag">3つの形式</span>
+        <h3>ひとつの知識を、<br>3つの角度から。</h3>
+        <p>同じ形式ばかりでは、答え方に慣れただけで終わりがちです。○×で正誤を判断し、四択で紛らわしい選択肢と見分け、穴埋めで数字や用語を正確に思い出す。形を変えて問うことで、知識が本番で使える形で定着します。問題の順番と選択肢の並びも毎回変わります。</p>
+        <div class="kinds"><span><i>○×</i>一問一答</span><span><i>4</i>四択</span><span><i>___</i>穴埋め</span></div>
+      </div>
+      <div class="phone"><img src="img/03_choice.jpg" alt="四択の問題を解いている画面" loading="lazy" width="600" height="1280"></div>
+    </div>
+
+    <div class="feat">
+      <div class="feat-txt">
+        <span class="tag">解説と出典</span>
+        <h3>答えたら、すぐ条文へ。</h3>
+        <p>答えるとすぐに解説が出て、問題の元になった条文・判例の知識をその場で確かめられます。「なぜそうなるのか」まで戻れるので、丸暗記で終わりません。</p>
+      </div>
+      <div class="phone"><img src="img/04_explanation.jpg" alt="解説と、元になった条文の本文" loading="lazy" width="600" height="1280"></div>
+    </div>
+
+    <div class="feat rev">
+      <div class="feat-txt">
+        <span class="tag">10問ごとの区切り</span>
+        <h3>スコアが伸びる瞬間を、<br>見届ける。</h3>
+        <p>10問を解き終えるたびに、正解数と、スコアのバーがどれだけ伸びたかが出ます。間違えた問題は一覧から開いて、解説を読み直せます。</p>
+      </div>
+      <div class="phone"><img src="img/05_result.jpg" alt="10問の結果。スコアのバーと、このセットの問題の一覧" loading="lazy" width="600" height="1280"></div>
+    </div>
+
+    <div class="feat">
+      <div class="feat-txt">
+        <span class="tag">記録</span>
+        <h3>続けた時間が、<br>グラフになる。</h3>
+        <p>直近2週間の学習時間と解いた問題数、科目ごとのスコアの推移を、週・月・四半期・半年・年で振り返れます。</p>
+      </div>
+      <div class="phone"><img src="img/06_record.jpg" alt="記録タブ。学習時間のグラフと科目ごとのスコアの推移" loading="lazy" width="600" height="1280"></div>
+    </div>
+  </div>
+</section>
+
+<section id="rank">
+  <div class="wrap two">
+    <div>
+      <p class="eyebrow">スコアとランク</p>
+      <h2>いつも、いまの自分に<br>ちょうどいい問題を。</h2>
+      <p class="lead">問題には、過去の本試験での出題頻度などをもとに F〜A の6段階のランクを付けています。あなたのスコアもこのランクと連動していて、正解が続けばスコアが上がり、上のランクの問題が出るようになります。</p>
+      <ul class="merits">
+        <li><b>伸びしろだけを解ける</b>もう分かっている易しい問題で時間を使わず、歯が立たない難問で手が止まることもありません。限られた時間を、いま伸ばせるところに使えます。</li>
+        <li><b>よく出るところから固まる</b>頻出の基本から始まり、力がつくにつれて差がつく論点へ。全範囲をやみくもに回すより、得点につながりやすい順に積み上がります。</li>
+      </ul>
+    </div>
+    <div class="rank-table">
+      <div class="rk"><span class="l">A</span><p>細かい数字や例外まで</p><span class="r">8,000〜</span></div>
+      <div class="rk"><span class="l">B</span><p>本試験で差がつく論点</p><span class="r">6,400〜</span></div>
+      <div class="rk"><span class="l">C</span><p>よく出る論点を一通り</p><span class="r">4,800〜</span></div>
+      <div class="rk"><span class="l">D</span><p>頻出の基本を固める</p><span class="r">3,200〜</span></div>
+      <div class="rk"><span class="l">E</span><p>条文の骨組みをつかむ</p><span class="r">1,600〜</span></div>
+      <div class="rk"><span class="l">F</span><p>まずはここから</p><span class="r">0〜</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="wash" id="contents">
+  <div class="wrap">
+    <p class="eyebrow">収録内容</p>
+    <h2>7科目・約5,700問</h2>
+    <p class="lead">法令・判例をもとに整理した知識と、そこから作った問題を収録しています。問題の最終更新日は、アプリの設定画面に表示しています。</p>
+    <div class="subjects">
+      <div class="subj"><b>労基・安衛</b><span>労働基準法・労働安全衛生法</span></div>
+      <div class="subj"><b>労災</b><span>労働者災害補償保険法</span></div>
+      <div class="subj"><b>雇用</b><span>雇用保険法</span></div>
+      <div class="subj"><b>徴収</b><span>労働保険の保険料の徴収等に関する法律</span></div>
+      <div class="subj"><b>健保</b><span>健康保険法</span></div>
+      <div class="subj"><b>国年</b><span>国民年金法</span></div>
+      <div class="subj"><b>厚年</b><span>厚生年金保険法</span></div>
+      <div class="subj soon"><b>一般常識</b><span>労一・社一</span><em>近日追加予定</em></div>
+    </div>
+  </div>
+</section>
+
+<section id="price">
+  <div class="wrap">
+    <p class="eyebrow">料金</p>
+    <h2>無料で、毎日20問。</h2>
+    <p class="lead">レベル判定・スコア・解説・記録は、すべて無料で使えます。もっと解きたい日と、苦手をつぶしたいときに有料プランを。</p>
+    <div class="plans">
+      <div class="plan">
+        <h3>無料</h3>
+        <p class="price"><span class="num">0</span>円</p>
+        <ul>
+          <li>1日2セット（20問）まで。科目も選べます</li>
+          <li>レベル判定・スコアとランク</li>
+          <li>解説と、元になった条文・判例の確認</li>
+          <li>連続日数・記録のグラフ・学習のお知らせ</li>
+        </ul>
+      </div>
+      <div class="plan paid">
+        <h3>有料プラン</h3>
+        <div class="tiers">
+          <div class="tier"><b>1ヶ月</b><span><span class="num">2,980</span>円</span></div>
+          <div class="tier"><b>3ヶ月</b><span><span class="num">6,980</span>円<small>1ヶ月あたり 約2,327円</small></span></div>
+          <div class="tier"><b>1年</b><span><span class="num">19,800</span>円<small>1ヶ月あたり 1,650円</small></span></div>
+        </div>
+        <ul>
+          <li>その日に何セットでも解けます</li>
+          <li>間違えた問題だけを集めて、解けるまで何度でも解き直せます</li>
+        </ul>
+      </div>
+    </div>
+    <p class="fine">価格は税込。自動更新のサブスクリプションです。期間の満了前に解約されない限り、自動的に更新されます。解約はアプリ内ではできません。iPhone は App Store の設定画面、Android は Google Play の「定期購入」の画面から、次回更新日の24時間前までにお手続きください。</p>
+  </div>
+</section>
+
+<section class="wash" id="source">
+  <div class="wrap">
+    <p class="eyebrow">出典</p>
+    <h2>公的な一次情報から作っています</h2>
+    <p class="lead">問題と解説は、次の公的機関が公表する法令・判例をもとに作成しています。法令は改正されます。最新の内容は、必ず公式サイトでご確認ください。</p>
+    <div class="src">
+      <a href="https://laws.e-gov.go.jp/" target="_blank" rel="noopener"><b>法令の条文</b><span>e-Gov 法令検索（デジタル庁）</span></a>
+      <a href="https://www.mhlw.go.jp/" target="_blank" rel="noopener"><b>制度の解説・通達</b><span>厚生労働省</span></a>
+      <a href="https://www.courts.go.jp/app/hanrei_jp/search1" target="_blank" rel="noopener"><b>判例</b><span>裁判所 裁判例検索</span></a>
+    </div>
+    <p class="disclaim">本アプリは合同会社たでぃまるが提供する民間の学習アプリです。デジタル庁、厚生労働省、日本年金機構、全国社会保険労務士会連合会その他の政府機関・公的機関とは一切関係がなく、これらを代表するものではありません。また、これらの機関による認可・監修・提携を受けたものでもありません。試験問題の本文は収録していません。本アプリが提供するのは学習用に整理した情報であり、法律相談その他の法的助言ではありません。試験の合格その他いかなる結果も保証しません。</p>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <p class="eyebrow">よくある質問</p>
+    <h2>FAQ</h2>
+    <div class="faq">
+      <details><summary>アカウントの登録は必要ですか？</summary><p>必要ありません。インストールしてすぐに始められます。氏名やメールアドレスはお預かりしません。</p></details>
+      <details><summary>このアプリだけで合格できますか？</summary><p>このアプリは、講座やテキストで学んだことを毎日確かめるためのサブ教材です。メインの教材と組み合わせてお使いください。</p></details>
+      <details><summary>一般常識（労一・社一）は入っていますか？</summary><p>現在は収録していません。追加を予定しています。</p></details>
+      <details><summary>機種変更をしたら、記録は引き継げますか？</summary><p>学習記録は端末の中にだけ保存しているため、機種変更やアプリの削除で失われます。有料プランは、新しい端末で「購入を復元」を押すと戻せます。</p></details>
+      <details><summary>法改正には対応しますか？</summary><p>法令の改正にあわせて、問題と解説を更新していきます。問題の最終更新日は、アプリの設定画面で確認できます。</p></details>
+      <details><summary>解答のデータは送られますか？</summary><p>問題の改善のため、問題ごとの正誤を、個人が特定されない形で集めています。詳しくは<a href="/privacy/">プライバシーポリシー</a>をご覧ください。</p></details>
+    </div>
+
+    <a class="sister" href="/#products">
+      <img src="../assets/apps/tokutei.png" alt="" width="56" height="56">
+      <div><b>特定社労士勉強くん</b><span>社労士試験に合格したら、次は特定社労士へ。紛争解決手続代理業務試験の学習アプリです。</span></div>
+    </a>
+  </div>
+</section>
+
+<section class="cta" id="get">
+  <div class="wrap">
+    <h2>まず、いまの実力を<br>知るところから。</h2>
+    <p>登録なし。インストールしたら、すぐにレベル判定が始まります。最初の1科目は9問ほどで終わります。</p>
+    <div class="stores">
+      <div class="row">
+        <span class="badge"><img src="../assets/badges/app-store-ja.svg" alt="App Store" width="120" height="44"></span>
+        <span class="badge"><img src="../assets/badges/google-play-ja.png" alt="Google Play" width="148" height="44"></span>
+      </div>
+      <p class="note"><b>近日公開</b>　iPhone・Android に対応します</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="links">
+      <a href="/sharoushi/terms/">利用規約</a>
+      <a href="/privacy/">プライバシーポリシー</a>
+      <a href="/tokusho/">特定商取引法に基づく表記</a>
+      <a href="/">合同会社たでぃまる</a>
+    </div>
+    <p>© 合同会社たでぃまる　画面はすべて開発中のもので、表示している学習の記録は例です。内容は変更になる場合があります。</p>
+  </div>
+</footer>
+
+</body>
+</html>
