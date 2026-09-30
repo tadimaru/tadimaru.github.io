@@ -115,6 +115,8 @@
   .stores .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
   .badge{display:inline-block;opacity:.45;filter:grayscale(1)}
   .badge img{height:44px;width:auto}
+  .badge.live{opacity:1;filter:none}
+  .badge.live:focus-visible{outline:2px solid currentColor;outline-offset:3px;border-radius:8px}
   .stores .note{font-size:13px;color:var(--sub);margin:10px 0 0}
   .stores .note b{color:var(--ink)}
 
@@ -248,6 +250,7 @@
   .cta .stores .note{color:var(--on-navy-sub)}
   .cta .stores .note b{color:var(--on-navy)}
   .cta .badge{opacity:.6}
+  .cta .badge.live{opacity:1}
 
   footer{padding-block:36px calc(36px + env(safe-area-inset-bottom,0px));font-size:13px;color:var(--sub);border-top:1px solid var(--line)}
   footer .links{display:flex;flex-wrap:wrap;gap:10px 20px;margin-bottom:18px}
@@ -319,10 +322,10 @@
 
       <div class="stores">
         <div class="row">
-          <span class="badge"><img src="../assets/badges/app-store-ja.svg" alt="App Store" width="120" height="44"></span>
+          <a class="badge live" href="https://apps.apple.com/jp/app/id6812129020" target="_blank" rel="noopener"><img src="../assets/badges/app-store-ja.svg" alt="App Store からダウンロード" width="120" height="44"></a>
           <span class="badge"><img src="../assets/badges/google-play-ja.png" alt="Google Play" width="148" height="44"></span>
         </div>
-        <p class="note"><b>近日公開</b>　iPhone・Android に対応します</p>
+        <p class="note"><b>iPhone 版 配信中</b>　Android 版は近日公開です</p>
       </div>
     </div>
     <div class="phone"><img src="img/01_home.jpg" alt="ホーム画面：おすすめの10問と、科目ごとのスコアとランク" width="600" height="1280"></div>
@@ -521,10 +524,10 @@
     <p>登録なし。インストールしたら、すぐにレベル判定が始まります。最初の1科目は9問ほどで終わります。</p>
     <div class="stores">
       <div class="row">
-        <span class="badge"><img src="../assets/badges/app-store-ja.svg" alt="App Store" width="120" height="44"></span>
+        <a class="badge live" href="https://apps.apple.com/jp/app/id6812129020" target="_blank" rel="noopener"><img src="../assets/badges/app-store-ja.svg" alt="App Store からダウンロード" width="120" height="44"></a>
         <span class="badge"><img src="../assets/badges/google-play-ja.png" alt="Google Play" width="148" height="44"></span>
       </div>
-      <p class="note"><b>近日公開</b>　iPhone・Android に対応します</p>
+      <p class="note"><b>iPhone 版 配信中</b>　Android 版は近日公開です</p>
     </div>
   </div>
 </section>
