@@ -10,6 +10,7 @@
   ログインできるのは Supabase の news_admins に入っている人だけ（新規登録はオフ）。
   書き込みの権限は Supabase 側（RLS）で守っていて、このページを誰かが開いても、ログインできなければ何もできない。
   関連：開発企画課/tickets/rom/open/2026-10-10-rom-news-admin-web.md
+        開発企画課/tickets/rom/open/2026-10-10-rom-news-bulk-import.md（まとめて読み込む：import.js）
         開発課/社労士アプリ/本体/supabase_news_admin.sql
   本文の書き方はアプリ（lib/widgets/simple_markdown.dart）と同じ：# 見出し / ## 小見出し / - 箇条書き / **太字** / [文字](https://…)
 -->
@@ -73,12 +74,32 @@
   .md ul { padding-left: 1.2em; margin: 8px 0; } .md li { line-height: 1.8; font-size: 15px; }
   .md a { color: var(--accent); }
   .linkbtn { display: block; text-align: center; border: 1px solid var(--line); border-radius: 8px; padding: 10px; margin-top: 16px; color: var(--accent); font-size: 14px; }
-  @media (max-width: 1100px) { #app { grid-template-columns: 1fr; } }
+  header nav { display: flex; gap: 4px; }
+  .tab { border-color: transparent; color: var(--muted); }
+  .tab.active { background: var(--accent-soft); color: var(--accent); border-color: var(--accent-soft); }
+  /* ── まとめて読み込む ── */
+  #importView { display: grid; grid-template-columns: minmax(560px, 1fr) 400px; gap: 16px; padding: 16px; align-items: start; }
+  #importTable { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 12px; }
+  #importTable th { text-align: left; color: var(--muted); font-weight: normal; border-bottom: 1px solid var(--line); padding: 6px; white-space: nowrap; }
+  #importTable td { border-bottom: 1px solid var(--line); padding: 8px 6px; vertical-align: top; }
+  #importTable tr.row-item { cursor: pointer; }
+  #importTable tr.row-item:hover { background: var(--bg); }
+  #importTable tr.row-item.active { background: var(--accent-soft); }
+  #importTable .file { font-size: 11px; color: var(--muted); word-break: break-all; }
+  .issues { margin: 4px 0 0; padding-left: 1.2em; font-size: 12px; }
+  .issues .e { color: var(--ng); } .issues .w { color: var(--warn); }
+  .result.ok { color: var(--ok); } .result.ng { color: var(--ng); }
+  #importSkipped { font-size: 12px; color: var(--muted); margin-top: 12px; }
+  #importSkipped summary { cursor: pointer; }
+  .drop { border: 2px dashed var(--line); border-radius: 12px; padding: 18px; text-align: center; color: var(--muted); font-size: 13px; }
+  .drop.over { border-color: var(--accent); background: var(--accent-soft); }
+  @media (max-width: 1100px) { #app, #importView { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
 <header>
   <h1>ニュース管理（社労士勉強くん）</h1>
+  <nav id="tabs" class="hidden"><button id="tabEdit" class="tab active">1本ずつ書く</button><button id="tabImport" class="tab">まとめて読み込む</button></nav>
   <span class="who" id="who"></span>
   <button id="logout" class="hidden">ログアウト</button>
 </header>
@@ -173,6 +194,54 @@
   </section>
 </main>
 
+<main id="importView" class="hidden">
+  <section class="panel">
+    <strong>まとめて読み込む</strong>
+    <div class="hint">記事ファイル（.md）と画像（.png / .jpg）を一緒に選びます。フォルダごと選ぶと、中の下書きやメモは自動で弾きます。
+      取り込むのは <b>status: 公開OK</b> の記事だけ。<b>publish_at</b> があれば予約公開、空なら下書きで入ります。同じファイル名を読み込み直すと、新しく作らずに直します。</div>
+    <div class="drop" id="importDrop" style="margin-top:12px">
+      ここにファイルやフォルダを落とすか、
+      <div class="actions" style="justify-content:center;margin-top:10px">
+        <button type="button" id="pickFiles">ファイルを選ぶ</button>
+        <button type="button" id="pickFolder">フォルダを選ぶ</button>
+      </div>
+      <input id="importFiles" type="file" multiple accept=".md,.png,.jpg,.jpeg" class="hidden">
+      <input id="importFolder" type="file" webkitdirectory multiple class="hidden">
+    </div>
+    <div id="importSummary" class="hint" style="margin-top:12px"></div>
+    <table id="importTable" class="hidden">
+      <thead><tr><th><input type="checkbox" id="importAll" title="すべて選ぶ"></th><th>見出し</th><th>種類</th><th>公開</th><th>画像</th><th>登録</th><th>結果</th></tr></thead>
+      <tbody></tbody>
+    </table>
+    <div class="actions">
+      <button id="importSave" class="primary" disabled>選んだ記事を保存</button>
+    </div>
+    <div id="importMessage" class="hint"></div>
+    <details id="importSkipped" class="hidden"><summary></summary><ul></ul></details>
+  </section>
+
+  <section class="phone">
+    <h3>プレビュー：一覧（アプリのニュースタブ）</h3>
+    <div class="app-card">
+      <div class="img" id="ipvListImg"></div>
+      <div class="body">
+        <div class="title" id="ipvListTitle"></div>
+        <div class="meta" id="ipvListMeta"></div>
+      </div>
+    </div>
+    <h3>プレビュー：本文</h3>
+    <div class="article">
+      <div class="app-card" style="border:0;border-radius:0;margin:0"><div class="img" id="ipvImg"></div></div>
+      <div class="content">
+        <div class="atitle" id="ipvTitle"></div>
+        <div class="meta" id="ipvMeta"></div>
+        <div class="md" id="ipvBody"></div>
+        <a class="linkbtn hidden" id="ipvLink" target="_blank" rel="noopener"></a>
+      </div>
+    </div>
+  </section>
+</main>
+
 <!-- 版を固定し、中身が書き換えられていないか（SRI）を確かめて読む。上げるときは integrity も作り直す -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.3/dist/umd/supabase.js" integrity="sha384-BWcjm9OdFth9TbhCxZPdm+gAOUMAzQy9nmTs12ioXdCcbVnJaPMn+fMUoQCLt60R" crossorigin="anonymous"></script>
 <script>
@@ -210,8 +279,14 @@ async function refreshSession() {
 
 function show(which) {
   $('login').classList.toggle('hidden', which !== 'login');
+  $('tabs').classList.toggle('hidden', which === 'login');
   $('app').classList.toggle('hidden', which !== 'app');
+  $('importView').classList.toggle('hidden', which !== 'import');
+  $('tabEdit').classList.toggle('active', which === 'app');
+  $('tabImport').classList.toggle('active', which === 'import');
 }
+$('tabEdit').onclick = () => show('app');
+$('tabImport').onclick = () => show('import');
 
 $('loginBtn').onclick = async () => {
   $('loginMessage').textContent = 'ログインしています…';
@@ -418,27 +493,41 @@ $('newBtn').onclick = newArticle;
 
 // ── プレビュー（アプリの SimpleMarkdown と同じ書き方だけを扱う） ──
 function renderPreview() {
-  const title = $('title').value.trim() || '（見出し）';
-  const category = $('category').value.trim() || '学習';
   const status = statusValue();
-  const when = status === 'schedule' && $('scheduleAt').value ? new Date($('scheduleAt').value)
-    : current && status !== 'now' ? new Date(current.published_at) : new Date();
+  fillPreview('pv', {
+    title: $('title').value.trim(),
+    category: $('category').value.trim(),
+    isPr: $('isPr').checked,
+    when: status === 'schedule' && $('scheduleAt').value ? new Date($('scheduleAt').value)
+      : current && status !== 'now' ? new Date(current.published_at) : new Date(),
+    src: previewImageSrc(),
+    body: $('body').value,
+    linkUrl: $('linkUrl').value.trim(),
+    linkLabel: $('linkLabel').value.trim(),
+  });
+}
+
+// プレビューを埋める。prefix は 'pv'（1本ずつ書く）か 'ipv'（まとめて読み込む）
+function fillPreview(prefix, a) {
+  const el = (name) => $(prefix + name);
+  const title = a.title || '（見出し）';
+  const category = a.category || '学習';
+  const when = a.when;
   const isNew = Date.now() - when.getTime() <= NEW_WINDOW_MS;
-  const meta = (withNew) => `${$('isPr').checked ? '<span class="pr">PR</span>' : ''}<span>${esc(category)}</span><span>${when.getMonth() + 1}月${when.getDate()}日</span>${withNew && isNew ? '<span class="new">NEW</span>' : ''}`;
-  const src = previewImageSrc();
-  for (const id of ['pvListImg', 'pvImg']) {
-    $(id).innerHTML = src ? '<img alt="">' : '';
-    if (src) $(id).querySelector('img').src = src;
+  const meta = (withNew) => `${a.isPr ? '<span class="pr">PR</span>' : ''}<span>${esc(category)}</span><span>${when.getMonth() + 1}月${when.getDate()}日</span>${withNew && isNew ? '<span class="new">NEW</span>' : ''}`;
+  for (const name of ['ListImg', 'Img']) {
+    el(name).innerHTML = a.src ? '<img alt="">' : '';
+    if (a.src) el(name).querySelector('img').src = a.src;
   }
-  $('pvListTitle').textContent = title;
-  $('pvListMeta').innerHTML = meta(true);
-  $('pvTitle').textContent = title;
-  $('pvMeta').innerHTML = meta(false) + '<span style="margin-left:auto">合同会社たでぃまる</span>';
-  $('pvBody').innerHTML = renderMarkdown($('body').value);
-  const link = $('linkUrl').value.trim();
-  $('pvLink').classList.toggle('hidden', !/^https?:\/\//.test(link));
-  $('pvLink').textContent = '↗ ' + ($('linkLabel').value.trim() || 'くわしく見る');
-  $('pvLink').href = link || '#';
+  el('ListTitle').textContent = title;
+  el('ListMeta').innerHTML = meta(true);
+  el('Title').textContent = title;
+  el('Meta').innerHTML = meta(false) + '<span style="margin-left:auto">合同会社たでぃまる</span>';
+  el('Body').innerHTML = renderMarkdown(a.body || '');
+  const link = a.linkUrl || '';
+  el('Link').classList.toggle('hidden', !/^https?:\/\//.test(link));
+  el('Link').textContent = '↗ ' + (a.linkLabel || 'くわしく見る');
+  el('Link').href = link || '#';
 }
 
 function esc(s) {
@@ -492,5 +581,7 @@ function message(text, ok) {
 sb.auth.onAuthStateChange((event) => { if (event === 'SIGNED_OUT') show('login'); });
 refreshSession();
 </script>
+<!-- まとめて読み込む（上の sb・cropTo1200x630・renderMarkdown・fillPreview・loadList を使う） -->
+<script src="import.js?v=1"></script>
 </body>
 </html>
