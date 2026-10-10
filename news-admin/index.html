@@ -1,0 +1,479 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>ニュース管理｜社労士勉強くん</title>
+<!--
+  社労士勉強くん（本体）のニュースタブに載せる記事を書く管理ページ（2026-10-10）。
+  ログインできるのは Supabase の news_admins に入っている人だけ（新規登録はオフ）。
+  書き込みの権限は Supabase 側（RLS）で守っていて、このページを誰かが開いても、ログインできなければ何もできない。
+  関連：開発企画課/tickets/rom/open/2026-10-10-rom-news-admin-web.md
+        開発課/社労士アプリ/本体/supabase_news_admin.sql
+  本文の書き方はアプリ（lib/widgets/simple_markdown.dart）と同じ：# 見出し / ## 小見出し / - 箇条書き / **太字** / [文字](https://…)
+-->
+<style>
+  :root {
+    --accent: #3b5a8f; --accent-soft: #e7edf7; --bg: #f6f7f9; --card: #fff; --line: #e3e7ee;
+    --text: #1d2330; --muted: #6b7385; --ok: #1f7a4c; --warn: #9a5b00; --ng: #c0392b; --new: #e5322d;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: "Hiragino Sans", "Yu Gothic UI", "Meiryo", sans-serif; background: var(--bg); color: var(--text); }
+  header { display: flex; align-items: center; gap: 12px; padding: 12px 20px; background: var(--card); border-bottom: 1px solid var(--line); }
+  header h1 { font-size: 17px; margin: 0; flex: 1; }
+  header .who { font-size: 13px; color: var(--muted); }
+  button { font: inherit; cursor: pointer; border-radius: 8px; border: 1px solid var(--line); background: var(--card); padding: 8px 14px; }
+  button.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  button.danger { color: var(--ng); }
+  button:disabled { opacity: .5; cursor: default; }
+  input[type=text], input[type=url], input[type=email], input[type=password], input[type=datetime-local], textarea, select {
+    font: inherit; width: 100%; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; background: #fff; color: var(--text);
+  }
+  textarea { min-height: 320px; line-height: 1.7; resize: vertical; }
+  label { display: block; font-size: 13px; color: var(--muted); margin: 14px 0 4px; }
+  .hint { font-size: 12px; color: var(--muted); margin-top: 4px; }
+  .hidden { display: none !important; }
+  #login { max-width: 360px; margin: 80px auto; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 24px; }
+  #login h2 { margin: 0 0 8px; font-size: 18px; }
+  #app { display: grid; grid-template-columns: 280px minmax(360px, 1fr) 400px; gap: 16px; padding: 16px; align-items: start; }
+  .panel { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 16px; }
+  .list-item { padding: 10px; border-radius: 8px; cursor: pointer; border: 1px solid transparent; }
+  .list-item:hover { background: var(--bg); }
+  .list-item.active { border-color: var(--accent); background: var(--accent-soft); }
+  .list-item .t { font-size: 14px; font-weight: 600; line-height: 1.4; }
+  .list-item .m { font-size: 12px; color: var(--muted); margin-top: 4px; display: flex; gap: 6px; flex-wrap: wrap; }
+  .pill { font-size: 11px; padding: 1px 6px; border-radius: 4px; border: 1px solid currentColor; }
+  .pill.pub { color: var(--ok); } .pill.sch { color: var(--warn); } .pill.draft { color: var(--muted); } .pill.pr { color: var(--text); }
+  .row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  .row > * { flex: 1; }
+  .radio { display: flex; gap: 16px; flex-wrap: wrap; font-size: 14px; }
+  .radio label { display: flex; align-items: center; gap: 6px; margin: 0; color: var(--text); }
+  .actions { display: flex; gap: 8px; margin-top: 20px; flex-wrap: wrap; }
+  #message { font-size: 13px; margin-top: 10px; min-height: 18px; }
+  #message.ok { color: var(--ok); } #message.ng { color: var(--ng); }
+  #imageBox { margin-top: 6px; border-radius: 8px; overflow: hidden; background: var(--accent-soft); aspect-ratio: 1200 / 630; display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 13px; }
+  #imageBox img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  /* ── プレビュー（アプリの見た目に寄せる） ── */
+  .phone { background: var(--bg); border-radius: 18px; border: 1px solid var(--line); padding: 12px; }
+  .phone h3 { font-size: 12px; color: var(--muted); margin: 4px 4px 8px; font-weight: normal; }
+  .app-card { background: #fff; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; margin-bottom: 14px; }
+  .app-card .img { aspect-ratio: 1200 / 630; background: var(--accent-soft); }
+  .app-card .img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .app-card .body { padding: 10px 14px 12px; }
+  .app-card .title { font-weight: 700; font-size: 15px; line-height: 1.5; }
+  .meta { display: flex; gap: 8px; align-items: center; font-size: 11px; color: var(--muted); margin-top: 6px; }
+  .meta .pr { border: 1px solid var(--muted); border-radius: 3px; padding: 0 4px; }
+  .meta .new { color: var(--new); font-weight: 600; margin-left: auto; font-size: 12px; }
+  .article { background: #fff; border-radius: 12px; overflow: hidden; border: 1px solid var(--line); }
+  .article .content { padding: 12px 16px 18px; }
+  .article .atitle { font-size: 18px; font-weight: 700; line-height: 1.5; margin: 0 0 6px; }
+  .md p { margin: 10px 0; line-height: 1.8; font-size: 15px; }
+  .md h1 { font-size: 18px; margin: 14px 0 6px; } .md h2 { font-size: 16px; margin: 14px 0 6px; }
+  .md ul { padding-left: 1.2em; margin: 8px 0; } .md li { line-height: 1.8; font-size: 15px; }
+  .md a { color: var(--accent); }
+  .linkbtn { display: block; text-align: center; border: 1px solid var(--line); border-radius: 8px; padding: 10px; margin-top: 16px; color: var(--accent); font-size: 14px; }
+  @media (max-width: 1100px) { #app { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<header>
+  <h1>ニュース管理（社労士勉強くん）</h1>
+  <span class="who" id="who"></span>
+  <button id="logout" class="hidden">ログアウト</button>
+</header>
+
+<section id="login" class="hidden">
+  <h2>ログイン</h2>
+  <div class="hint">管理者として登録されたアカウントだけが使えます。</div>
+  <label for="email">メールアドレス</label>
+  <input id="email" type="email" autocomplete="username">
+  <label for="password">パスワード</label>
+  <input id="password" type="password" autocomplete="current-password">
+  <div class="actions"><button id="loginBtn" class="primary">ログイン</button></div>
+  <div id="loginMessage" class="hint"></div>
+</section>
+
+<main id="app" class="hidden">
+  <section class="panel">
+    <div class="row" style="margin-bottom:10px">
+      <strong style="flex:1">記事</strong>
+      <button id="newBtn" class="primary" style="flex:0">＋ 新しい記事</button>
+    </div>
+    <div id="list"></div>
+  </section>
+
+  <section class="panel">
+    <strong id="editorTitle">新しい記事</strong>
+    <label for="title">見出し（80文字まで）</label>
+    <input id="title" type="text" maxlength="80">
+    <div class="hint"><span id="titleCount">0</span> / 80</div>
+
+    <div class="row">
+      <div>
+        <label for="category">種類</label>
+        <input id="category" type="text" list="categories" maxlength="20" value="学習">
+        <datalist id="categories"><option>学習</option><option>法改正</option><option>採用</option><option>人事制度</option></datalist>
+      </div>
+      <div style="flex:0 0 auto; padding-top:30px">
+        <label style="display:flex;gap:6px;align-items:center;margin:0;color:var(--text)"><input id="isPr" type="checkbox"> PR（対価をもらって載せる記事）</label>
+      </div>
+    </div>
+
+    <label for="image">画像（選ぶと横 1200 × 縦 630 に切り抜いて上げます。文字は中央に）</label>
+    <input id="image" type="file" accept="image/*">
+    <div id="imageBox">画像がありません</div>
+
+    <label for="body">本文</label>
+    <textarea id="body" placeholder="# 見出し&#10;&#10;段落の文。空行で段落が分かれます。&#10;**太字**は アスタリスク2つで囲む。&#10;&#10;- 箇条書きは行の頭に「- 」&#10;&#10;リンクは [見える文字](https://www.mhlw.go.jp/) の形。"></textarea>
+    <div class="hint">使える書き方：# 見出し ／ ## 小見出し ／ - 箇条書き ／ **太字** ／ [文字](https://…)　それ以外の記号はそのまま文字で出ます。</div>
+
+    <div class="row">
+      <div><label for="linkUrl">本文の最後のリンク（任意）</label><input id="linkUrl" type="url" placeholder="https://"></div>
+      <div><label for="linkLabel">リンクのボタンの文字（任意）</label><input id="linkLabel" type="text" maxlength="40" placeholder="くわしく見る"></div>
+    </div>
+
+    <label>公開</label>
+    <div class="radio">
+      <label><input type="radio" name="status" value="draft" checked> 下書き（アプリに出さない）</label>
+      <label><input type="radio" name="status" value="now"> すぐ公開</label>
+      <label><input type="radio" name="status" value="schedule"> 日時を決めて公開</label>
+    </div>
+    <input id="scheduleAt" type="datetime-local" class="hidden" style="margin-top:8px">
+
+    <div class="actions">
+      <button id="saveBtn" class="primary">保存</button>
+      <button id="deleteBtn" class="danger hidden">この記事を消す</button>
+    </div>
+    <div id="message"></div>
+    <div class="hint" style="margin-top:14px">
+      決まり：「社労士が監修・確認」と読める文言を書かない／「合格できる」と読める断定を書かない／法改正など法的な内容は、施行日・対象・数字を原文で確かめてから公開する。
+    </div>
+  </section>
+
+  <section class="phone">
+    <h3>プレビュー：一覧（アプリのニュースタブ）</h3>
+    <div class="app-card">
+      <div class="img" id="pvListImg"></div>
+      <div class="body">
+        <div class="title" id="pvListTitle"></div>
+        <div class="meta" id="pvListMeta"></div>
+      </div>
+    </div>
+    <h3>プレビュー：本文</h3>
+    <div class="article">
+      <div class="app-card" style="border:0;border-radius:0;margin:0"><div class="img" id="pvImg"></div></div>
+      <div class="content">
+        <div class="atitle" id="pvTitle"></div>
+        <div class="meta" id="pvMeta"></div>
+        <div class="md" id="pvBody"></div>
+        <a class="linkbtn hidden" id="pvLink" target="_blank" rel="noopener"></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script>
+'use strict';
+// アプリと同じプロジェクト・同じ公開鍵（lib/data/answer_log.dart）。書き込みの権限はログインと RLS で決まる
+const SUPABASE_URL = 'https://xetnqhtacaefcgoijbwg.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_Qt4m9CQb0UZrUS3tZmVoxA_How-2PLU';
+const BUCKET = 'news-images';
+const NEW_WINDOW_MS = 3 * 24 * 60 * 60 * 1000; // アプリと同じ：公開から3日以内に NEW
+
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+const $ = (id) => document.getElementById(id);
+
+let articles = [];
+let current = null;      // 編集中の記事（新規なら null）
+let imageUrl = '';       // いまの画像の公開 URL
+let pendingImage = null; // 選んだが、まだ上げていない画像（Blob）
+
+// ── 表示の切り替え ─────────────────────────────
+async function refreshSession() {
+  const { data: { session } } = await sb.auth.getSession();
+  if (!session) { show('login'); return; }
+  const { data: admins, error } = await sb.from('news_admins').select('user_id').eq('user_id', session.user.id);
+  $('who').textContent = session.user.email;
+  $('logout').classList.remove('hidden');
+  if (error || !admins || admins.length === 0) {
+    show('login');
+    $('loginMessage').textContent = 'このアカウントには管理者の権限がありません。';
+    return;
+  }
+  show('app');
+  await loadList();
+  newArticle();
+}
+
+function show(which) {
+  $('login').classList.toggle('hidden', which !== 'login');
+  $('app').classList.toggle('hidden', which !== 'app');
+}
+
+$('loginBtn').onclick = async () => {
+  $('loginMessage').textContent = 'ログインしています…';
+  const { error } = await sb.auth.signInWithPassword({ email: $('email').value.trim(), password: $('password').value });
+  if (error) { $('loginMessage').textContent = 'ログインできませんでした（メールアドレスかパスワードが違います）。'; return; }
+  $('loginMessage').textContent = '';
+  refreshSession();
+};
+$('password').addEventListener('keydown', (e) => { if (e.key === 'Enter') $('loginBtn').click(); });
+$('logout').onclick = async () => { await sb.auth.signOut(); $('who').textContent = ''; $('logout').classList.add('hidden'); show('login'); };
+
+// ── 一覧 ───────────────────────────────────
+async function loadList() {
+  const { data, error } = await sb.from('news_articles').select('*').order('published_at', { ascending: false });
+  if (error) { message('記事を読み込めませんでした：' + error.message, false); return; }
+  articles = data;
+  renderList();
+}
+
+function statusOf(a) {
+  if (!a.is_published) return ['下書き', 'draft'];
+  if (new Date(a.published_at) > new Date()) return ['予約 ' + fmtDateTime(a.published_at), 'sch'];
+  return ['公開中', 'pub'];
+}
+
+function renderList() {
+  const list = $('list');
+  list.innerHTML = '';
+  if (articles.length === 0) { list.innerHTML = '<div class="hint">まだ記事がありません。</div>'; return; }
+  for (const a of articles) {
+    const [label, cls] = statusOf(a);
+    const el = document.createElement('div');
+    el.className = 'list-item' + (current && current.id === a.id ? ' active' : '');
+    el.innerHTML = `<div class="t"></div><div class="m"><span class="pill ${cls}"></span>${a.is_pr ? '<span class="pill pr">PR</span>' : ''}<span></span></div>`;
+    el.querySelector('.t').textContent = a.title;
+    el.querySelector('.pill').textContent = label;
+    el.querySelector('.m span:last-child').textContent = a.category + '・' + fmtDate(a.published_at);
+    el.onclick = () => editArticle(a);
+    list.appendChild(el);
+  }
+}
+
+// ── 編集 ───────────────────────────────────
+function newArticle() {
+  current = null; imageUrl = ''; pendingImage = null;
+  $('editorTitle').textContent = '新しい記事';
+  $('title').value = ''; $('category').value = '学習'; $('body').value = '';
+  $('linkUrl').value = ''; $('linkLabel').value = ''; $('isPr').checked = false; $('image').value = '';
+  setStatus('draft', null);
+  $('deleteBtn').classList.add('hidden');
+  message('', true);
+  renderList(); renderImage(); renderPreview();
+}
+
+function editArticle(a) {
+  current = a; imageUrl = a.image_url || ''; pendingImage = null;
+  $('editorTitle').textContent = '記事を直す';
+  $('title').value = a.title; $('category').value = a.category; $('body').value = a.body;
+  $('linkUrl').value = a.link_url || ''; $('linkLabel').value = a.link_label || ''; $('isPr').checked = !!a.is_pr; $('image').value = '';
+  const future = new Date(a.published_at) > new Date();
+  setStatus(!a.is_published ? 'draft' : future ? 'schedule' : 'now', a.published_at);
+  $('deleteBtn').classList.remove('hidden');
+  message('', true);
+  renderList(); renderImage(); renderPreview();
+}
+
+function setStatus(value, publishedAt) {
+  for (const r of document.querySelectorAll('input[name=status]')) r.checked = r.value === value;
+  $('scheduleAt').classList.toggle('hidden', value !== 'schedule');
+  $('scheduleAt').value = publishedAt ? toLocalInput(new Date(publishedAt)) : toLocalInput(new Date(Date.now() + 60 * 60 * 1000));
+}
+for (const r of document.querySelectorAll('input[name=status]')) {
+  r.onchange = () => { $('scheduleAt').classList.toggle('hidden', statusValue() !== 'schedule'); renderPreview(); };
+}
+const statusValue = () => document.querySelector('input[name=status]:checked').value;
+
+for (const id of ['title', 'category', 'body', 'linkUrl', 'linkLabel', 'isPr', 'scheduleAt']) {
+  $(id).addEventListener('input', renderPreview);
+}
+$('title').addEventListener('input', () => { $('titleCount').textContent = $('title').value.length; });
+
+// ── 画像：選んだら 1200×630 に中央で切り抜いて縮める（アップロードは保存のとき） ──
+$('image').onchange = async () => {
+  const file = $('image').files[0];
+  if (!file) return;
+  try {
+    pendingImage = await cropTo1200x630(file);
+    renderImage(); renderPreview();
+    message(`画像を準備しました（${Math.round(pendingImage.size / 1024)}KB）。保存すると上がります。`, true);
+  } catch (e) {
+    message('画像を読み込めませんでした。', false);
+  }
+};
+
+function cropTo1200x630(file) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => {
+      const W = 1200, H = 630;
+      const canvas = document.createElement('canvas');
+      canvas.width = W; canvas.height = H;
+      const scale = Math.max(W / img.width, H / img.height);
+      const w = img.width * scale, h = img.height * scale;
+      const ctx = canvas.getContext('2d');
+      ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, W, H);
+      ctx.drawImage(img, (W - w) / 2, (H - h) / 2, w, h);
+      URL.revokeObjectURL(img.src);
+      // 300KB 以下を目安に、画質を下げながら書き出す
+      const tryQuality = (q) => canvas.toBlob((blob) => {
+        if (!blob) { reject(new Error('toBlob')); return; }
+        if (blob.size > 300 * 1024 && q > 0.5) tryQuality(q - 0.1); else resolve(blob);
+      }, 'image/jpeg', q);
+      tryQuality(0.9);
+    };
+    img.onerror = reject;
+    img.src = URL.createObjectURL(file);
+  });
+}
+
+function previewImageSrc() {
+  if (pendingImage) return URL.createObjectURL(pendingImage);
+  return imageUrl;
+}
+
+function renderImage() {
+  const box = $('imageBox');
+  const src = previewImageSrc();
+  box.innerHTML = src ? `<img alt="">` : '画像がありません';
+  if (src) box.querySelector('img').src = src;
+}
+
+// ── 保存 ───────────────────────────────────
+$('saveBtn').onclick = async () => {
+  const title = $('title').value.trim();
+  const body = $('body').value.trim();
+  const category = $('category').value.trim() || '学習';
+  const linkUrl = $('linkUrl').value.trim();
+  const status = statusValue();
+  if (!title) return message('見出しを入れてください。', false);
+  if (!body) return message('本文を入れてください。', false);
+  if (!pendingImage && !imageUrl) return message('画像を選んでください（記事1本に1枚）。', false);
+  if (linkUrl && !/^https?:\/\//.test(linkUrl)) return message('リンクは http:// か https:// で始めてください。', false);
+  if (status === 'schedule' && !$('scheduleAt').value) return message('公開する日時を入れてください。', false);
+
+  $('saveBtn').disabled = true;
+  try {
+    let url = imageUrl;
+    if (pendingImage) {
+      message('画像を上げています…', true);
+      const path = `${Date.now()}.jpg`;
+      const { error: upErr } = await sb.storage.from(BUCKET).upload(path, pendingImage, { contentType: 'image/jpeg', upsert: false });
+      if (upErr) throw new Error('画像を上げられませんでした：' + upErr.message);
+      url = sb.storage.from(BUCKET).getPublicUrl(path).data.publicUrl;
+    }
+    let publishedAt;
+    if (status === 'schedule') publishedAt = new Date($('scheduleAt').value).toISOString();
+    else if (status === 'now') {
+      // すでに公開中ならその日時を保つ。下書き・予約から「すぐ公開」にしたら今
+      const wasLive = current && current.is_published && new Date(current.published_at) <= new Date();
+      publishedAt = wasLive ? current.published_at : new Date().toISOString();
+    } else publishedAt = current ? current.published_at : new Date().toISOString();
+
+    const row = {
+      title, body, category, image_url: url,
+      link_url: linkUrl || null, link_label: $('linkLabel').value.trim() || null,
+      is_pr: $('isPr').checked, is_published: status !== 'draft', published_at: publishedAt,
+    };
+    message('保存しています…', true);
+    const q = current
+      ? sb.from('news_articles').update(row).eq('id', current.id).select().single()
+      : sb.from('news_articles').insert(row).select().single();
+    const { data, error } = await q;
+    if (error) throw new Error('保存できませんでした：' + error.message);
+    pendingImage = null; imageUrl = data.image_url;
+    await loadList();
+    editArticle(data);
+    const [label] = statusOf(data);
+    message(`保存しました（${label}）。` + (status === 'now' ? 'アプリのニュースタブを下に引っぱると並びます。' : ''), true);
+  } catch (e) {
+    message(e.message, false);
+  } finally {
+    $('saveBtn').disabled = false;
+  }
+};
+
+$('deleteBtn').onclick = async () => {
+  if (!current) return;
+  if (!confirm('この記事を消します。元に戻せません。\n（アプリに出したくないだけなら「下書き」にして保存するほうがおすすめです）')) return;
+  const { error } = await sb.from('news_articles').delete().eq('id', current.id);
+  if (error) return message('消せませんでした：' + error.message, false);
+  await loadList();
+  newArticle();
+  message('消しました。', true);
+};
+$('newBtn').onclick = newArticle;
+
+// ── プレビュー（アプリの SimpleMarkdown と同じ書き方だけを扱う） ──
+function renderPreview() {
+  const title = $('title').value.trim() || '（見出し）';
+  const category = $('category').value.trim() || '学習';
+  const status = statusValue();
+  const when = status === 'schedule' && $('scheduleAt').value ? new Date($('scheduleAt').value)
+    : current && status !== 'now' ? new Date(current.published_at) : new Date();
+  const isNew = Date.now() - when.getTime() <= NEW_WINDOW_MS;
+  const meta = (withNew) => `${$('isPr').checked ? '<span class="pr">PR</span>' : ''}<span>${esc(category)}</span><span>${when.getMonth() + 1}月${when.getDate()}日</span>${withNew && isNew ? '<span class="new">NEW</span>' : ''}`;
+  const src = previewImageSrc();
+  for (const id of ['pvListImg', 'pvImg']) {
+    $(id).innerHTML = src ? '<img alt="">' : '';
+    if (src) $(id).querySelector('img').src = src;
+  }
+  $('pvListTitle').textContent = title;
+  $('pvListMeta').innerHTML = meta(true);
+  $('pvTitle').textContent = title;
+  $('pvMeta').innerHTML = meta(false) + '<span style="margin-left:auto">合同会社たでぃまる</span>';
+  $('pvBody').innerHTML = renderMarkdown($('body').value);
+  const link = $('linkUrl').value.trim();
+  $('pvLink').classList.toggle('hidden', !/^https?:\/\//.test(link));
+  $('pvLink').textContent = '↗ ' + ($('linkLabel').value.trim() || 'くわしく見る');
+  $('pvLink').href = link || '#';
+}
+
+function esc(s) {
+  return s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+
+function inline(text) {
+  // 先に HTML を無害化してから、太字とリンクだけを戻す（アプリと同じく http/https のリンクだけ）
+  return esc(text)
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+}
+
+function renderMarkdown(text) {
+  const out = [];
+  let para = [];
+  let list = [];
+  const flushPara = () => { if (para.length) { out.push('<p>' + para.map(inline).join('<br>') + '</p>'); para = []; } };
+  const flushList = () => { if (list.length) { out.push('<ul>' + list.map((t) => '<li>' + inline(t) + '</li>').join('') + '</ul>'); list = []; } };
+  for (const raw of text.replace(/\r\n/g, '\n').split('\n')) {
+    const line = raw.replace(/\s+$/, '');
+    if (!line.trim()) { flushPara(); flushList(); }
+    else if (line.startsWith('## ')) { flushPara(); flushList(); out.push('<h2>' + inline(line.slice(3)) + '</h2>'); }
+    else if (line.startsWith('# ')) { flushPara(); flushList(); out.push('<h1>' + inline(line.slice(2)) + '</h1>'); }
+    else if (line.startsWith('- ') || line.startsWith('・')) { flushPara(); list.push(line.startsWith('- ') ? line.slice(2) : line.slice(1)); }
+    else { flushList(); para.push(line); }
+  }
+  flushPara(); flushList();
+  return out.join('');
+}
+
+// ── 日付 ───────────────────────────────────
+const pad = (n) => String(n).padStart(2, '0');
+function toLocalInput(d) { return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`; }
+function fmtDate(s) { const d = new Date(s); return `${d.getMonth() + 1}/${d.getDate()}`; }
+function fmtDateTime(s) { const d = new Date(s); return `${d.getMonth() + 1}/${d.getDate()} ${pad(d.getHours())}:${pad(d.getMinutes())}`; }
+
+function message(text, ok) {
+  $('message').textContent = text;
+  $('message').className = ok ? 'ok' : 'ng';
+}
+
+sb.auth.onAuthStateChange((event) => { if (event === 'SIGNED_OUT') show('login'); });
+refreshSession();
+</script>
+</body>
+</html>
