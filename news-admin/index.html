@@ -23,7 +23,7 @@
   header { display: flex; align-items: center; gap: 12px; padding: 12px 20px; background: var(--card); border-bottom: 1px solid var(--line); }
   header h1 { font-size: 17px; margin: 0; flex: 1; }
   header .who { font-size: 13px; color: var(--muted); }
-  button { font: inherit; cursor: pointer; border-radius: 8px; border: 1px solid var(--line); background: var(--card); padding: 8px 14px; }
+  button { font: inherit; cursor: pointer; border-radius: 8px; border: 1px solid var(--line); background: var(--card); padding: 8px 14px; white-space: nowrap; }
   button.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
   button.danger { color: var(--ng); }
   button:disabled { opacity: .5; cursor: default; }
@@ -52,7 +52,7 @@
   .actions { display: flex; gap: 8px; margin-top: 20px; flex-wrap: wrap; }
   #message { font-size: 13px; margin-top: 10px; min-height: 18px; }
   #message.ok { color: var(--ok); } #message.ng { color: var(--ng); }
-  #imageBox { margin-top: 6px; border-radius: 8px; overflow: hidden; background: var(--accent-soft); aspect-ratio: 1200 / 630; display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 13px; }
+  #imageBox { margin-top: 6px; max-width: 480px; border-radius: 8px; overflow: hidden; background: var(--accent-soft); aspect-ratio: 1200 / 630; display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 13px; }
   #imageBox img { width: 100%; height: 100%; object-fit: cover; display: block; }
   /* ── プレビュー（アプリの見た目に寄せる） ── */
   .phone { background: var(--bg); border-radius: 18px; border: 1px solid var(--line); padding: 12px; }
@@ -98,7 +98,7 @@
   <section class="panel">
     <div class="row" style="margin-bottom:10px">
       <strong style="flex:1">記事</strong>
-      <button id="newBtn" class="primary" style="flex:0">＋ 新しい記事</button>
+      <button id="newBtn" class="primary" style="flex:0 0 auto">＋ 新しい記事</button>
     </div>
     <div id="list"></div>
   </section>
