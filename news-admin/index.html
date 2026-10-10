@@ -445,11 +445,19 @@ function esc(s) {
   return s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 }
 
+// アプリ（lib/widgets/simple_markdown.dart）と同じ正規表現・同じ順で解く。
+// 太字か、リンク（URL は括弧を1組まで含めてよい）。太字の中のリンクもリンクにする
+const INLINE = /\*\*(.+?)\*\*|\[([^\]]+)\]\((https?:\/\/[^\s()]+(?:\([^\s()]*\)[^\s()]*)*)\)/g;
 function inline(text) {
-  // 先に HTML を無害化してから、太字とリンクだけを戻す（アプリと同じく http/https のリンクだけ）
-  return esc(text)
-    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-    .replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+  let out = '';
+  let last = 0;
+  for (const m of text.matchAll(INLINE)) {
+    out += esc(text.slice(last, m.index));
+    if (m[1] !== undefined) out += '<strong>' + inline(m[1]) + '</strong>';
+    else out += `<a href="${esc(m[3])}" target="_blank" rel="noopener">${esc(m[2])}</a>`;
+    last = m.index + m[0].length;
+  }
+  return out + esc(text.slice(last));
 }
 
 function renderMarkdown(text) {
