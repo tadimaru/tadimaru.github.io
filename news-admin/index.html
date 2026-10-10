@@ -338,6 +338,7 @@ function newArticle() {
   setStatus('draft', null);
   $('deleteBtn').classList.add('hidden');
   message('', true);
+  $('titleCount').textContent = $('title').value.length;
   renderList(); renderImage(); renderPreview();
 }
 
@@ -350,6 +351,7 @@ function editArticle(a) {
   setStatus(!a.is_published ? 'draft' : future ? 'schedule' : 'now', a.published_at);
   $('deleteBtn').classList.remove('hidden');
   message('', true);
+  $('titleCount').textContent = $('title').value.length;
   renderList(); renderImage(); renderPreview();
 }
 
