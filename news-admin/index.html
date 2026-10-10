@@ -173,7 +173,8 @@
   </section>
 </main>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<!-- 版を固定し、中身が書き換えられていないか（SRI）を確かめて読む。上げるときは integrity も作り直す -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.3/dist/umd/supabase.js" integrity="sha384-BWcjm9OdFth9TbhCxZPdm+gAOUMAzQy9nmTs12ioXdCcbVnJaPMn+fMUoQCLt60R" crossorigin="anonymous"></script>
 <script>
 'use strict';
 // アプリと同じプロジェクト・同じ公開鍵（lib/data/answer_log.dart）。書き込みの権限はログインと RLS で決まる
@@ -330,9 +331,17 @@ function cropTo1200x630(file) {
   });
 }
 
+// 選んだ画像の一時 URL は1枚につき1つだけ作り、差し替えたら前のものを捨てる（打つたびに作るとメモリが漏れる）
+let pendingUrl = '';
+let pendingUrlOf = null;
 function previewImageSrc() {
-  if (pendingImage) return URL.createObjectURL(pendingImage);
-  return imageUrl;
+  if (!pendingImage) return imageUrl;
+  if (pendingUrlOf !== pendingImage) {
+    if (pendingUrl) URL.revokeObjectURL(pendingUrl);
+    pendingUrl = URL.createObjectURL(pendingImage);
+    pendingUrlOf = pendingImage;
+  }
+  return pendingUrl;
 }
 
 function renderImage() {
