@@ -306,7 +306,7 @@ function renderImport() {
       : row.isPublished ? (row.pastPublish ? 'すぐ公開' : '予約 ' + fmtDateTime(row.publishedAt))
       : '下書き';
     const reg = !row.existing ? '新規'
-      : row.changes === 'none' ? '変更なし'
+      : !Array.isArray(row.changes) ? '変更なし'
       : '更新（' + row.changes.join('・') + '）';
     tr.innerHTML = `
       <td><input type="checkbox"></td>
@@ -403,6 +403,9 @@ $('importSave').onclick = async () => {
       const { data: saved, error } = await q;
       if (error) throw new Error(error.message);
       row.existing = saved;
+      // 保存した結果で突き合わせ直す（以前はここで突き合わせず、一覧を描き直すところで落ちて、2本目以降が保存されなかった）
+      row.warnings = row.warnings.filter((w) => !w.startsWith('publish_at が過ぎている'));
+      matchExisting(row);
       row.selected = false;
       row.result = { ok: true, text: '保存しました' };
       ok++;
