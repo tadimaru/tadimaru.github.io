@@ -563,7 +563,7 @@ ${a.points.length ? `<div class="points"><div class="ttl">要点</div><ol>${a.po
 <div class="md">
 ${renderMarkdown(a.body, rel)}
 </div>
-${a.exam_note ? `<div class="exam"><div class="ttl">試験との関係</div><p>${esc(a.exam_note)}</p><div class="btns"><a class="btn primary" href="${esc(appPageUrl('exam', String(a.id)))}">社労士勉強くんで解く</a></div></div>` : ''}
+${a.exam_note ? `<div class="exam"><div class="ttl">試験との関係</div><p>${esc(a.exam_note)}</p><div class="btns"><a class="btn" href="${esc(appPageUrl('exam', String(a.id)))}">アプリ「社労士勉強くん」とは</a></div></div>` : ''}
 ${link}
 ${shareBlock(a)}
 </div>
