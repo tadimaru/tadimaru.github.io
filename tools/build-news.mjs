@@ -50,7 +50,7 @@ const GOOGLE_PLAY = 'https://play.google.com/store/apps/details?id=com.tadimaru.
 // 社労士勉強くんのページ（/sharoushi/）は、受け取った utm_* を自分のストアのボタンへ引き継ぐ（sharoushi/index.html）
 export const UTM_SOURCE = 'sharoben-news';
 // App Store Connect →「App アナリティクス」→ キャンペーンリンクで出る pt=… の値。空なら pt を付けない
-export const APPLE_PROVIDER_TOKEN = '';
+export const APPLE_PROVIDER_TOKEN = '129435321';
 
 export function playUrl(medium, content) {
   const referrer = new URLSearchParams({ utm_source: UTM_SOURCE, utm_medium: medium, utm_campaign: 'sharoben-news', ...(content ? { utm_content: content } : {}) });
