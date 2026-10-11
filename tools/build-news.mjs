@@ -376,7 +376,6 @@ function header(categories, current) {
 function footer() {
   return `<footer><div class="wrap">
 <p>運営：<a href="/">合同会社たでぃまる</a></p>
-<p>記事に誤りがあることが分かった場合は、速やかに修正し、必要に応じて記事内にその旨を記載します。</p>
 <div class="links"><a href="${BASE}">記事の一覧</a><a href="${BASE}series/">連載</a><a href="${BASE}about/">このサイトについて</a><a href="${esc(appPageUrl('footer'))}">アプリ「社労士勉強くん」</a><a href="/privacy/">プライバシーポリシー</a><a href="${BASE}feed.xml">RSS</a></div>
 </div></footer>`;
 }
@@ -592,25 +591,16 @@ function aboutPage(categories) {
 <div class="prose">
 <h2>何を届けるか</h2>
 <p>${MEDIA}は、社労士試験の勉強をしている人と、人事・労務・採用の仕事をしている人に向けて、法改正・統計・人事の制度・勉強のしかたを短い記事で届けます。1本の記事は1つのテーマだけを扱い、5分ほどで読める長さにしています。</p>
-<h2>書くときの決まり</h2>
-<ul>
-<li>法令・統計の記事は、e-Gov 法令検索・官報・各省の公表資料など<strong>原典で確かめてから</strong>出します。原典で確かめられないことは書きません。</li>
-<li>数字は、出典名・調査名・年を本文に書きます。図表やグラフは転載せず、数字と結論だけを必要な範囲で引きます。</li>
-<li>記事は AI の支援を受けて作成し、法令・統計は原典と照合したうえで、当社が確認して公開しています。</li>
-<li>試験問題の本文は、要約や言い換えであっても載せません。</li>
-<li>個人や特定の企業を悪く書くことはしません。</li>
-<li>対価をいただいて掲載する記事には「PR」と表示します。</li>
-</ul>
 <h2>訂正について</h2>
-<p>記事に誤りがあることが分かった場合は、速やかに修正し、必要に応じて記事内にその旨（訂正した日付と内容）を記載します。</p>
+<p>記事は、e-Gov 法令検索・官報・各省の公表資料など原典で確かめて公開するよう努めておりますが、万が一、記事に誤りがあることが分かった場合は、以下の連絡先までお知らせください。速やかに修正し、必要に応じて記事内にその旨（訂正した日付と内容）を記載します。</p>
+<h2>連絡先</h2>
+<p>記事の誤りや、取り上げてほしい話題は、X の <a href="https://x.com/${X_ACCOUNT}" target="_blank" rel="noopener">@${X_ACCOUNT}</a> か、会社のサイトの連絡先までお知らせください。</p>
 <h2>運営者</h2>
 <p>合同会社たでぃまる（<a href="/">会社のサイト</a>）。社労士試験の学習アプリ「<a href="${esc(appPageUrl('about'))}">社労士勉強くん</a>」を作っています。記事の下にあるアプリの案内は、当社自身の広告です。</p>
 <p>このサイトはアクセス解析を使っておらず、Cookie も使いません。詳しくは<a href="/privacy/">プライバシーポリシー</a>をご覧ください。</p>
-<h2>連絡先</h2>
-<p>記事の誤りや、取り上げてほしい話題は、X の <a href="https://x.com/${X_ACCOUNT}" target="_blank" rel="noopener">@${X_ACCOUNT}</a> か、会社のサイトの連絡先までお知らせください。</p>
 </div>
 </main>`;
-  return page({ title: `このサイトについて｜${MEDIA}`, description: `${MEDIA}の運営者、記事を書くときの決まり、訂正の方針。`, path: `${BASE}about/`, categories, current: 'about', body });
+  return page({ title: `このサイトについて｜${MEDIA}`, description: `${MEDIA}の運営者、訂正の方針、連絡先。`, path: `${BASE}about/`, categories, current: 'about', body });
 }
 
 // ── RSS・sitemap ───────────────────────────────
