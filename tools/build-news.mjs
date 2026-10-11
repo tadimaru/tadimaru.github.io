@@ -591,6 +591,8 @@ function aboutPage(categories) {
 <div class="prose">
 <h2>何を届けるか</h2>
 <p>${MEDIA}は、社労士試験の勉強をしている人と、人事・労務・採用の仕事をしている人に向けて、法改正・統計・人事の制度・勉強のしかたを短い記事で届けます。1本の記事は1つのテーマだけを扱い、5分ほどで読める長さにしています。</p>
+<h2>記事の作り方</h2>
+<p>記事は AI の支援を受けて作成し、法令・統計は原典と照合したうえで、当社が確認して公開しています。</p>
 <h2>訂正について</h2>
 <p>記事は、e-Gov 法令検索・官報・各省の公表資料など原典で確かめて公開するよう努めておりますが、万が一、記事に誤りがあることが分かった場合は、以下の連絡先までお知らせください。速やかに修正し、必要に応じて記事内にその旨（訂正した日付と内容）を記載します。</p>
 <h2>連絡先</h2>
@@ -600,7 +602,7 @@ function aboutPage(categories) {
 <p>このサイトはアクセス解析を使っておらず、Cookie も使いません。詳しくは<a href="/privacy/">プライバシーポリシー</a>をご覧ください。</p>
 </div>
 </main>`;
-  return page({ title: `このサイトについて｜${MEDIA}`, description: `${MEDIA}の運営者、訂正の方針、連絡先。`, path: `${BASE}about/`, categories, current: 'about', body });
+  return page({ title: `このサイトについて｜${MEDIA}`, description: `${MEDIA}の記事の作り方、訂正の方針、連絡先、運営者。`, path: `${BASE}about/`, categories, current: 'about', body });
 }
 
 // ── RSS・sitemap ───────────────────────────────
