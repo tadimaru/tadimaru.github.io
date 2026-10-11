@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>しゃろ勉ニュース</title>
+  <link>https://tadimaru.com/sharoben-news/</link>
+  <description>はたらくルールの、いまを知る。 社労士試験の勉強と、人事・労務の話題。</description>
+  <language>ja</language>
+  <atom:link href="https://tadimaru.com/sharoben-news/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>社労士試験、毎日10問を続けるための3つのコツ</title>
+    <link>https://tadimaru.com/sharoben-news/12/</link>
+    <guid isPermaLink="true">https://tadimaru.com/sharoben-news/12/</guid>
+    <pubDate>Sat, 10 Oct 2026 06:05:16 GMT</pubDate>
+    <category>学習</category>
+    <description>社労士試験の勉強を毎日続けたい人に向けて、「やるきっかけ」「1回の量」「間違えた問題の扱い」の3つのコツを紹介します。覚えることが多い試験だからこそ、まとまった時間を取ろうとすると、かえって続かないことがあります。「夜に30分勉強する」と決めるより、毎日必ずある行動にくっつけるほうが続けやすい、と私たちは考えています。たとえば、次のような形です。「何時にやるか」ではなく「何のあとにやるか」を決め…</description>
+  </item>
+  <item>
+    <title>10月に始める人の1年の組み立て：合格発表から次の試験まで</title>
+    <link>https://tadimaru.com/sharoben-news/14/</link>
+    <guid isPermaLink="true">https://tadimaru.com/sharoben-news/14/</guid>
+    <pubDate>Sat, 10 Oct 2026 06:05:14 GMT</pubDate>
+    <category>学習</category>
+    <description>合格発表のある10月は、次の試験に向けて勉強を始める（再開する）ちょうどよい時期です。この記事では、10月から翌年8月の試験日までの約10か月を、時期ごとに「何をするか」の見取り図にしました。2026年の第58回の日程は、社会保険労務士試験オフィシャルサイト（2026-10-10 確認）によると次のとおりです。2026年（第58回）は、春に申し込み、8月23日に受験し、10月1日に結果が出ました…</description>
+  </item>
+  <item>
+    <title>採用面接で悪気なく聞きがちな質問　公正な採用選考の基本</title>
+    <link>https://tadimaru.com/sharoben-news/13/</link>
+    <guid isPermaLink="true">https://tadimaru.com/sharoben-news/13/</guid>
+    <pubDate>Sat, 10 Oct 2026 06:05:12 GMT</pubDate>
+    <category>採用</category>
+    <description>「家族は何をされていますか」「尊敬する人は誰ですか」。面接の雑談のつもりで聞いたこの質問が、実は採用選考で配慮すべき事項に当たることがあります。この記事では、なぜ配慮が必要なのか、代わりに何を聞けばよいのかを、厚生労働省の「公正な採用選考の基本」にそって整理します。厚生労働省『公正な採用選考の基本』は、採用選考の基本的な考え方を次の2つとしています。つまり、見るのは「その仕事をする力があるか」で…</description>
+  </item>
+  <item>
+    <title>科目ごとの「頻出」はどこか：23回分の出題から見える重さ</title>
+    <link>https://tadimaru.com/sharoben-news/15/</link>
+    <guid isPermaLink="true">https://tadimaru.com/sharoben-news/15/</guid>
+    <pubDate>Sat, 10 Oct 2026 06:05:09 GMT</pubDate>
+    <category>学習</category>
+    <description>社労士試験の勉強を「何から始めるか」で迷っている人へ。自社の集計（2026年9月時点）では、第36〜58回の23回分の本試験で、同じ条文が何度も出ていました。この記事では、その出た回数を手がかりに、勉強の順番を決める考え方を紹介します。自社の集計（2026年9月時点）で、元にしたのは第36〜58回の本試験1,683問です。数える単位は「条・項」で、23回のうち何回その条・項が出たかを数えました。…</description>
+  </item>
+  <item>
+    <title>私が経験した社労士勉強中の失敗5選</title>
+    <link>https://tadimaru.com/sharoben-news/11/</link>
+    <guid isPermaLink="true">https://tadimaru.com/sharoben-news/11/</guid>
+    <pubDate>Sat, 10 Oct 2026 06:05:05 GMT</pubDate>
+    <category>学習</category>
+    <description>社労士の勉強を始めてから、私がやってしまった失敗を5つ書きます。どれも「やらなければよかった」ではなく、「もっと早く気づきたかった」ものです。これから1年かけて勉強する人の参考になればうれしいです。1年目の私は、模試をほとんど受けませんでした。「まだ全部終わっていないし、問題は手元にあるから、あとで解けばいい。点数もそのとき見ればいい」と考えていたからです。これは、やらないほうがいいです。模試の…</description>
+  </item>
+</channel>
+</rss>
