@@ -1,0 +1,44 @@
+# しゃろ勉ニュースの Web 版（/sharoben-news/）を作り直す（2026-10-11）。
+# 毎朝 7:05（日本時間。記事の予約公開は 7:00 が基本）と、手で「Run workflow」を押したとき。
+# Supabase は公開鍵で読むだけ（tools/build-news.mjs）。secrets は使わない。
+# 関連：開発企画課/tickets/rom/open/2026-10-11-rom-news-web.md
+name: しゃろ勉ニュースを作り直す
+
+on:
+  schedule:
+    - cron: '5 22 * * *'   # UTC 22:05 = 日本時間 7:05
+  workflow_dispatch:
+
+permissions:
+  contents: write   # 作り直したページをコミットする
+  pages: write      # コミットのあとに Pages の作り直しを頼む
+
+concurrency:
+  group: build-news
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: 記事を読んでページを作る
+        run: node tools/build-news.mjs
+      - name: 変わっていればコミットして公開
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git add -A sharoben-news sitemap.xml
+          if git diff --cached --quiet; then
+            echo "変更なし"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "chore: しゃろ勉ニュースを作り直す"
+          git push
+          # GITHUB_TOKEN の push では Pages が作り直されないことがあるので、明示的に頼む
+          gh api -X POST "repos/${{ github.repository }}/pages/builds" || echo "Pages の作り直しを頼めなかった（push で動いていれば問題ない）"
