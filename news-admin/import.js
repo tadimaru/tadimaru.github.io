@@ -168,6 +168,14 @@ function checkRow(row) {
   row.category = str('category');
   row.linkUrl = str('link_url');
   row.linkLabel = str('link_label');
+  // Web 版だけが使う3項目（任意）
+  const pts = Array.isArray(fm.points) ? fm.points : (typeof fm.points === 'string' && fm.points ? [fm.points] : []);
+  row.points = pts.map((p) => String(p).trim()).filter(Boolean).slice(0, 3).join('\n');
+  if (pts.length > 3) warnings.push(`points は3つまで（${pts.length}個ある。先頭の3つを使う）`);
+  row.examNote = str('exam_note');
+  row.series = str('series');
+  if ([...row.examNote].length > 400) errors.push('exam_note が400文字を超えている');
+  if ([...row.series].length > 40) errors.push('series が40文字を超えている');
 
   if (!row.title) errors.push('title（見出し）が無い');
   else if ([...row.title].length > 80) errors.push(`見出しが80文字を超えている（${[...row.title].length}文字）`);
@@ -282,6 +290,7 @@ function matchExisting(row) {
     if (e.category !== row.category) diff.push('種類');
     if ((e.link_url || '') !== row.linkUrl || (e.link_label || '') !== row.linkLabel) diff.push('リンク');
     if (!!e.is_pr !== row.isPr) diff.push('PR');
+    if ('points' in e && ((e.points || '') !== row.points || (e.exam_note || '') !== row.examNote || (e.series || '') !== row.series)) diff.push('Web 版の項目');
     if (e.image_url !== row.imageUrl) diff.push('画像');
     if (e.is_published !== row.isPublished || new Date(e.published_at).getTime() !== new Date(row.publishedAt).getTime()) diff.push('公開');
     if (!e.source_file) diff.push('ファイル名のひもづけ');
@@ -395,6 +404,7 @@ $('importSave').onclick = async () => {
         source_file: row.name,
         title: row.title, body: row.body, category: row.category, image_url: url,
         link_url: row.linkUrl || null, link_label: row.linkLabel || null,
+        ...webFields(row.points, row.examNote, row.series),
         is_pr: row.isPr, is_published: row.isPublished, published_at: row.publishedAt,
       };
       const q = row.existing

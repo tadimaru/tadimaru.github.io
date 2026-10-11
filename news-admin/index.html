@@ -149,6 +149,17 @@
     <textarea id="body" placeholder="# 見出し&#10;&#10;段落の文。空行で段落が分かれます。&#10;**太字**は アスタリスク2つで囲む。&#10;&#10;- 箇条書きは行の頭に「- 」&#10;&#10;リンクは [見える文字](https://www.mhlw.go.jp/) の形。"></textarea>
     <div class="hint">使える書き方：# 見出し ／ ## 小見出し ／ - 箇条書き ／ **太字** ／ [文字](https://…)　それ以外の記号はそのまま文字で出ます。</div>
 
+    <details style="margin-top:14px">
+      <summary style="font-size:13px;color:var(--muted);cursor:pointer">Web 版（しゃろ勉ニュース）だけが使う項目：要点・試験との関係・連載（任意）</summary>
+      <label for="points">要点（1行に1つ、3つまで。見出しの下に出ます）</label>
+      <textarea id="points" style="min-height:84px" maxlength="600" placeholder="全国加重平均は1,177円。昨年度から56円の引上げ&#10;発効日は10月1日〜12月2日の間で県ごとに違う&#10;発効日以降の賃金が最低賃金額以上かを確認する"></textarea>
+      <label for="examNote">試験との関係（本文のあとに出ます。⚠️ 過去問の本文は書かない。代表の確認を通したものだけ）</label>
+      <textarea id="examNote" style="min-height:72px" maxlength="400" placeholder="最低賃金法は、社労士試験では「労務管理その他の労働に関する一般常識」で問われます。"></textarea>
+      <label for="series">連載名（同じ名前の記事を連載ページにまとめます。例：今月の雇用の動き）</label>
+      <input id="series" type="text" maxlength="40" list="seriesList">
+      <datalist id="seriesList"><option>今月の雇用の動き</option><option>賃金はどう動いている？</option></datalist>
+    </details>
+
     <div class="row">
       <div><label for="linkUrl">本文の最後のリンク（任意）</label><input id="linkUrl" type="url" placeholder="https://"></div>
       <div><label for="linkLabel">リンクのボタンの文字（任意）</label><input id="linkLabel" type="text" maxlength="40" placeholder="くわしく見る"></div>
@@ -339,6 +350,7 @@ function newArticle() {
   $('editorTitle').textContent = '新しい記事';
   $('title').value = ''; $('category').value = '学習'; $('body').value = '';
   $('linkUrl').value = ''; $('linkLabel').value = ''; $('isPr').checked = false; $('image').value = '';
+  $('points').value = ''; $('examNote').value = ''; $('series').value = '';
   setStatus('draft', null);
   $('deleteBtn').classList.add('hidden');
   message('', true);
@@ -351,6 +363,7 @@ function editArticle(a) {
   $('editorTitle').textContent = '記事を直す';
   $('title').value = a.title; $('category').value = a.category; $('body').value = a.body;
   $('linkUrl').value = a.link_url || ''; $('linkLabel').value = a.link_label || ''; $('isPr').checked = !!a.is_pr; $('image').value = '';
+  $('points').value = a.points || ''; $('examNote').value = a.exam_note || ''; $('series').value = a.series || '';
   const future = new Date(a.published_at) > new Date();
   setStatus(!a.is_published ? 'draft' : future ? 'schedule' : 'now', a.published_at);
   $('deleteBtn').classList.remove('hidden');
@@ -467,6 +480,7 @@ $('saveBtn').onclick = async () => {
       title, body, category, image_url: url,
       link_url: linkUrl || null, link_label: $('linkLabel').value.trim() || null,
       is_pr: $('isPr').checked, is_published: status !== 'draft', published_at: publishedAt,
+      ...webFields($('points').value, $('examNote').value, $('series').value),
     };
     message('保存しています…', true);
     const q = current
@@ -536,6 +550,13 @@ function fillPreview(prefix, a) {
   el('Link').href = link || '#';
 }
 
+// Web 版だけが使う3項目。列がまだ無い（supabase_news_web_fields.sql を流していない）ときは送らない
+function webFields(points, examNote, series) {
+  if (articles.length && !('points' in articles[0])) return {};
+  const lines = points.replace(/\r\n/g, '\n').split('\n').map((l) => l.replace(/^\s*[-・]\s*/, '').trim()).filter(Boolean).slice(0, 3);
+  return { points: lines.join('\n'), exam_note: examNote.trim(), series: series.trim() };
+}
+
 function esc(s) {
   return s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 }
@@ -588,6 +609,6 @@ sb.auth.onAuthStateChange((event) => { if (event === 'SIGNED_OUT') show('login')
 refreshSession();
 </script>
 <!-- まとめて読み込む（上の sb・cropTo1200x630・renderMarkdown・fillPreview・loadList を使う） -->
-<script src="import.js?v=2"></script>
+<script src="import.js?v=3"></script>
 </body>
 </html>
