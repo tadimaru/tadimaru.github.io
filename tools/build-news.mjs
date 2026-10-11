@@ -43,6 +43,30 @@ const STATIC_URLS = [
 const APP_STORE = 'https://apps.apple.com/jp/app/id6812129020';
 const GOOGLE_PLAY = 'https://play.google.com/store/apps/details?id=com.tadimaru.rom';
 
+// ── 流入元の印（2026-10-11 代表：ストアと社労士勉強くんのページへのリンクに付ける） ──
+// サイトにアクセス解析は無い。数えるのはストアの統計：
+//   Google Play … referrer に utm_* を入れる（Play Console の「獲得」で見える）
+//   App Store  … ct（キャンペーン名）。pt（提供元の番号）が無いと App Store Connect は数えない
+// 社労士勉強くんのページ（/sharoushi/）は、受け取った utm_* を自分のストアのボタンへ引き継ぐ（sharoushi/index.html）
+export const UTM_SOURCE = 'sharoben-news';
+// App Store Connect →「App アナリティクス」→ キャンペーンリンクで出る pt=… の値。空なら pt を付けない
+export const APPLE_PROVIDER_TOKEN = '';
+
+export function playUrl(medium, content) {
+  const referrer = new URLSearchParams({ utm_source: UTM_SOURCE, utm_medium: medium, utm_campaign: 'sharoben-news', ...(content ? { utm_content: content } : {}) });
+  return `${GOOGLE_PLAY}&referrer=${encodeURIComponent(referrer.toString())}`;
+}
+
+export function appStoreUrl() {
+  const q = new URLSearchParams({ ...(APPLE_PROVIDER_TOKEN ? { pt: APPLE_PROVIDER_TOKEN } : {}), ct: UTM_SOURCE, mt: '8' });
+  return `${APP_STORE}?${q}`;
+}
+
+export function appPageUrl(medium, content) {
+  const q = new URLSearchParams({ utm_source: UTM_SOURCE, utm_medium: medium, utm_campaign: 'sharoben-news', ...(content ? { utm_content: content } : {}) });
+  return `/sharoushi/?${q}`;
+}
+
 // ── 読む ───────────────────────────────────
 async function fetchArticles() {
   const url = `${SUPABASE_URL}/rest/v1/news_articles?select=${COLUMNS}&order=published_at.desc&limit=1000`;
@@ -210,7 +234,7 @@ ${body}
 <footer><div class="wrap">
 <p>運営：<a href="/">合同会社たでぃまる</a></p>
 <p>記事に誤りがあることが分かった場合は、速やかに修正し、必要に応じて記事内にその旨を記載します。</p>
-<div class="links"><a href="${BASE}">記事の一覧</a><a href="/sharoushi/">アプリ「社労士勉強くん」</a><a href="/privacy/">プライバシーポリシー</a></div>
+<div class="links"><a href="${BASE}">記事の一覧</a><a href="${esc(appPageUrl('footer'))}">アプリ「社労士勉強くん」</a><a href="/privacy/">プライバシーポリシー</a></div>
 </div></footer>
 </body>
 </html>
@@ -268,10 +292,10 @@ ${link}
 </div>
 </article>
 <aside class="app">
-<p>社労士試験の勉強には、スマートフォンで1日10問ずつ解けるアプリ「<a href="/sharoushi/">社労士勉強くん</a>」もあります。</p>
+<p>社労士試験の勉強には、スマートフォンで1日10問ずつ解けるアプリ「<a href="${esc(appPageUrl('article', String(a.id)))}">社労士勉強くん</a>」もあります。</p>
 <div class="badges">
-<a href="${APP_STORE}" target="_blank" rel="noopener"><img src="/assets/badges/app-store-ja.svg" alt="App Store からダウンロード" width="120" height="40"></a>
-<a href="${GOOGLE_PLAY}" target="_blank" rel="noopener"><img src="/assets/badges/google-play-ja.png" alt="Google Play で手に入れよう" width="135" height="40"></a>
+<a href="${esc(appStoreUrl())}" target="_blank" rel="noopener"><img src="/assets/badges/app-store-ja.svg" alt="App Store からダウンロード" width="120" height="40"></a>
+<a href="${esc(playUrl('article', String(a.id)))}" target="_blank" rel="noopener"><img src="/assets/badges/google-play-ja.png" alt="Google Play で手に入れよう" width="135" height="40"></a>
 </div>
 </aside>
 <a class="back" href="${BASE}">← 記事の一覧へ</a>

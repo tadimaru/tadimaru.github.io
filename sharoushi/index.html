@@ -544,5 +544,31 @@
   </div>
 </footer>
 
+<script>
+// 流入元の印（utm_*）を受け取ったら、このページのストアのボタンへ引き継ぐ（2026-10-11）。
+// このページ自体は何も記録しない（アクセス解析なし）。数えるのはストアの統計：
+//   Google Play は referrer、App Store は ct（キャンペーン名。pt は App Store Connect の提供元の番号）
+// 印を付けて送ってくるのは、いまはしゃろ勉ニュース（tools/build-news.mjs）だけ
+(function () {
+  var APPLE_PROVIDER_TOKEN = '';
+  var q = new URLSearchParams(location.search);
+  var keys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content'];
+  var utm = new URLSearchParams();
+  keys.forEach(function (k) { var v = q.get(k); if (v && /^[\w.-]{1,60}$/.test(v)) utm.set(k, v); });
+  if (!utm.get('utm_source')) return;
+  document.querySelectorAll('a[href^="https://play.google.com/"]').forEach(function (a) {
+    var u = new URL(a.href);
+    u.searchParams.set('referrer', utm.toString());
+    a.href = u.toString();
+  });
+  document.querySelectorAll('a[href^="https://apps.apple.com/"]').forEach(function (a) {
+    var u = new URL(a.href);
+    if (APPLE_PROVIDER_TOKEN) u.searchParams.set('pt', APPLE_PROVIDER_TOKEN);
+    u.searchParams.set('ct', utm.get('utm_source'));
+    u.searchParams.set('mt', '8');
+    a.href = u.toString();
+  });
+})();
+</script>
 </body>
 </html>
