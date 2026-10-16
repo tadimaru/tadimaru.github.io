@@ -436,7 +436,7 @@ function listRows(list, categories) {
 // アプリのバナー（2026-10-11 代表：自然な広告っぽく。「当社のアプリ」と明記して広告であることを隠さない）
 function banner(compact, medium, content) {
   const shot = compact ? '/sharoushi/img/02_level.jpg' : '/sharoushi/img/01_home.jpg';
-  const h3 = compact ? '読んだ論点を、<mark>その場で10問。</mark>' : 'いまの実力、<mark>科目ごとに数字で。</mark>';
+  const h3 = compact ? 'すきま時間に、<mark>10問ずつ。</mark>' : 'いまの実力、<mark>科目ごとに数字で。</mark>';
   const p = compact
     ? '7科目・約6,900問。最初のレベル判定で、科目ごとの現在地が分かります。'
     : '最初のレベル判定で現在地が分かり、10問解くたびにスコアとランクが動きます。7科目・約6,900問。登録・ログインは要りません。';
@@ -468,25 +468,25 @@ ${hero.length > 1 ? `<div class="side">${hero.slice(1).map((a) => card(a, catego
     const key = monthKey(law[0].published_at);
     const [y, m] = key.split('-');
     sections.push(`<section class="band">
-<div class="band-head"><h2 class="law">今週の法改正</h2><span class="desc">いつから・誰が・何をするか。施行日は原典で確かめています</span><a class="more" href="${BASE}category/law/">法改正の記事をすべて →</a></div>
+<div class="band-head"><h2 class="law">法改正</h2><span class="desc">いつから、誰を対象に、何が変わるのかを解説します</span><a class="more" href="${BASE}category/law/">法改正の記事をすべて →</a></div>
 ${listRows(law, categories)}
-<div class="digest"><div><h3>まとめ：${Number(m)}月の法改正（${y}年）</h3><p>この月に出した法改正の記事を1か所に。記事が出るたびに足していきます。</p></div><a href="${BASE}digest/${key}/">まとめを読む →</a></div>
+<div class="digest"><div><h3>${y}年${Number(m)}月の法改正記事まとめ</h3><p>この月に公開した法改正の記事を、まとめて読めます。</p></div><a href="${BASE}digest/${key}/">まとめを読む →</a></div>
 </section>`);
   }
   if (withSeries.length) {
     sections.push(`<section class="band">
-<div class="band-head"><h2 class="hr">今月の統計</h2><span class="desc">連載。毎月同じ見出しで積み、前月と比べられるように</span><a class="more" href="${BASE}series/">連載の一覧 →</a></div>
+<div class="band-head"><h2 class="hr">統計の連載</h2><span class="desc">毎月の統計を同じ形で追い、前の月と比べながら読めます</span><a class="more" href="${BASE}series/">連載の一覧 →</a></div>
 <div class="series-grid">${withSeries.map((a) => card(a, categories)).join('\n')}</div>
 </section>`);
   }
   if (hr.length) {
     sections.push(`<section class="band">
-<div class="band-head"><h2 class="hr">人事のしごと</h2><span class="desc">制度・採用・人的資本。現場の話が、そのまま試験の論点につながります</span><a class="more" href="${BASE}category/${hr[0].category === '採用' ? 'hiring' : 'hr'}/">人事制度・採用の記事 →</a></div>
+<div class="band-head"><h2 class="hr">人事のしごと</h2><span class="desc">採用・制度・人的資本など、人事の仕事にかかわる話題です</span><a class="more" href="${BASE}category/${hr[0].category === '採用' ? 'hiring' : 'hr'}/">人事制度・採用の記事 →</a></div>
 <div class="grid">${hr.map((a) => card(a, categories)).join('\n')}</div>
 </section>`);
   }
   sections.push(`<section class="band">
-${study.length ? `<div class="band-head"><h2 class="study">勉強のこと</h2><span class="desc">続け方・年間の組み立て・出題の重さ。筆者の体験は一人称で</span><a class="more" href="${BASE}category/study/">学習の記事 →</a></div>
+${study.length ? `<div class="band-head"><h2 class="study">勉強のこと</h2><span class="desc">続け方や1年の組み立てなど、社労士試験の効果的な勉強法についてです</span><a class="more" href="${BASE}category/study/">学習の記事 →</a></div>
 <div class="grid">${study.map((a) => card(a, categories)).join('\n')}</div>` : ''}
 ${banner(false, 'top')}
 </section>`);
@@ -514,7 +514,7 @@ ${banner(true, 'list', current)}
 
 function seriesIndexPage(series, categories) {
   const body = `<main class="wrap">
-<h1 class="page-title">連載</h1><p class="page-desc">毎月・毎回、同じ見出しで積んでいく記事です。</p>
+<h1 class="page-title">連載</h1><p class="page-desc">毎月の統計など、決まったテーマで続けている記事です。</p>
 ${series.length ? `<div class="list" style="margin-top:14px">${series.map((s) => `<a href="${BASE}series/${s.slug}/"><span class="t">${esc(s.name)}</span><time>${s.articles.length}本</time></a>`).join('')}</div>` : '<p class="empty">連載を準備しています。</p>'}
 </main>`;
   return page({ title: `連載｜${MEDIA}`, description: `${MEDIA}の連載の一覧。`, path: `${BASE}series/`, categories, current: 'series', body });
@@ -528,7 +528,7 @@ function shareBlock(a) {
   const memo = `【${a.category}】${a.title}${a.points[0] ? `\n${a.points[0]}` : ''}\n${url}`;
   return `<div class="share">
 <div class="row"><a class="btn" href="${esc(x)}" target="_blank" rel="noopener">${X_SVG}X で共有</a><a class="btn" href="${esc(line)}" target="_blank" rel="noopener">LINE で送る</a><button type="button" class="btn" data-copy="${esc(url)}">リンクをコピー</button></div>
-<div class="memo"><div class="ttl">社内で共有するときのひとこと（コピーして Slack やメールに）</div><pre id="memoText">${esc(memo)}</pre><button type="button" class="btn primary copy" data-copy-from="memoText">この文をコピー</button><div class="status" id="copyStatus" aria-live="polite"></div></div>
+<div class="memo"><div class="ttl">社内に共有するときの文面（Slack やメールに貼れます）</div><pre id="memoText">${esc(memo)}</pre><button type="button" class="btn primary copy" data-copy-from="memoText">この文をコピー</button><div class="status" id="copyStatus" aria-live="polite"></div></div>
 </div>`;
 }
 
@@ -549,7 +549,7 @@ function articlePage(a, articles, categories) {
   const related = (a.series
     ? articles.filter((b) => b.series === a.series && b.id !== a.id)
     : articles.filter((b) => b.category === a.category && b.id !== a.id)).slice(0, 3);
-  const relatedTitle = a.series ? `連載「${a.series}」の記事` : `${a.category}の記事`;
+  const relatedTitle = a.series ? `連載「${a.series}」のほかの記事` : `ほかの${a.category}の記事`;
   const body = `<main class="wrap narrow">
 <div class="crumb"><a href="${BASE}">${MEDIA}</a> › <a href="${BASE}category/${cat?.slug ?? ''}/">${esc(a.category)}</a></div>
 <article>
@@ -686,16 +686,16 @@ async function main() {
     await write(join(OUT, 'series', s.slug, 'index.html'), listPage({
       title: `連載「${s.name}」｜${MEDIA}`, heading: s.name, description: `${MEDIA}の連載「${s.name}」の記事の一覧です。`,
       path: `${BASE}series/${s.slug}/`, list: s.articles, categories, current: 'series',
-      intro: '毎回、同じ見出しで積んでいる連載です。新しい順に並んでいます。',
+      intro: '決まったテーマで続けている連載です。新しい記事から並んでいます。',
     }));
   }
   for (const d of digests) {
     const [y, m] = d.key.split('-');
     await write(join(OUT, 'digest', d.key, 'index.html'), listPage({
-      title: `まとめ：${Number(m)}月の法改正（${y}年）｜${MEDIA}`, heading: `まとめ：${Number(m)}月の法改正（${y}年）`,
-      description: `${y}年${Number(m)}月に${MEDIA}で出した法改正の記事のまとめ。`,
+      title: `${y}年${Number(m)}月の法改正記事まとめ｜${MEDIA}`, heading: `${y}年${Number(m)}月の法改正記事まとめ`,
+      description: `${y}年${Number(m)}月に${MEDIA}で公開した法改正の記事のまとめです。`,
       path: `${BASE}digest/${d.key}/`, list: d.articles, categories, current: 'law', cls: 'law',
-      intro: 'この月に出した法改正の記事です。施行日と対象は、それぞれの記事と原典で確かめてください。',
+      intro: 'この月に公開した法改正の記事です。制度のくわしい内容は、各記事の出典（官公庁の資料）もあわせてご確認ください。',
     }));
   }
   for (const a of articles) {
