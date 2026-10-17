@@ -102,6 +102,9 @@
   .app-id{display:flex;align-items:center;gap:12px;margin-bottom:22px}
   .app-id img{width:56px;height:56px;border-radius:14px;box-shadow:var(--shadow)}
   .app-id span{display:block;font-size:12.5px;color:var(--sub);line-height:1.5}
+  .news-flag{display:inline-flex;align-items:center;gap:10px;margin:-6px 0 18px;padding:7px 14px 7px 8px;border-radius:999px;background:var(--chip);color:var(--ink);font-size:13.5px;font-weight:700;text-decoration:none;line-height:1.4}
+  .news-flag i{font-style:normal;font-family:var(--num);font-size:11.5px;letter-spacing:.08em;color:var(--on-navy);background:var(--navy-deep);border-radius:999px;padding:3px 9px}
+  .news-flag:hover{text-decoration:underline}
   .app-id b{font-family:var(--display);font-size:18px;font-weight:900;line-height:1.3}
   .hero h1{font-size:clamp(38px,11vw,62px);font-weight:900;letter-spacing:.02em;line-height:1.3}
   .facts{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 0;padding:0;list-style:none}
@@ -297,6 +300,8 @@
         <img src="img/icon.png" alt="社労士勉強くん アイコン" width="56" height="56">
         <div><b>社労士勉強くん</b><span>社会保険労務士 試験対策アプリ</span></div>
       </div>
+      <!-- 2026-10 v1.1 のお知らせ。公開から1か月ほどで外す -->
+      <a class="news-flag" href="#news"><i>NEW</i>ニュースタブができました（v1.1）</a>
       <h1>いまの実力、<br>科目ごとに<mark>数字で。</mark></h1>
       <p class="lead">最初のレベル判定で、科目ごとの現在地が分かります。10問ずつ解くたびにスコアとランクが動き、どこが伸びてどこが弱いかが数字で見えます。いま通っている講座やお手持ちのテキストで学んだことを、このアプリで確かめられます。</p>
       <ul class="facts">
@@ -386,7 +391,7 @@
       <div class="feat-txt">
         <span class="tag">解説と出典</span>
         <h3>答えたら、すぐ条文へ。</h3>
-        <p>答えるとすぐに解説が出て、問題の元になった条文・判例の知識をその場で確かめられます。「なぜそうなるのか」まで戻れるので、丸暗記で終わりません。</p>
+        <p>答えるとすぐに解説が出て、問題の元になった条文・判例の知識をその場で確かめられます。「なぜそうなるのか」まで戻れるので、丸暗記で終わりません。気になった問題には印とメモを残せて、記録タブから一覧で見直せます。</p>
       </div>
       <div class="phone"><img src="img/04_explanation.jpg" alt="解説と、元になった条文の本文" loading="lazy" width="600" height="1280"></div>
     </div>
@@ -407,6 +412,14 @@
         <p>直近2週間の学習時間と解いた問題数、科目ごとのスコアの推移を、週・月・四半期・半年・年で振り返れます。</p>
       </div>
       <div class="phone"><img src="img/06_record.jpg" alt="記録タブ。学習時間のグラフと科目ごとのスコアの推移" loading="lazy" width="600" height="1280"></div>
+    </div>
+    <div class="feat rev" id="news">
+      <div class="feat-txt">
+        <span class="tag">ニュース</span>
+        <h3>試験の外でも、<br>知識がつながる。</h3>
+        <p>法改正や労働の統計、人事の話題、学習のコツを、ニュースタブで読めます。条文で覚えたことが、いまの職場でどう動いているかが見えてきます。読んだ記事は端末の中だけで覚え、まだ読んでいない記事を先に並べます。</p>
+      </div>
+      <div class="phone"><img src="img/08_news.jpg" alt="ニュースタブ。新着の見出しと、画像つきの記事" loading="lazy" width="600" height="1280"></div>
     </div>
   </div>
 </section>
@@ -465,6 +478,7 @@
           <li>レベル判定・スコアとランク</li>
           <li>解説と、元になった条文・判例の確認</li>
           <li>連続日数・記録のグラフ・学習のお知らせ</li>
+          <li>ニュース・印とメモ</li>
         </ul>
       </div>
       <div class="plan paid">
@@ -476,7 +490,7 @@
         </div>
         <ul>
           <li>その日に何セットでも解けます</li>
-          <li>間違えた問題だけを集めて、解けるまで何度でも解き直せます</li>
+          <li>間違えた問題と印をつけた問題を集めて、解けるまで何度でも解き直せます</li>
         </ul>
       </div>
     </div>
@@ -507,6 +521,7 @@
       <details><summary>このアプリだけで合格できますか？</summary><p>このアプリは、講座やテキストで学んだことを毎日確かめるためのサブ教材です。メインの教材と組み合わせてお使いください。</p></details>
       <details><summary>一般常識（労一・社一）は入っていますか？</summary><p>現在は収録していません。追加を予定しています。</p></details>
       <details><summary>機種変更をしたら、記録は引き継げますか？</summary><p>学習記録は端末の中にだけ保存しているため、機種変更やアプリの削除で失われます。有料プランは、新しい端末で「購入を復元」を押すと戻せます。</p></details>
+      <details><summary>スマートフォンの画面でも、読みやすく勉強できますか？</summary><p>設定画面で、文字の大きさを4段階（小・標準・大・特大）から選べます。問題文も解説も、選んだ大きさで表示されます。</p></details>
       <details><summary>法改正には対応しますか？</summary><p>法令の改正にあわせて、問題と解説を更新していきます。問題の最終更新日は、アプリの設定画面で確認できます。</p></details>
       <details><summary>解答のデータは送られますか？</summary><p>問題の改善のため、問題ごとの正誤を、個人が特定されない形で集めています。詳しくは<a href="/privacy/">プライバシーポリシー</a>をご覧ください。</p></details>
     </div>
