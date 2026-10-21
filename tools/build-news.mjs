@@ -55,6 +55,7 @@ const CATEGORIES = {
 // 手で書いている URL（sitemap.xml をこのスクリプトが書き直すので、ここに持つ）
 const STATIC_URLS = [
   ['/', 'monthly'],
+  ['/news/2026-10-22-php/', 'yearly'],
   ['/privacy/', 'yearly'],
   ['/tokusho/', 'yearly'],
   ['/terms/', 'yearly'],
