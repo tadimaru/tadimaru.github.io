@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PHP の脆弱性による当社サービスへの影響について｜合同会社たでぃまる</title>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="description" content="2026年10月21日に公表された PHP の脆弱性について、当社のサービスへの影響はありません。">
+<link rel="canonical" href="https://tadimaru.com/news/2026-10-22-php/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP の脆弱性による当社サービスへの影響について｜合同会社たでぃまる">
+<meta property="og:url" content="https://tadimaru.com/news/2026-10-22-php/">
+<meta property="og:locale" content="ja_JP">
+<style>
+:root{
+  --navy:#0f2540; --navy-soft:#1b3a5f; --ink:#182430; --ink-dim:#5b6b7c;
+  --line:#dfe5ec; --bg:#ffffff; --bg-alt:#f5f7fa; --accent:#c8641e;
+  --max:820px;
+}
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:"Hiragino Kaku Gothic ProN","Yu Gothic Medium","Yu Gothic",
+              "Noto Sans JP",Meiryo,system-ui,sans-serif;
+  line-height:1.95; font-size:16px; -webkit-font-smoothing:antialiased;
+}
+a{color:var(--navy-soft)}
+.wrap{max-width:var(--max); margin:0 auto; padding:0 24px}
+header{
+  position:sticky; top:0; z-index:10; background:rgba(255,255,255,.92);
+  backdrop-filter:blur(8px); border-bottom:1px solid var(--line);
+}
+.hd{display:flex; align-items:center; justify-content:space-between; height:64px;
+    max-width:1040px; margin:0 auto; padding:0 24px}
+.brand{font-weight:700; font-size:17px; letter-spacing:.06em; color:var(--navy); text-decoration:none}
+.hd nav a{font-size:14px; color:var(--ink-dim); text-decoration:none}
+.hd nav a:hover{color:var(--navy)}
+.pagehead{background:var(--navy); color:#fff; padding:56px 0 48px; position:relative; overflow:hidden}
+.pagehead::after{
+  content:""; position:absolute; left:0; right:0; bottom:0; height:3px;
+  background:linear-gradient(90deg,var(--accent) 0 22%,transparent 22% 100%);
+}
+.pagehead .tagline{
+  display:inline-block; font-size:13px; letter-spacing:.22em; color:var(--accent);
+  margin-bottom:14px; font-weight:700;
+}
+.pagehead h1{font-size:clamp(22px,3.4vw,30px); margin:0; font-weight:700; letter-spacing:.02em}
+main{padding:56px 0 72px}
+main h2{
+  font-size:17px; color:var(--navy); font-weight:700; margin:44px 0 10px;
+  padding-bottom:8px; border-bottom:1px solid var(--line);
+}
+main h2:first-of-type{margin-top:0}
+main h3{font-size:15.5px; color:var(--navy); margin:26px 0 6px}
+main p{margin:0 0 14px; font-size:15px}
+main ul,main ol{margin:0 0 14px; padding-left:1.4em; font-size:15px}
+main li{margin-bottom:7px}
+.lead{color:var(--ink-dim); font-size:15px; margin-bottom:34px}
+.updated{font-size:13.5px; color:var(--ink-dim); margin-top:48px; padding-top:18px; border-top:1px solid var(--line)}
+table{width:100%; border-collapse:collapse; font-size:15px; margin:0 0 14px}
+th,td{text-align:left; padding:15px 4px; border-bottom:1px solid var(--line); vertical-align:top}
+th{width:290px; color:var(--navy); font-weight:700}
+.note{background:var(--bg-alt); border:1px solid var(--line); border-radius:6px;
+      padding:18px 20px; margin:0 0 14px; font-size:14.5px; color:var(--ink-dim)}
+.note strong{color:var(--ink)}
+footer{background:var(--navy); color:#93a8bf; padding:32px 0; font-size:13px}
+.ft{display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+    max-width:1040px; margin:0 auto; padding:0 24px}
+footer a{color:#c3d2e2}
+@media(max-width:640px){
+  main{padding:40px 0 52px}
+  .pagehead{padding:44px 0 38px}
+  th,td{display:block; width:auto; border-bottom:none; padding:2px 0}
+  th{padding-top:16px}
+  td{padding-bottom:14px; border-bottom:1px solid var(--line)}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hd">
+    <a class="brand" href="/">合同会社たでぃまる</a>
+    <nav><a href="/">← トップへ戻る</a></nav>
+  </div>
+</header>
+
+<div class="pagehead">
+  <div class="wrap">
+    <div class="tagline">NEWS</div>
+    <h1>PHP の脆弱性による当社サービスへの影響について</h1>
+  </div>
+</div>
+
+<main>
+<div class="wrap">
+
+<p class="lead">2026年10月22日</p>
+
+<p>2026年10月21日に情報処理推進機構（IPA）から公表された、プログラミング言語 PHP の脆弱性について、当社のサービスへの影響を確認しました。</p>
+
+<div class="note"><strong>当社のサービスには PHP を使用しておらず、本件による影響はありません。</strong><br>
+お客様に対応をお願いすることはございません。</div>
+
+<h2>確認したサービス</h2>
+<table>
+  <tr><th>鉄道運行管理シミュレーター</th><td>影響はありません</td></tr>
+  <tr><th>鉄道運行管理シミュレーター Pro</th><td>影響はありません</td></tr>
+  <tr><th>社労士勉強くん</th><td>影響はありません（アプリ・Web 版とも）</td></tr>
+  <tr><th>特定社労士勉強くん</th><td>影響はありません</td></tr>
+  <tr><th>しゃろ勉ニュース</th><td>影響はありません</td></tr>
+  <tr><th>当社ウェブサイト・サポートページ</th><td>影響はありません</td></tr>
+</table>
+
+<p>当社が利用している外部のサービスについても、引き続き各社の発表を確認してまいります。新たにお知らせすべきことがあった場合は、本ページでご案内いたします。</p>
+
+<h2>お問い合わせ</h2>
+<p>本件に関するお問い合わせは、<a href="mailto:support@tadimaru.com">support@tadimaru.com</a> までご連絡ください。</p>
+
+</div>
+</main>
+
+<footer>
+  <div class="ft">
+    <div>&copy; 2026 合同会社たでぃまる</div>
+    <div><a href="/">トップ</a>　<a href="/tokusho/">特定商取引法に基づく表記</a>　<a href="/terms/">利用規約</a>　<a href="mailto:support@tadimaru.com">support@tadimaru.com</a></div>
+  </div>
+</footer>
+
+</body>
+</html>

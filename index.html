@@ -75,6 +75,13 @@ h3{font-size:17px; margin:0 0 8px; color:var(--navy)}
 section.alt .card{background:#fff}
 .card p{margin:0; font-size:14.5px; color:var(--ink-dim); line-height:1.85}
 
+/* news */
+#news{padding:52px 0 0}
+#news h2 + .h2ja{margin-bottom:18px}
+.news-list{list-style:none; margin:0; padding:0; border-top:1px solid var(--line)}
+.news-list li{display:flex; gap:24px; padding:14px 4px; border-bottom:1px solid var(--line); font-size:15px}
+.news-list time{flex:none; color:var(--ink-dim); font-variant-numeric:tabular-nums}
+
 /* products */
 .prod{display:flex; gap:22px; padding:26px 0; border-bottom:1px solid var(--line); align-items:flex-start}
 .prod:last-child{border-bottom:none}
@@ -151,6 +158,7 @@ footer a{color:#c3d2e2}
   th{padding-top:16px}
   td{padding-bottom:14px; border-bottom:1px solid var(--line)}
   .apps{grid-template-columns:1fr}
+  .news-list li{flex-direction:column; gap:2px}
   .qr{display:none}  /* スマホではQRを出さず、ボタンから直接ストアへ */
 }
 </style>
@@ -178,6 +186,16 @@ footer a{color:#c3d2e2}
        ゲームづくりで培った「続けたくなる」設計を活かし、資格試験の学習アプリも手がけています。</p>
   </div>
 </div>
+
+<section id="news">
+  <div class="wrap">
+    <h2>NEWS</h2>
+    <div class="h2ja">お知らせ</div>
+    <ul class="news-list">
+      <li><time datetime="2026-10-22">2026.10.22</time><a href="/news/2026-10-22-php/">PHP の脆弱性による当社サービスへの影響について</a></li>
+    </ul>
+  </div>
+</section>
 
 <section id="business">
   <div class="wrap">
