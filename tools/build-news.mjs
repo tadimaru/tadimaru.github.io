@@ -31,6 +31,8 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = join(ROOT, 'sharoben-news');
 const SITE = 'https://tadimaru.com';
 const BASE = '/sharoben-news/';
+// 記事以外のページ（一覧・種類・連載・このサイトについて）でリンクを貼ったときの画像。記事は記事の写真（2026-10-24 代表）
+const SITE_IMAGE = `${SITE}/assets/sharoben-news/ogp.png`;
 const MEDIA = 'しゃろ勉ニュース';
 const TAGLINE = 'はたらくルールの、いまを知る。';
 const X_ACCOUNT = 'sharoshi_benkyo';
@@ -381,7 +383,7 @@ function footer() {
 </div></footer>`;
 }
 
-function page({ title, description, path, image, type = 'website', body, jsonLd, categories, current = 'all', script = '' }) {
+function page({ title, description, path, image = SITE_IMAGE, type = 'website', body, jsonLd, categories, current = 'all', script = '' }) {
   const url = SITE + path;
   return `<!doctype html>
 <html lang="ja">
@@ -496,7 +498,7 @@ ${banner(false, 'top')}
   return page({
     title: `${MEDIA}｜社労士試験の勉強と、人事・労務の話題`,
     description: `社労士試験の勉強のしかたや、法改正・採用・人事制度など人事と労務の話題を届ける${MEDIA}。運営は合同会社たでぃまる。`,
-    path: BASE, image: articles[0]?.image_url, categories, current: 'all',
+    path: BASE, categories, current: 'all',
     body: `<main class="wrap">\n${sections.join('\n')}\n</main>`,
   });
 }
@@ -504,7 +506,7 @@ ${banner(false, 'top')}
 // ── 一覧（種類・連載・まとめ） ──────────────────────
 function listPage({ title, heading, description, path, list, categories, current, cls = '', intro = '' }) {
   return page({
-    title, description, path, image: list[0]?.image_url, categories, current,
+    title, description, path, categories, current,
     body: `<main class="wrap">
 <h1 class="page-title ${cls}">${esc(heading)}</h1>${intro ? `<p class="page-desc">${esc(intro)}</p>` : ''}
 ${list.length ? `<div class="grid">${list.map((a) => card(a, categories)).join('\n')}</div>` : '<p class="empty">記事を準備しています。</p>'}
