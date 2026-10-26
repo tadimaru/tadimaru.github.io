@@ -1,18 +1,20 @@
-/* 夜の運転台をもとにした色。信号の3色をアクセントに使う */
+/* 白を基調に、信号の3色をアクセントに使う（2026-10-26 代表：黒い背景は見にくい） */
 :root{
-  --night:#0b111d;
-  --panel:#121b2c;
-  --panel-2:#18233a;
-  --line:#26324a;
-  --ink:#e9eef7;
-  --sub:#a3afc4;
-  --dim:#6f7b92;
-  --green:#4fd38a;
-  --yellow:#f2c14e;
-  --red:#ef5a52;
+  --night:#ffffff;
+  --panel:#f3f6fa;
+  --panel-2:#ffffff;
+  --line:#dde3ec;
+  --ink:#16202f;
+  --sub:#556275;
+  --dim:#8691a3;
+  --green:#178a52;
+  --green-bg:#1f9d5f;
+  --yellow:#a87700;
+  --red:#cf3a31;
   --amber:#ff8a3d;
-  --blue:#6aa8ff;
-  --shadow:0 24px 50px -22px rgba(0,0,0,.85);
+  --blue:#1f63c6;
+  --off:#d5dbe5;
+  --shadow:0 18px 36px -20px rgba(22,32,47,.45);
   --display:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic UI","Yu Gothic",Meiryo,sans-serif;
   --body:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic UI","Yu Gothic",Meiryo,sans-serif;
   --num:"Barlow","Segoe UI",system-ui,sans-serif;
@@ -56,13 +58,13 @@ h3{font-size:19px;font-weight:700}
 .top b{font-family:var(--display);font-size:16px;font-weight:900}
 .top .go{
   margin-left:auto;font-size:13px;font-weight:700;text-decoration:none;white-space:nowrap;
-  color:#08130d;background:var(--green);border-radius:999px;padding:6px 14px;
+  color:#fff;background:var(--green-bg);border-radius:999px;padding:6px 14px;
 }
 
 /* 横向きの画面の枠 */
 .shot{
   position:relative;border-radius:22px;padding:8px;background:#000;box-shadow:var(--shadow);
-  border:1px solid #1d2638;
+  border:1px solid #0e1420;
 }
 .shot img{border-radius:15px;width:100%;height:auto;aspect-ratio:1400/644}
 
@@ -70,8 +72,8 @@ h3{font-size:19px;font-weight:700}
 .hero{padding-block:36px 64px;overflow:hidden;position:relative}
 .hero::before{
   content:"";position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(60% 50% at 80% 10%,rgba(106,168,255,.16),transparent 70%),
-             radial-gradient(40% 40% at 10% 90%,rgba(79,211,138,.08),transparent 70%);
+  background:radial-gradient(60% 50% at 80% 10%,rgba(31,99,198,.07),transparent 70%),
+             radial-gradient(40% 40% at 10% 90%,rgba(23,138,82,.05),transparent 70%);
 }
 .hero .wrap{display:grid;gap:36px;position:relative}
 .hero .wrap>*,.feat>*,.two>*{min-width:0}
@@ -80,7 +82,7 @@ h3{font-size:19px;font-weight:700}
 .app-id b{font-family:var(--display);font-size:18px;font-weight:900;line-height:1.3}
 .app-id span{display:block;font-size:12.5px;color:var(--sub);line-height:1.5}
 .hero h1{font-size:clamp(34px,9.5vw,58px);font-weight:900;letter-spacing:.02em;line-height:1.3}
-.hero h1 em{font-style:normal;color:var(--green);text-shadow:0 0 24px rgba(79,211,138,.35)}
+.hero h1 em{font-style:normal;color:var(--green)}
 .facts{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 0;padding:0;list-style:none}
 .facts li{
   border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:13px;
@@ -90,7 +92,7 @@ h3{font-size:19px;font-weight:700}
 
 .stores{margin-top:26px}
 .stores .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-.badge{display:inline-block;opacity:.4;filter:grayscale(1)}
+.badge{display:inline-block;opacity:.45;filter:grayscale(1)}
 .badge img{height:44px;width:auto}
 .badge.live{opacity:1;filter:none}
 .stores .note{font-size:13px;color:var(--sub);margin:10px 0 0}
@@ -115,7 +117,7 @@ h3{font-size:19px;font-weight:700}
 .promise h3{font-size:17px;margin-bottom:6px}
 .promise p{margin:0;color:var(--sub);font-size:14.5px}
 .promise .sig{display:flex;gap:5px;margin-bottom:12px}
-.promise .sig i{width:11px;height:11px;border-radius:50%;background:#2a3346}
+.promise .sig i{width:11px;height:11px;border-radius:50%;background:var(--off)}
 .promise .sig i.g{background:var(--green);box-shadow:0 0 8px var(--green)}
 .promise .sig i.y{background:var(--yellow);box-shadow:0 0 8px var(--yellow)}
 .promise .sig i.r{background:var(--red);box-shadow:0 0 8px var(--red)}
@@ -136,7 +138,7 @@ h3{font-size:19px;font-weight:700}
 .scen{display:grid;gap:16px;margin-top:28px}
 .card{border:1px solid var(--line);border-radius:18px;padding:22px;background:var(--panel-2)}
 .card .when{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:13px;color:var(--sub)}
-.card .free{font-size:11.5px;font-weight:700;color:#08130d;background:var(--green);border-radius:999px;padding:1px 9px}
+.card .free{font-size:11.5px;font-weight:700;color:#fff;background:var(--green-bg);border-radius:999px;padding:1px 9px}
 .card h3{font-size:19px;margin:8px 0 8px}
 .card p{margin:0;color:var(--sub);font-size:14.5px}
 .card dl{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;margin:14px 0 0;font-size:13.5px}
@@ -160,7 +162,7 @@ h3{font-size:19px;font-weight:700}
 /* 料金 */
 .plans{display:grid;gap:16px;margin-top:28px}
 .plan{border:1px solid var(--line);border-radius:18px;padding:24px 22px;background:var(--panel-2)}
-.plan.paid{border:2px solid var(--green)}
+.plan.paid{border:2px solid var(--green-bg)}
 .plan h3{font-size:18px}
 .plan .price{margin:6px 0 14px;font-size:14px;color:var(--sub)}
 .plan .price .num{font-size:32px;color:var(--ink);margin-right:2px}
@@ -193,10 +195,7 @@ h3{font-size:19px;font-weight:700}
 .disclaim{margin-top:26px;font-size:13px;color:var(--sub);line-height:1.8;border-left:3px solid var(--line);padding-left:14px}
 
 /* 最後の呼びかけ */
-.cta{
-  text-align:center;
-  background:linear-gradient(180deg,rgba(11,17,29,.55),rgba(11,17,29,.92)),url("img/07_night_station.jpg") center/cover no-repeat;
-}
+.cta{text-align:center;background:var(--panel);border-top:1px solid var(--line)}
 .cta h2{font-size:28px}
 .cta p{color:var(--sub);margin:12px auto 0;max-width:30em}
 .cta .stores .row{justify-content:center}
@@ -261,7 +260,7 @@ footer p{margin:0;line-height:1.7}
 .key>b{font-family:var(--display);color:var(--ink)}
 .key>span{color:var(--sub)}
 kbd{font-family:var(--num);font-size:12.5px;border:1px solid var(--line);border-bottom-width:2px;border-radius:5px;padding:0 6px;background:var(--panel-2);color:var(--ink)}
-.hint{border-left:3px solid var(--yellow);background:rgba(242,193,78,.07);padding:10px 14px;border-radius:0 10px 10px 0;margin:14px 0;font-size:14.5px;color:var(--sub)}
+.hint{border-left:3px solid #e2b23a;background:#fdf7e6;padding:10px 14px;border-radius:0 10px 10px 0;margin:14px 0;font-size:14.5px;color:var(--sub)}
 .hint b{color:var(--yellow)}
 
 /* お問い合わせ */
@@ -278,7 +277,7 @@ kbd{font-family:var(--num);font-size:12.5px;border:1px solid var(--line);border-
 @media (min-width:600px){.form .row2{grid-template-columns:1fr 1fr}}
 .btn{
   display:inline-flex;justify-content:center;align-items:center;gap:8px;font:inherit;font-weight:700;font-size:16px;
-  color:#08130d;background:var(--green);border:0;border-radius:999px;padding:12px 26px;cursor:pointer;text-decoration:none;
+  color:#fff;background:var(--green-bg);border:0;border-radius:999px;padding:12px 26px;cursor:pointer;text-decoration:none;
 }
 .btn:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
 .mailto-fallback{font-size:14px;color:var(--sub)}
