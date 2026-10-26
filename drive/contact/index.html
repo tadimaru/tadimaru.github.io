@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="電車運転ゲーム（東湾線・地下鉄わかば線編）のお問い合わせ。不具合のご報告、購入と復元、ご意見・ご要望はこちらから。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="お問い合わせ — 電車運転ゲーム">
+<meta property="og:url" content="https://tadimaru.com/drive/contact/">
+<meta property="og:image" content="https://tadimaru.com/drive/img/ogp.jpg">
+<meta property="og:site_name" content="合同会社たでぃまる">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b111d">
+<meta name="color-scheme" content="dark">
+<link rel="canonical" href="https://tadimaru.com/drive/contact/">
+<link rel="icon" type="image/png" href="/drive/img/favicon.png">
+<link rel="apple-touch-icon" href="/drive/img/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Barlow:wght@600;700&display=swap">
+<link rel="stylesheet" href="/drive/drive.css">
+<title>お問い合わせ｜電車運転ゲーム</title>
+</head>
+<body>
+
+<div class="top">
+  <div class="wrap">
+    <a href="/drive/"><img src="/drive/img/icon.png" alt="" width="30" height="30"></a>
+    <b>電車運転ゲーム</b>
+    <nav><a class="wide" href="/drive/manual/">取扱説明書</a><a href="/drive/contact/" aria-current="page">お問い合わせ</a></nav>
+  </div>
+</div>
+
+<header class="page-hd">
+  <div class="wrap">
+    <p class="crumb"><a href="/drive/">電車運転ゲーム</a> ／ お問い合わせ</p>
+    <h1>お問い合わせ</h1>
+    <p class="lead">不具合のご報告、購入と復元のこと、ご意見・ご要望は、下の欄を書いて「メールを作る」を押してください。お使いのメールのアプリが開き、内容が入った状態になります。そのまま送信してください。</p>
+  </div>
+</header>
+
+<section class="doc">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow y">お問い合わせの前に</p>
+      <div class="before">
+        <a href="/drive/manual/#buy"><b>購入したのに遊べない</b><span>機種変更や入れ直しのあとは、タイトル画面の「購入を復元」を押してください。</span></a>
+        <a href="/drive/manual/#refund"><b>返金について</b><span>お支払いは App Store・Google Play を通じて行われるため、返金のご依頼は各ストアへお願いします。</span></a>
+        <a href="/drive/manual/"><b>運転のしかた</b><span>レバー、ATS、駅での扱いは取扱説明書にまとめています。</span></a>
+      </div>
+    </div>
+
+    <form class="form" id="form" novalidate>
+      <label>お問い合わせの種類
+        <select name="kind">
+          <option>不具合のご報告</option>
+          <option>購入・復元について</option>
+          <option>ご意見・ご要望</option>
+          <option>その他</option>
+        </select>
+      </label>
+      <div class="row2">
+        <label>お使いの端末 <small>例：iPhone 15、Pixel 8</small>
+          <input name="device" autocomplete="off">
+        </label>
+        <label>OS のバージョン <small>例：iOS 18.1、Android 14</small>
+          <input name="os" autocomplete="off">
+        </label>
+      </div>
+      <div class="row2">
+        <label>アプリのバージョン <small>分かれば。ストアのページに出ています</small>
+          <input name="version" autocomplete="off" placeholder="1.0.0">
+        </label>
+        <label>シナリオ・場所 <small>例：朝の延発、南大川を出たあと</small>
+          <input name="where" autocomplete="off">
+        </label>
+      </div>
+      <label>内容 <small>不具合のときは、何をしたら、どうなったかを書いてください。画面の写真があれば、メールに添付してください。</small>
+        <textarea name="body" required></textarea>
+      </label>
+      <div>
+        <button class="btn" type="submit">メールを作る</button>
+      </div>
+      <p class="mailto-fallback">メールのアプリが開かないときは、<code>support@tadimaru.com</code> へ、件名に「電車運転ゲーム」と入れて直接お送りください。</p>
+    </form>
+
+    <p class="disclaim">このページは、入力した内容をどこにも送りません。「メールを作る」で、お使いのメールのアプリに下書きを作るだけです。いただいたメールの扱いは<a href="/privacy/">プライバシーポリシー</a>のとおりです。内容によっては、お返事までにお時間をいただく場合があります。</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="links">
+      <a href="/drive/">電車運転ゲーム</a>
+      <a href="/drive/manual/">取扱説明書</a>
+      <a href="/privacy/">プライバシーポリシー</a>
+      <a href="/tokusho/#drive">特定商取引法に基づく表記</a>
+      <a href="/">合同会社たでぃまる</a>
+    </div>
+    <p>© 合同会社たでぃまる</p>
+  </div>
+</footer>
+
+<script>
+// 入力をメールの下書きにする（どこにも送らない）
+document.getElementById('form').addEventListener('submit', function (e) {
+  e.preventDefault();
+  var f = e.target;
+  if (!f.body.value.trim()) { f.body.focus(); return; }
+  var lines = [
+    '種類：' + f.kind.value,
+    '端末：' + f.device.value,
+    'OS：' + f.os.value,
+    'アプリのバージョン：' + f.version.value,
+    'シナリオ・場所：' + f.where.value,
+    '',
+    f.body.value
+  ];
+  location.href = 'mailto:support@tadimaru.com'
+    + '?subject=' + encodeURIComponent('【電車運転ゲーム】' + f.kind.value)
+    + '&body=' + encodeURIComponent(lines.join('\n'));
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,290 @@
+/* 夜の運転台をもとにした色。信号の3色をアクセントに使う */
+:root{
+  --night:#0b111d;
+  --panel:#121b2c;
+  --panel-2:#18233a;
+  --line:#26324a;
+  --ink:#e9eef7;
+  --sub:#a3afc4;
+  --dim:#6f7b92;
+  --green:#4fd38a;
+  --yellow:#f2c14e;
+  --red:#ef5a52;
+  --amber:#ff8a3d;
+  --blue:#6aa8ff;
+  --shadow:0 24px 50px -22px rgba(0,0,0,.85);
+  --display:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic UI","Yu Gothic",Meiryo,sans-serif;
+  --body:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic UI","Yu Gothic",Meiryo,sans-serif;
+  --num:"Barlow","Segoe UI",system-ui,sans-serif;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--night);color:var(--ink);
+  font-family:var(--body);font-size:16px;line-height:1.85;
+}
+img{max-width:100%;display:block}
+a{color:var(--blue)}
+a:focus-visible,summary:focus-visible{outline:3px solid var(--yellow);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:20px}
+section{padding-block:64px}
+.alt{background:var(--panel)}
+h1,h2,h3{font-family:var(--display);line-height:1.4;margin:0;text-wrap:balance}
+h2{font-size:26px;font-weight:900;letter-spacing:.02em}
+h3{font-size:19px;font-weight:700}
+.eyebrow{
+  display:flex;align-items:center;gap:8px;
+  font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:.14em;
+  color:var(--green);margin:0 0 10px;
+}
+.eyebrow::before{content:"";width:9px;height:9px;border-radius:50%;background:currentColor;box-shadow:0 0 10px currentColor}
+.eyebrow.y{color:var(--yellow)}
+.eyebrow.r{color:var(--red)}
+.lead{color:var(--sub);margin:16px 0 0;max-width:38em}
+.num{font-family:var(--num);font-variant-numeric:tabular-nums;font-weight:700}
+
+/* 上部バー */
+.top{
+  position:sticky;top:0;z-index:10;padding-top:env(safe-area-inset-top,0px);
+  background:color-mix(in srgb,var(--night) 86%,transparent);
+  backdrop-filter:saturate(1.4) blur(10px);-webkit-backdrop-filter:saturate(1.4) blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.top .wrap{display:flex;align-items:center;gap:10px;height:56px}
+.top img{width:30px;height:30px;border-radius:8px}
+.top b{font-family:var(--display);font-size:16px;font-weight:900}
+.top .go{
+  margin-left:auto;font-size:13px;font-weight:700;text-decoration:none;white-space:nowrap;
+  color:#08130d;background:var(--green);border-radius:999px;padding:6px 14px;
+}
+
+/* 横向きの画面の枠 */
+.shot{
+  position:relative;border-radius:22px;padding:8px;background:#000;box-shadow:var(--shadow);
+  border:1px solid #1d2638;
+}
+.shot img{border-radius:15px;width:100%;height:auto;aspect-ratio:1400/644}
+
+/* ヒーロー */
+.hero{padding-block:36px 64px;overflow:hidden;position:relative}
+.hero::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(60% 50% at 80% 10%,rgba(106,168,255,.16),transparent 70%),
+             radial-gradient(40% 40% at 10% 90%,rgba(79,211,138,.08),transparent 70%);
+}
+.hero .wrap{display:grid;gap:36px;position:relative}
+.hero .wrap>*,.feat>*,.two>*{min-width:0}
+.app-id{display:flex;align-items:center;gap:12px;margin-bottom:22px}
+.app-id img{width:56px;height:56px;border-radius:14px;box-shadow:var(--shadow)}
+.app-id b{font-family:var(--display);font-size:18px;font-weight:900;line-height:1.3}
+.app-id span{display:block;font-size:12.5px;color:var(--sub);line-height:1.5}
+.hero h1{font-size:clamp(34px,9.5vw,58px);font-weight:900;letter-spacing:.02em;line-height:1.3}
+.hero h1 em{font-style:normal;color:var(--green);text-shadow:0 0 24px rgba(79,211,138,.35)}
+.facts{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 0;padding:0;list-style:none}
+.facts li{
+  border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:13px;
+  background:var(--panel);white-space:nowrap;
+}
+.facts .num{color:var(--green);margin-right:2px}
+
+.stores{margin-top:26px}
+.stores .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.badge{display:inline-block;opacity:.4;filter:grayscale(1)}
+.badge img{height:44px;width:auto}
+.badge.live{opacity:1;filter:none}
+.stores .note{font-size:13px;color:var(--sub);margin:10px 0 0}
+.stores .note b{color:var(--ink)}
+
+/* 出発時機表示器（飾り） */
+.indicator{
+  display:inline-flex;align-items:center;gap:14px;margin-top:28px;
+  background:#05070b;border:1px solid #2a3245;border-radius:12px;padding:10px 16px 10px 12px;
+}
+.indicator .lamp{
+  font-family:var(--display);font-weight:900;font-size:22px;letter-spacing:.12em;color:var(--amber);
+  border:1px solid #3a2a1c;border-radius:6px;padding:2px 10px;background:#140b05;
+  text-shadow:0 0 10px rgba(255,138,61,.75);animation:blink 1.4s steps(2,jump-none) infinite;
+}
+.indicator small{font-size:12.5px;color:var(--sub);line-height:1.5}
+@keyframes blink{50%{opacity:.25}}
+
+/* 約束 */
+.promise{display:grid;gap:14px;margin-top:30px;counter-reset:p}
+.promise>div{background:var(--panel-2);border:1px solid var(--line);border-radius:14px;padding:20px 20px 18px;position:relative}
+.promise h3{font-size:17px;margin-bottom:6px}
+.promise p{margin:0;color:var(--sub);font-size:14.5px}
+.promise .sig{display:flex;gap:5px;margin-bottom:12px}
+.promise .sig i{width:11px;height:11px;border-radius:50%;background:#2a3346}
+.promise .sig i.g{background:var(--green);box-shadow:0 0 8px var(--green)}
+.promise .sig i.y{background:var(--yellow);box-shadow:0 0 8px var(--yellow)}
+.promise .sig i.r{background:var(--red);box-shadow:0 0 8px var(--red)}
+
+/* 機能 */
+.feat{display:grid;gap:24px;align-items:center;padding-block:36px;border-top:1px solid var(--line)}
+.feat:first-of-type{border-top:0}
+.feat h3{font-size:22px;font-weight:900;margin:4px 0 12px}
+.feat p{margin:0 0 10px;color:var(--sub);font-size:15px}
+.feat .tag{font-family:var(--display);font-size:12.5px;font-weight:700;color:var(--yellow);letter-spacing:.08em}
+
+/* 景色のギャラリー */
+.gallery{display:grid;gap:14px;margin-top:30px}
+.gallery figure{margin:0}
+.gallery figcaption{font-size:13px;color:var(--sub);margin-top:8px;padding-left:4px}
+
+/* シナリオ */
+.scen{display:grid;gap:16px;margin-top:28px}
+.card{border:1px solid var(--line);border-radius:18px;padding:22px;background:var(--panel-2)}
+.card .when{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:13px;color:var(--sub)}
+.card .free{font-size:11.5px;font-weight:700;color:#08130d;background:var(--green);border-radius:999px;padding:1px 9px}
+.card h3{font-size:19px;margin:8px 0 8px}
+.card p{margin:0;color:var(--sub);font-size:14.5px}
+.card dl{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;margin:14px 0 0;font-size:13.5px}
+.card dt{color:var(--dim)}
+.card dd{margin:0}
+
+/* 遊び方の流れ */
+.flow{list-style:none;margin:30px 0 0;padding:0;display:grid}
+.flow li{display:grid;grid-template-columns:44px 1fr;gap:14px;position:relative;padding-bottom:26px}
+.flow li::before{content:"";position:absolute;left:21px;top:44px;bottom:0;width:2px;background:var(--line)}
+.flow li:last-child{padding-bottom:0}
+.flow li:last-child::before{display:none}
+.flow .n{
+  width:44px;height:44px;border-radius:50%;display:grid;place-items:center;position:relative;
+  background:var(--panel-2);border:2px solid var(--green);color:var(--green);
+  font-family:var(--num);font-size:19px;font-weight:700;
+}
+.flow h3{font-size:17px;margin:8px 0 4px}
+.flow p{margin:0;color:var(--sub);font-size:14.5px}
+
+/* 料金 */
+.plans{display:grid;gap:16px;margin-top:28px}
+.plan{border:1px solid var(--line);border-radius:18px;padding:24px 22px;background:var(--panel-2)}
+.plan.paid{border:2px solid var(--green)}
+.plan h3{font-size:18px}
+.plan .price{margin:6px 0 14px;font-size:14px;color:var(--sub)}
+.plan .price .num{font-size:32px;color:var(--ink);margin-right:2px}
+.plan ul{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.plan li{padding-left:26px;position:relative;font-size:14.5px;line-height:1.7}
+.plan li::before{
+  content:"";position:absolute;left:4px;top:.5em;width:12px;height:7px;
+  border-left:2.5px solid var(--green);border-bottom:2.5px solid var(--green);transform:rotate(-45deg);
+}
+.fine{font-size:12.5px;color:var(--sub);margin:18px 0 0;line-height:1.7}
+
+/* 操作 */
+.ops{display:grid;gap:10px;margin-top:24px}
+.op{display:grid;grid-template-columns:7.5em 1fr;gap:12px;padding:12px 16px;border-radius:12px;background:var(--panel-2);border:1px solid var(--line);font-size:14.5px}
+.op b{font-family:var(--display)}
+.op span{color:var(--sub)}
+
+/* FAQ */
+.faq{margin-top:22px;border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{cursor:pointer;list-style:none;padding:16px 30px 16px 2px;font-weight:700;font-size:15px;position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{
+  content:"";position:absolute;right:8px;top:50%;width:9px;height:9px;margin-top:-7px;
+  border-right:2px solid var(--sub);border-bottom:2px solid var(--sub);transform:rotate(45deg);transition:transform .2s;
+}
+.faq details[open] summary::after{transform:rotate(-135deg);margin-top:-2px}
+.faq details p{margin:0 2px 18px;color:var(--sub);font-size:14.5px}
+
+.disclaim{margin-top:26px;font-size:13px;color:var(--sub);line-height:1.8;border-left:3px solid var(--line);padding-left:14px}
+
+/* 最後の呼びかけ */
+.cta{
+  text-align:center;
+  background:linear-gradient(180deg,rgba(11,17,29,.55),rgba(11,17,29,.92)),url("img/07_night_station.jpg") center/cover no-repeat;
+}
+.cta h2{font-size:28px}
+.cta p{color:var(--sub);margin:12px auto 0;max-width:30em}
+.cta .stores .row{justify-content:center}
+
+footer{padding-block:36px calc(36px + env(safe-area-inset-bottom,0px));font-size:13px;color:var(--sub);border-top:1px solid var(--line)}
+footer .links{display:flex;flex-wrap:wrap;gap:10px 20px;margin-bottom:18px}
+footer a{color:var(--sub)}
+footer p{margin:0;line-height:1.7}
+
+/* 大きい画面 */
+@media (min-width:760px){
+  section{padding-block:96px}
+  h2{font-size:34px}
+  .hero{padding-block:56px 96px}
+  .hero .wrap{grid-template-columns:1fr 1fr;align-items:center;gap:40px}
+  .hero h1{font-size:clamp(34px,4.3vw,50px)}
+  .promise{grid-template-columns:repeat(3,1fr)}
+  .feat{grid-template-columns:.8fr 1.2fr;gap:48px;padding-block:52px}
+  .feat.rev .feat-txt{order:2}
+  .feat.rev{grid-template-columns:1.2fr .8fr}
+  .gallery{grid-template-columns:1fr 1fr}
+  .scen{grid-template-columns:1fr 1fr}
+  .flow{grid-template-columns:repeat(4,1fr);gap:20px}
+  .flow li{grid-template-columns:1fr;padding-bottom:0}
+  .flow li::before{left:44px;right:-20px;top:21px;bottom:auto;width:auto;height:2px}
+  .plans{grid-template-columns:1fr 1.2fr}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .indicator .lamp{animation:none}
+}
+
+/* 上部バーのページの切り替え */
+.top nav{display:flex;gap:4px;margin-left:auto}
+.top nav a{font-size:13px;font-weight:700;color:var(--sub);text-decoration:none;padding:6px 10px;border-radius:999px;white-space:nowrap}
+.top nav a[aria-current]{color:var(--ink);background:var(--panel-2)}
+.top nav+.go{margin-left:6px}
+@media (max-width:560px){.top nav a.wide{display:none}.top b{font-size:14px}}
+
+/* 下のページ（取扱説明書・お問い合わせ） */
+.page-hd{padding-block:40px 8px}
+.page-hd h1{font-size:clamp(28px,7vw,40px);font-weight:900}
+.crumb{font-size:13px;color:var(--sub);margin:0 0 10px}
+.crumb a{color:var(--sub)}
+.doc{padding-block:24px 72px}
+.doc .wrap{display:grid;gap:40px}
+.toc{border:1px solid var(--line);border-radius:14px;padding:16px 20px;background:var(--panel)}
+.toc b{font-family:var(--display);font-size:14px}
+.toc ol{margin:8px 0 0;padding-left:1.4em;columns:2 14em;column-gap:28px;font-size:14px;line-height:2}
+.toc a{color:var(--ink);text-decoration:none}
+.toc a:hover{text-decoration:underline}
+.chap{scroll-margin-top:76px}
+.chap>h2{font-size:24px;padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:18px}
+.chap h3{font-size:17px;margin:26px 0 8px}
+.chap p,.chap li{color:var(--sub);font-size:15px}
+.chap p b,.chap li b,.chap dd b{color:var(--ink)}
+.chap ul,.chap ol{padding-left:1.3em}
+.chap .shot{margin:18px 0 6px;max-width:760px}
+.keys{display:grid;gap:8px;margin:14px 0 0}
+.key{display:grid;grid-template-columns:minmax(7.5em,auto) 1fr;gap:14px;align-items:baseline;padding:11px 14px;border-radius:12px;background:var(--panel);border:1px solid var(--line);font-size:14.5px}
+.key>b{font-family:var(--display);color:var(--ink)}
+.key>span{color:var(--sub)}
+kbd{font-family:var(--num);font-size:12.5px;border:1px solid var(--line);border-bottom-width:2px;border-radius:5px;padding:0 6px;background:var(--panel-2);color:var(--ink)}
+.hint{border-left:3px solid var(--yellow);background:rgba(242,193,78,.07);padding:10px 14px;border-radius:0 10px 10px 0;margin:14px 0;font-size:14.5px;color:var(--sub)}
+.hint b{color:var(--yellow)}
+
+/* お問い合わせ */
+.form{display:grid;gap:16px;max-width:640px}
+.form label{display:grid;gap:6px;font-weight:700;font-size:14.5px}
+.form label small{font-weight:500;color:var(--sub);font-size:12.5px}
+.form input,.form select,.form textarea{
+  font:inherit;font-size:16px;color:var(--ink);background:var(--panel);border:1px solid var(--line);
+  border-radius:10px;padding:10px 12px;width:100%;
+}
+.form textarea{min-height:160px;resize:vertical}
+.form input:focus,.form select:focus,.form textarea:focus{outline:2px solid var(--green);outline-offset:1px}
+.form .row2{display:grid;gap:16px}
+@media (min-width:600px){.form .row2{grid-template-columns:1fr 1fr}}
+.btn{
+  display:inline-flex;justify-content:center;align-items:center;gap:8px;font:inherit;font-weight:700;font-size:16px;
+  color:#08130d;background:var(--green);border:0;border-radius:999px;padding:12px 26px;cursor:pointer;text-decoration:none;
+}
+.btn:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
+.mailto-fallback{font-size:14px;color:var(--sub)}
+.mailto-fallback code{font-family:var(--num);color:var(--ink);user-select:all}
+.before{display:grid;gap:10px;margin:0 0 30px}
+.before a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:12px;padding:14px 16px;background:var(--panel);color:var(--ink)}
+.before a b{display:block;font-size:15px}
+.before a span{font-size:13px;color:var(--sub)}
+@media (min-width:760px){.before{grid-template-columns:repeat(3,1fr)}}
