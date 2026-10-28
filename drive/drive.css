@@ -310,3 +310,17 @@ kbd{font-family:var(--num);font-size:12.5px;border:1px solid var(--line);border-
 .lamp.y{background:#f0b400}
 .lamp.r{background:#e2332a}
 .chap ul ul{margin-top:4px}
+/* 取扱説明書：写真つきの手順・くわしくの折りたたみ（2026-10-28） */
+.steps{list-style:none;padding:0;margin:16px 0 0;display:grid;gap:22px;counter-reset:step}
+.steps>li{counter-increment:step;position:relative}
+.steps>li h3{margin:10px 0 4px;font-size:17px}
+.steps>li h3::before{content:counter(step);display:inline-grid;place-items:center;width:1.6em;height:1.6em;margin-right:8px;border-radius:50%;background:var(--ink);color:#fff;font-size:14px}
+.steps>li .shot{margin:0;max-width:760px}
+.steps>li p{margin:0}
+@media (min-width:760px){.steps{grid-template-columns:1fr 1fr}}
+.more{margin:16px 0 0;border:1px solid var(--line);border-radius:12px;background:var(--panel);padding:0 14px}
+.more summary{cursor:pointer;padding:12px 0;font-weight:700;color:var(--ink);font-size:14.5px;list-style:none}
+.more summary::-webkit-details-marker{display:none}
+.more summary::before{content:"＋ ";color:var(--sub)}
+.more[open] summary::before{content:"－ "}
+.more>ul,.more>.keys{margin:0 0 14px}
