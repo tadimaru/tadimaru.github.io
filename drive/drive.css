@@ -213,6 +213,7 @@ footer p{margin:0;line-height:1.7}
   .hero .wrap{grid-template-columns:1fr 1fr;align-items:center;gap:40px}
   .hero h1{font-size:clamp(34px,4.3vw,50px)}
   .promise{grid-template-columns:repeat(3,1fr)}
+  .promise.four{grid-template-columns:repeat(2,1fr)}
   .feat{grid-template-columns:.8fr 1.2fr;gap:48px;padding-block:52px}
   .feat.rev .feat-txt{order:2}
   .feat.rev{grid-template-columns:1.2fr .8fr}
