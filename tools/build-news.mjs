@@ -64,6 +64,9 @@ const STATIC_URLS = [
   ['/terms/', 'yearly'],
   ['/sharoushi/', 'monthly'],
   ['/sharoushi/terms/', 'yearly'],
+  ['/drive/', 'monthly'],
+  ['/drive/manual/', 'monthly'],
+  ['/drive/contact/', 'yearly'],
 ];
 
 const APP_STORE = 'https://apps.apple.com/jp/app/id6812129020';
