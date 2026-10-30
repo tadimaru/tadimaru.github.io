@@ -7,6 +7,22 @@
   <language>ja</language>
   <atom:link href="https://tadimaru.com/sharoben-news/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title>受験生の法改正対策：いつから、何で追う？ 予備校の教材を軸に</title>
+    <link>https://tadimaru.com/sharoben-news/45/</link>
+    <guid isPermaLink="true">https://tadimaru.com/sharoben-news/45/</guid>
+    <pubDate>Thu, 29 Oct 2026 22:00:00 GMT</pubDate>
+    <category>学習</category>
+    <description>社労士試験の勉強で、法改正の情報をいつから、何で集めればよいのか。筆者の考えを書きます。答えは、「予備校の法改正のテキストが出るタイミングで始めて、教材を軸にする」です。予備校の法改正のテキストが出てくるタイミングで始めればよい、と筆者は考えています。普段から法改正を追えるのは、よいことです。すでに人事・労務の仕事をしている人は、業務の中で自然に追えるので、これは一つの強みです。ただ、受験対策と…</description>
+  </item>
+  <item>
+    <title>試用期間と本採用：期間の長さと、本採用を見送るときの考え方</title>
+    <link>https://tadimaru.com/sharoben-news/46/</link>
+    <guid isPermaLink="true">https://tadimaru.com/sharoben-news/46/</guid>
+    <pubDate>Thu, 29 Oct 2026 22:00:00 GMT</pubDate>
+    <category>採用</category>
+    <description>試用期間は、どのくらいの長さまで認められるのでしょうか。この記事では、試用期間の長さの考え方、よく話題になる「14日」が何の期間なのか、本採用を見送るときの考え方を、採用担当者向けに整理します。厚生労働省のモデル就業規則（令和7年12月版）の解説は、試用期間の長さについて労働基準法上の定めはない、としています。そのうえで、労働者の地位を不安定にするため、あまりに長い期間を試用期間とすることは好ま…</description>
+  </item>
+  <item>
     <title>年末調整、令和8年分で変わること：基礎控除・給与所得控除・扶養の所得要件</title>
     <link>https://tadimaru.com/sharoben-news/43/</link>
     <guid isPermaLink="true">https://tadimaru.com/sharoben-news/43/</guid>
@@ -39,14 +55,6 @@
     <description>社労士試験の勉強で、模試を受けたあと、何を見ればよいのか。筆者の考えを書きます。結論から言うと、筆者が大事だと思っているのは点数そのものより、「ほかの人が正解している問題を、自分が落としていないか」です。筆者が受けた模試は2回です。直前のものと、その1つ前のものでした。予備校によって回数は違うと思いますが、通っている予備校に模試があるなら、受けたほうがよいと考えています。筆者は家で受けました。本…</description>
   </item>
   <item>
-    <title>毎月勤労統計 8月分の確報：速報から変わった数字</title>
-    <link>https://tadimaru.com/sharoben-news/40/</link>
-    <guid isPermaLink="true">https://tadimaru.com/sharoben-news/40/</guid>
-    <pubDate>Mon, 26 Oct 2026 22:00:00 GMT</pubDate>
-    <category>人事制度</category>
-    <description>厚生労働省は2026年10月23日、「毎月勤労統計調査 2026（令和8）年8月分結果確報」を公表しました。事業所規模5人以上の現金給与総額（給与・手当・賞与などを、所得税や社会保険料を差し引く前の金額で合計したもの）は311,563円（前年同月比3.9％増）でした。10月7日公表の速報から変わった数字を、人事・労務の担当者向けに整理します。確報は、速報の集計後に審査を終えた調査票も加えて集計し…</description>
-  </item>
-  <item>
     <title>36協定と時間外労働の上限：月45時間・年360時間と特別条項</title>
     <link>https://tadimaru.com/sharoben-news/39/</link>
     <guid isPermaLink="true">https://tadimaru.com/sharoben-news/39/</guid>
@@ -55,12 +63,12 @@
     <description>残業時間の上限は、労働基準法第36条で定められています。この記事では、人事・労務の担当者向けに、月45時間・年360時間という原則の上限、特別条項（臨時的な特別の事情がある場合の例外）でも超えられない線、適用の猶予が終わった業種、罰則を整理します。労働時間は原則として1日8時間・週40時間以内で、これを「法定労働時間」といいます（厚生労働省「時間外労働の上限規制 わかりやすい解説」2023年2月…</description>
   </item>
   <item>
-    <title>選択式と択一式、どう勉強する？ 条文に「違和感」を持てるまで覚える／何択まで絞れたかを意識する</title>
-    <link>https://tadimaru.com/sharoben-news/38/</link>
-    <guid isPermaLink="true">https://tadimaru.com/sharoben-news/38/</guid>
-    <pubDate>Sun, 25 Oct 2026 22:00:00 GMT</pubDate>
-    <category>学習</category>
-    <description>選択式と択一式を、勉強のうえでどう考えるか。筆者の考えを書きます。条文を「違和感が出るくらい」に覚えること、そして演習で「何択まで絞れたか」を意識することの2点です。筆者は、幅広く知識を身につける段階では、選択式と択一式を分けて勉強していた意識はあまりありません。一方、問題演習の段階では、問題集も別々に出ていることが多いので、多少は分けて取り組んでいました。また、試験の性質には違いを感じていまし…</description>
+    <title>毎月勤労統計 8月分の確報：速報から変わった数字</title>
+    <link>https://tadimaru.com/sharoben-news/40/</link>
+    <guid isPermaLink="true">https://tadimaru.com/sharoben-news/40/</guid>
+    <pubDate>Mon, 26 Oct 2026 22:00:00 GMT</pubDate>
+    <category>人事制度</category>
+    <description>厚生労働省は2026年10月23日、「毎月勤労統計調査 2026（令和8）年8月分結果確報」を公表しました。事業所規模5人以上の現金給与総額（給与・手当・賞与などを、所得税や社会保険料を差し引く前の金額で合計したもの）は311,563円（前年同月比3.9％増）でした。10月7日公表の速報から変わった数字を、人事・労務の担当者向けに整理します。確報は、速報の集計後に審査を終えた調査票も加えて集計し…</description>
   </item>
   <item>
     <title>カスタマーハラスメント対策が会社の義務に：2026年10月1日施行、事業主が講ずべき措置とは</title>
@@ -69,6 +77,14 @@
     <pubDate>Sun, 25 Oct 2026 22:00:00 GMT</pubDate>
     <category>法改正</category>
     <description>2026年10月1日から、カスタマーハラスメント（以下「カスハラ」）の防止措置が、すべての事業主の義務になりました。この記事では、いつから・誰が・何をするのかと、国の指針が示すカスハラの定義、事業主が講ずべき措置を整理します。厚生労働省の案内によると、労働施策総合推進法等を改正する法律（令和7年法律第63号）は、2025年6月11日に公布されました。施行期日は、令和8年政令第17号で2026年1…</description>
+  </item>
+  <item>
+    <title>選択式と択一式、どう勉強する？ 条文に「違和感」を持てるまで覚える／何択まで絞れたかを意識する</title>
+    <link>https://tadimaru.com/sharoben-news/38/</link>
+    <guid isPermaLink="true">https://tadimaru.com/sharoben-news/38/</guid>
+    <pubDate>Sun, 25 Oct 2026 22:00:00 GMT</pubDate>
+    <category>学習</category>
+    <description>選択式と択一式を、勉強のうえでどう考えるか。筆者の考えを書きます。条文を「違和感が出るくらい」に覚えること、そして演習で「何択まで絞れたか」を意識することの2点です。筆者は、幅広く知識を身につける段階では、選択式と択一式を分けて勉強していた意識はあまりありません。一方、問題演習の段階では、問題集も別々に出ていることが多いので、多少は分けて取り組んでいました。また、試験の性質には違いを感じていまし…</description>
   </item>
   <item>
     <title>社会保険の適用拡大：「月額8.8万円」の要件は2026年10月1日に撤廃　企業規模の要件はこれから段階的に</title>
@@ -95,20 +111,20 @@
     <description>中途採用の費用を抑えたい採用担当者に向けて、公的に用意されている支援を2つ紹介します。ハローワークへの求人申込みは無料であること、そしてトライアル雇用助成金（一般トライアルコース）の金額と主な条件が分かります。厚生労働省「ハローワークの求人者サービスのご案内」によると、ハローワークに求人を申し込むと、無料で全国500カ所以上のハローワークやインターネットを通じて公開できます。申込みは、事業所の所…</description>
   </item>
   <item>
-    <title>社労士の勉強、どの科目から始める？ 労働基準法から入って、少しずつ回すのがおすすめ</title>
-    <link>https://tadimaru.com/sharoben-news/33/</link>
-    <guid isPermaLink="true">https://tadimaru.com/sharoben-news/33/</guid>
-    <pubDate>Thu, 22 Oct 2026 22:00:00 GMT</pubDate>
-    <category>学習</category>
-    <description>10月から社労士試験の勉強を始める人に向けて、最初の科目をどう選ぶか、そのあとどう回すかについて、筆者の考えをまとめます。正解が一つあるわけではなく、あくまで「筆者はこう考える」という話です。筆者は、最初の科目は労働基準法がよいと考えています。一番興味を持ちやすく、すでに知っていることも多い科目だからです。予備校の教材も、だいたい労働基準法から入っている印象があり、ほとんどの人が同じ順番で始めて…</description>
-  </item>
-  <item>
     <title>年次有給休暇の「年5日」：会社が時季を指定する義務と、年次有給休暇管理簿</title>
     <link>https://tadimaru.com/sharoben-news/32/</link>
     <guid isPermaLink="true">https://tadimaru.com/sharoben-news/32/</guid>
     <pubDate>Thu, 22 Oct 2026 22:00:00 GMT</pubDate>
     <category>人事制度</category>
     <description>年次有給休暇（年休）のうち「年5日」は、会社が時季を定めてでも取らせなければならない義務です。この記事では、そのしくみと、あわせて作る年次有給休暇管理簿、違反したときの罰則を、条文の順に整理します。第1項は、雇入れの日から6箇月間継続勤務し、全労働日の8割以上出勤した労働者に、10労働日の有給休暇を与えなければならないと定めています。第2項は、1年6箇月以上継続勤務した労働者への加算です。6箇月…</description>
+  </item>
+  <item>
+    <title>社労士の勉強、どの科目から始める？ 労働基準法から入って、少しずつ回すのがおすすめ</title>
+    <link>https://tadimaru.com/sharoben-news/33/</link>
+    <guid isPermaLink="true">https://tadimaru.com/sharoben-news/33/</guid>
+    <pubDate>Thu, 22 Oct 2026 22:00:00 GMT</pubDate>
+    <category>学習</category>
+    <description>10月から社労士試験の勉強を始める人に向けて、最初の科目をどう選ぶか、そのあとどう回すかについて、筆者の考えをまとめます。正解が一つあるわけではなく、あくまで「筆者はこう考える」という話です。筆者は、最初の科目は労働基準法がよいと考えています。一番興味を持ちやすく、すでに知っていることも多い科目だからです。予備校の教材も、だいたい労働基準法から入っている印象があり、ほとんどの人が同じ順番で始めて…</description>
   </item>
   <item>
     <title>過労死等防止対策白書（令和8年版）：週40時間以上の雇用者のうち週60時間以上は7.7％、インターバル制度の導入は6.9％</title>
@@ -127,20 +143,20 @@
     <description>労働者数50人未満の事業場でも、ストレスチェックの実施が義務になります。施行日は2028年4月1日です。この記事では、何が変わるのかと、人事・総務の担当者が今から準備しておくことを、厚生労働省（厚労省）などの資料に沿ってまとめます。ストレスチェックとは、心理的な負担の程度を把握するための検査のことです。労働安全衛生法の第66条の10が定めています。現行の条文では、事業者は労働者に対し、医師、保健…</description>
   </item>
   <item>
-    <title>パート・有期雇用、10月1日から変更：待遇差の説明と同一労働同一賃金ガイドライン</title>
-    <link>https://tadimaru.com/sharoben-news/29/</link>
-    <guid isPermaLink="true">https://tadimaru.com/sharoben-news/29/</guid>
-    <pubDate>Tue, 20 Oct 2026 22:00:00 GMT</pubDate>
-    <category>法改正</category>
-    <description>2026年（令和8年）10月1日から、パートタイム・有期雇用労働者を雇う事業主に関わるルールが変わりました。この記事では、変わった3つの点と、会社が点検することをまとめます。同一労働同一賃金とは、正社員とパートタイム・有期雇用労働者との間の不合理な待遇差の解消を目指す考え方です。なお告示では、正社員を「通常の労働者」、パートタイム・有期雇用労働者を「短時間・有期雇用労働者」と呼びます。パート・有…</description>
-  </item>
-  <item>
     <title>求人票と労働条件通知書に書くこと：2024年4月から加わった「変更の範囲」「更新上限」など</title>
     <link>https://tadimaru.com/sharoben-news/28/</link>
     <guid isPermaLink="true">https://tadimaru.com/sharoben-news/28/</guid>
     <pubDate>Tue, 20 Oct 2026 22:00:00 GMT</pubDate>
     <category>採用</category>
     <description>2024年4月1日から、労働契約を結ぶときと求人を出すときに明示する事項が増えました。何が加わったのかを、労働契約と求人票の場面に分けて整理します。労働契約の締結・更新時の明示（労働基準法施行規則第5条）は、令和5年厚生労働省令第39号により、令和6年（2024年）4月1日から変わりました。厚生労働省の公布通達（基発0330第1号）によると、通算契約期間または更新回数の上限と、就業の場所および従…</description>
+  </item>
+  <item>
+    <title>パート・有期雇用、10月1日から変更：待遇差の説明と同一労働同一賃金ガイドライン</title>
+    <link>https://tadimaru.com/sharoben-news/29/</link>
+    <guid isPermaLink="true">https://tadimaru.com/sharoben-news/29/</guid>
+    <pubDate>Tue, 20 Oct 2026 22:00:00 GMT</pubDate>
+    <category>法改正</category>
+    <description>2026年（令和8年）10月1日から、パートタイム・有期雇用労働者を雇う事業主に関わるルールが変わりました。この記事では、変わった3つの点と、会社が点検することをまとめます。同一労働同一賃金とは、正社員とパートタイム・有期雇用労働者との間の不合理な待遇差の解消を目指す考え方です。なお告示では、正社員を「通常の労働者」、パートタイム・有期雇用労働者を「短時間・有期雇用労働者」と呼びます。パート・有…</description>
   </item>
   <item>
     <title>合格発表のあと、最初にやっておきたいこと：登録・講習・写真・職場へのひとこと</title>
@@ -167,14 +183,6 @@
     <description>2027年卒（2027年3月卒業予定）の就職・採用活動は、政府の日程ルールのもとで進んでいます。この記事では、日程ルール、公的な内定率の状況、民間調査の27卒の数字、採用担当者が押さえたい「職場情報の提供」を整理します。政府の資料では、2027年3月卒は「2026年度卒業・修了予定者」と書かれます。年度の数え方に注意してください。関係省庁連絡会議が令和6年12月5日に考え方をまとめ、令和7年3月…</description>
   </item>
   <item>
-    <title>「人手不足」の中身：どの業種で、何が足りないのか</title>
-    <link>https://tadimaru.com/sharoben-news/24/</link>
-    <guid isPermaLink="true">https://tadimaru.com/sharoben-news/24/</guid>
-    <pubDate>Sat, 17 Oct 2026 22:00:00 GMT</pubDate>
-    <category>採用</category>
-    <description>「人手不足」と一口に言っても、足りない業種も、正社員かパートかも、調査によって見え方が違います。この記事では、厚生労働省と帝国データバンクの2つの調査で、何がどれくらい足りないとされているのかを整理します。厚生労働省の労働経済動向調査（令和8年8月）は、2026年8月1日現在の状況を、主要産業の規模30人以上の民営事業所に尋ねたものです。5,786事業所に調査し、3,175事業所から有効な回答を…</description>
-  </item>
-  <item>
     <title>労働基準法の見直し、議論はどこまで？　連続勤務・勤務間インターバルなど</title>
     <link>https://tadimaru.com/sharoben-news/23/</link>
     <guid isPermaLink="true">https://tadimaru.com/sharoben-news/23/</guid>
@@ -183,12 +191,12 @@
     <description>労働基準法の見直しは、まだ決まったことではありません。この記事では、厚生労働省の研究会が示した論点と、その後の議論の経過を整理します。厚生労働省は2025年1月8日、「労働基準関係法制研究会」の報告書を公表しました。報告書は、早期に取り組むべき事項と、中長期的に検討を進めるべき事項に分けて方向性を示しています。主な論点は次のとおりです。どれも報告書の中の「考えられる」「検討」といった書きぶりです…</description>
   </item>
   <item>
-    <title>社労士試験の知識は、人事の現場でこう使う（労働時間・年休・社会保険）</title>
-    <link>https://tadimaru.com/sharoben-news/22/</link>
-    <guid isPermaLink="true">https://tadimaru.com/sharoben-news/22/</guid>
-    <pubDate>Fri, 16 Oct 2026 22:00:00 GMT</pubDate>
-    <category>人事制度</category>
-    <description>社労士試験で覚える条文は、人事の仕事ではどんな場面で使うのでしょうか。労働時間・年次有給休暇（年休）・社会保険の適用拡大の3つを、条文から現場の場面の順に見ます。労働基準法（e-Gov法令検索）は、次のように定めています。筆者の見方では、これは勤務表や就業規則を作るときの前提になる数字です。たとえば労働時間が6時間を超える場合は、休憩が45分以上必要です。では、これを超えて働いてもらうにはどうす…</description>
+    <title>「人手不足」の中身：どの業種で、何が足りないのか</title>
+    <link>https://tadimaru.com/sharoben-news/24/</link>
+    <guid isPermaLink="true">https://tadimaru.com/sharoben-news/24/</guid>
+    <pubDate>Sat, 17 Oct 2026 22:00:00 GMT</pubDate>
+    <category>採用</category>
+    <description>「人手不足」と一口に言っても、足りない業種も、正社員かパートかも、調査によって見え方が違います。この記事では、厚生労働省と帝国データバンクの2つの調査で、何がどれくらい足りないとされているのかを整理します。厚生労働省の労働経済動向調査（令和8年8月）は、2026年8月1日現在の状況を、主要産業の規模30人以上の民営事業所に尋ねたものです。5,786事業所に調査し、3,175事業所から有効な回答を…</description>
   </item>
   <item>
     <title>人的資本経営とは：有価証券報告書に「人」の情報が載るようになった理由</title>
@@ -197,6 +205,14 @@
     <pubDate>Fri, 16 Oct 2026 22:00:00 GMT</pubDate>
     <category>人事制度</category>
     <description>人的資本経営は、人的資本（人材）の重要性を認識し、経営戦略と連動した人材戦略を実践することで、持続的な企業価値の向上につなげようとする考え方です。この記事では、それがなぜ有価証券報告書（有報。会社が出す事業の報告書）に書かれるようになったのかを、2020年から2026年までの流れで整理します。人事・労務の担当者と、人事を目指す受験生に向けた記事です。経済産業省は2020年9月に、通称「人材版伊藤…</description>
+  </item>
+  <item>
+    <title>社労士試験の知識は、人事の現場でこう使う（労働時間・年休・社会保険）</title>
+    <link>https://tadimaru.com/sharoben-news/22/</link>
+    <guid isPermaLink="true">https://tadimaru.com/sharoben-news/22/</guid>
+    <pubDate>Fri, 16 Oct 2026 22:00:00 GMT</pubDate>
+    <category>人事制度</category>
+    <description>社労士試験で覚える条文は、人事の仕事ではどんな場面で使うのでしょうか。労働時間・年次有給休暇（年休）・社会保険の適用拡大の3つを、条文から現場の場面の順に見ます。労働基準法（e-Gov法令検索）は、次のように定めています。筆者の見方では、これは勤務表や就業規則を作るときの前提になる数字です。たとえば労働時間が6時間を超える場合は、休憩が45分以上必要です。では、これを超えて働いてもらうにはどうす…</description>
   </item>
   <item>
     <title>人事の仕事とは何か：採用・労務・育成・制度の4つの柱</title>
@@ -215,14 +231,6 @@
     <description>2025年4月1日と10月1日に2段階で施行された育児・介護休業法の改正を、「いつから・誰が・何をするか」の順に整理します。施行から1年以上たった今、自社の対応に漏れがないかの点検にお使いください。根拠は、厚生労働省のリーフレット「育児・介護休業法 改正ポイントのご案内」（令和6年12月改訂）と、改正法の概要です。リーフレットの「義務」「努力義務」の表示のとおりに書きます。主語はいずれも事業主（…</description>
   </item>
   <item>
-    <title>賃金はどう動いている？ 毎月勤労統計（8月分速報）で見る名目・実質・労働時間</title>
-    <link>https://tadimaru.com/sharoben-news/18/</link>
-    <guid isPermaLink="true">https://tadimaru.com/sharoben-news/18/</guid>
-    <pubDate>Wed, 14 Oct 2026 22:00:00 GMT</pubDate>
-    <category>人事制度</category>
-    <description>厚生労働省が2026年10月7日に公表した「毎月勤労統計調査」の8月分速報で、賃金(名目・実質)と労働時間がどう動いたかを整理します。賃上げや給与改定を考える人事・労務の担当者が、数字の「定義」をそろえて読むための記事です。なお、これは確報ではなく「速報」です。厚生労働省は「速報値は、確報で改訂される場合があります」としています。数字は今後変わる可能性があります。毎月勤労統計調査は、雇用・給与・…</description>
-  </item>
-  <item>
     <title>有効求人倍率は1.18倍で前月と同水準、失業率は2.5％（2026年8月分）</title>
     <link>https://tadimaru.com/sharoben-news/17/</link>
     <guid isPermaLink="true">https://tadimaru.com/sharoben-news/17/</guid>
@@ -231,20 +239,12 @@
     <description>2026年8月の有効求人倍率は1.18倍で、前月と同水準でした。完全失業率は2.5％で、前月より0.1ポイント上昇しています。人事・採用の現場で気になる数字を、前月との比較つきでまとめます。厚生労働省『一般職業紹介状況（令和8年8月分）』と、総務省統計局『労働力調査（基本集計）2026年8月分』（どちらも2026年10月2日公表）によります。本文の数字は、特に断りがなければ季節調整値（季節による…</description>
   </item>
   <item>
-    <title>最低賃金、2026年度は全国平均1,177円に　発効日は都道府県ごとに違います</title>
-    <link>https://tadimaru.com/sharoben-news/16/</link>
-    <guid isPermaLink="true">https://tadimaru.com/sharoben-news/16/</guid>
-    <pubDate>Tue, 13 Oct 2026 22:00:00 GMT</pubDate>
-    <category>法改正</category>
-    <description>2026年度（令和8年度）の地域別最低賃金は、答申された改定額の全国加重平均で1,177円です。この記事では、引上げの大きさと、発効日が都道府県ごとに違うこと、会社が確認することをまとめます。厚生労働省の報道発表（2026年9月3日）によると、地方最低賃金審議会が答申した令和8年度の改定額は次のとおりです。「答申」とは、各都道府県の審議会が出した結論のことです。改定額は、労働局での異議申出の手続…</description>
-  </item>
-  <item>
-    <title>社労士試験、毎日10問を続けるための3つのコツ</title>
-    <link>https://tadimaru.com/sharoben-news/12/</link>
-    <guid isPermaLink="true">https://tadimaru.com/sharoben-news/12/</guid>
-    <pubDate>Sat, 10 Oct 2026 06:05:16 GMT</pubDate>
-    <category>学習</category>
-    <description>社労士試験の勉強を毎日続けたい人に向けて、「やるきっかけ」「1回の量」「間違えた問題の扱い」の3つのコツを紹介します。覚えることが多い試験だからこそ、まとまった時間を取ろうとすると、かえって続かないことがあります。「夜に30分勉強する」と決めるより、毎日必ずある行動にくっつけるほうが続けやすい、と私たちは考えています。たとえば、次のような形です。「何時にやるか」ではなく「何のあとにやるか」を決め…</description>
+    <title>賃金はどう動いている？ 毎月勤労統計（8月分速報）で見る名目・実質・労働時間</title>
+    <link>https://tadimaru.com/sharoben-news/18/</link>
+    <guid isPermaLink="true">https://tadimaru.com/sharoben-news/18/</guid>
+    <pubDate>Wed, 14 Oct 2026 22:00:00 GMT</pubDate>
+    <category>人事制度</category>
+    <description>厚生労働省が2026年10月7日に公表した「毎月勤労統計調査」の8月分速報で、賃金(名目・実質)と労働時間がどう動いたかを整理します。賃上げや給与改定を考える人事・労務の担当者が、数字の「定義」をそろえて読むための記事です。なお、これは確報ではなく「速報」です。厚生労働省は「速報値は、確報で改訂される場合があります」としています。数字は今後変わる可能性があります。毎月勤労統計調査は、雇用・給与・…</description>
   </item>
 </channel>
 </rss>
