@@ -131,6 +131,22 @@ main>*,.cover>*,.grid>*,.side>*,.series-grid>*{min-width:0}
 .ad .shot{align-self:end;justify-self:center;width:150px;border-radius:16px 16px 0 0;box-shadow:0 -4px 18px rgba(47,42,43,.14)}
 .ad.compact{margin-top:40px}
 
+/* 2026-10-30 PC 向け：幅を広げ、右の「新しい記事」を大きく、法改正は見出しを左に置いて余白を詰める */
+@media (min-width:1000px){
+.wrap:not(.narrow){max-width:1200px}
+.cover{grid-template-columns:1.6fr 1fr;gap:44px}
+.cover .lead h2{font-size:30px}
+.side .card{grid-template-columns:176px 1fr;gap:18px;padding:18px 0}
+.side .card h3{font-size:17px;line-height:1.65}
+.band.law{display:grid;grid-template-columns:240px 1fr;gap:0 56px;align-items:start}
+.band.law .band-head{grid-row:1/span 3;text-align:left;margin:0;padding-top:8px}
+.band.law .band-head .orn{margin-left:0}
+.band.law>:not(.band-head){grid-column:2}
+.toc a{grid-template-columns:auto 1fr auto;padding:15px 0}
+.toc .no{grid-row:auto}
+.grid,.series-grid{gap:34px 30px}
+}
+
 footer{margin-top:64px;border-top:1px solid var(--rule);padding:26px 0 44px;font-size:13px;color:var(--sub);text-align:center}
 footer p{margin:0 0 6px;line-height:1.7}
 footer .links{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 18px;margin-top:10px}
