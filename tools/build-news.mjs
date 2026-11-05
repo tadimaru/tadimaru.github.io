@@ -220,29 +220,18 @@ function seriesList(articles) {
 
 // ── 見た目 ──────────────────────────────────
 const STYLE = `
-/* しゃろ勉ニュース（2026-10-30 デザイン案 A3「手帳と雑誌・明朝＋アプリ」）。tools/build-news.mjs が書き出す。手で直さない */
+/* しゃろ勉ニュース（2026-11-05 デザイン案 B「白とオレンジ」）。tools/build-news.mjs が書き出す。手で直さない */
 :root{
-  --paper:#f6f2ec;--sheet:#fffdf9;--ink:#2f2a2b;--sub:#776d69;--line:#e4dbd0;--rule:#2f2a2b;
-  --rose:#a8646b;--rose-soft:#f2e1de;--sage:#56715f;--sage-soft:#e3ebe2;--on-sage:#ffffff;--note:#fbf6e9;--tape:rgba(168,100,107,.28);
+  --paper:#ffffff;--sheet:#ffffff;--ink:#26231f;--sub:#645f58;--line:#ece7e1;--rule:#c2540a;
+  --rose:#c2540a;--rose-soft:#fdf1e7;--sage:#c2540a;--sage-soft:#fef6ef;--on-sage:#ffffff;--note:#fff9f2;--tape:#fdf1e7;
   --cat-law:#a8646b;--cat-law-bg:#f2e1de;--cat-hire:#56715f;--cat-hire-bg:#e3ebe2;
   --cat-hr:#7d6383;--cat-hr-bg:#ece3ee;--cat-study:#4e6886;--cat-study-bg:#e2e9f1;--cat-other:#776d69;--cat-other-bg:#ece7e1;
-  --serif:"Shippori Mincho","Hiragino Mincho ProN","Yu Mincho",serif;
+  --serif:"Zen Kaku Gothic New","Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic UI","Yu Gothic",Meiryo,sans-serif;
   --label:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic UI","Yu Gothic",Meiryo,sans-serif;
   --body:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic UI","Yu Gothic",Meiryo,sans-serif;
-  --hand:"Klee One","Zen Kaku Gothic New",sans-serif;
+  --hand:"Zen Kaku Gothic New","Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic UI","Yu Gothic",Meiryo,sans-serif;
+  color-scheme:light;
 }
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --paper:#1b1817;--sheet:#242020;--ink:#ece6e1;--sub:#b3a9a4;--line:#3b3532;--rule:#8a807b;
-  --rose:#e0a3a9;--rose-soft:#46302f;--sage:#a9c4b0;--sage-soft:#2a372e;--on-sage:#1b1817;--note:#332e24;--tape:rgba(224,163,169,.3);
-  --cat-law:#e0a3a9;--cat-law-bg:#46302f;--cat-hire:#a9c4b0;--cat-hire-bg:#2a372e;
-  --cat-hr:#cdb3d3;--cat-hr-bg:#3a2f3e;--cat-study:#a9bfdb;--cat-study-bg:#28323f;--cat-other:#b3a9a4;--cat-other-bg:#2e2a28;
-  color-scheme:dark}}
-:root[data-theme="dark"]{
-  --paper:#1b1817;--sheet:#242020;--ink:#ece6e1;--sub:#b3a9a4;--line:#3b3532;--rule:#8a807b;
-  --rose:#e0a3a9;--rose-soft:#46302f;--sage:#a9c4b0;--sage-soft:#2a372e;--on-sage:#1b1817;--note:#332e24;--tape:rgba(224,163,169,.3);
-  --cat-law:#e0a3a9;--cat-law-bg:#46302f;--cat-hire:#a9c4b0;--cat-hire-bg:#2a372e;
-  --cat-hr:#cdb3d3;--cat-hr-bg:#3a2f3e;--cat-study:#a9bfdb;--cat-study-bg:#28323f;--cat-other:#b3a9a4;--cat-other-bg:#2e2a28;
-  color-scheme:dark}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.9}
@@ -441,6 +430,15 @@ article.sheet{background:var(--sheet);border:1px solid var(--line);border-radius
 .prose ul{padding-left:1.3em;margin:6px 0}
 .prose p{margin:8px 0}
 .prose a{color:var(--rose)}
+
+/* 2026-11-05 案B：見出しもゴシック・線を太く */
+h1,h2,h3{letter-spacing:.01em}
+.toc .t,.list .t{font-weight:700}
+.tagline{letter-spacing:.08em}
+.card h2,.card h3{line-height:1.55}
+.side-ttl,.band-head .kicker,.related .k,.digest .k,.points .ttl,.exam .ttl,.memo .ttl{font-weight:700;letter-spacing:.04em}
+.toc .no{font-weight:700}
+.cats{border-top-width:2px}
 `;
 
 const X_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-7.4 8.5L23 22h-6.8l-5.3-6.9L4.8 22H1.7l7.9-9.1L1 2h7l4.8 6.3L18.9 2Zm-1.2 18h1.9L7.1 3.9H5.1L17.7 20Z"/></svg>';
@@ -448,7 +446,7 @@ const X_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-
 function header(categories, current) {
   const link = (href, label, on) => `<a href="${href}"${on ? ' aria-current="page"' : ''}>${esc(label)}</a>`;
   return `<header class="site"><div class="wrap">
-${UPDATED ? `<div class="date">${UPDATED} 更新</div>\n` : ''}<a class="brand" href="${BASE}"><picture><source srcset="${ASSETS}logo-white.png" media="(prefers-color-scheme: dark)"><img src="${ASSETS}logo.png" alt="${MEDIA}" width="331" height="36"></picture></a>
+${UPDATED ? `<div class="date">${UPDATED} 更新</div>\n` : ''}<a class="brand" href="${BASE}"><picture><img src="${ASSETS}logo.png" alt="${MEDIA}" width="331" height="36"></picture></a>
 <span class="tagline">${TAGLINE}</span>
 <a class="x" href="https://x.com/${X_ACCOUNT}" target="_blank" rel="noopener" aria-label="X @${X_ACCOUNT}">${X_SVG}<span>@${X_ACCOUNT}</span></a>
 <nav class="cats" aria-label="種類">${link(BASE, 'すべて', current === 'all')}${categories.map((c) => link(`${BASE}category/${c.slug}/`, c.name, current === c.slug)).join('')}${link(`${BASE}series/`, '連載', current === 'series')}</nav>
@@ -480,14 +478,14 @@ ${image ? `<meta property="og:image" content="${esc(image)}">\n<meta property="o
 <meta property="og:locale" content="ja_JP">
 <meta name="twitter:card" content="${image ? 'summary_large_image' : 'summary'}">
 <meta name="twitter:site" content="@${X_ACCOUNT}">
-<meta name="theme-color" content="#f6f2ec" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#1b1817" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#ffffff">
+<meta name="color-scheme" content="light">
 <link rel="alternate" type="application/rss+xml" title="${MEDIA}" href="${BASE}feed.xml">
 <link rel="icon" type="image/png" href="${ASSETS}symbol.png">
 <link rel="apple-touch-icon" href="${ASSETS}symbol.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@600;700&family=Zen+Kaku+Gothic+New:wght@500;700&family=Klee+One:wght@600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700&display=swap">
 <link rel="stylesheet" href="${BASE}style.css">
 ${jsonLd ? `<script type="application/ld+json">${JSON.stringify(jsonLd).replace(/</g, '\\u003c')}</script>\n` : ''}</head>
 <body>
