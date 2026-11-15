@@ -7,6 +7,22 @@
   <language>ja</language>
   <atom:link href="https://tadimaru.com/sharoben-news/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title>管理監督者とは：「管理職だから残業代なし」が通る条件</title>
+    <link>https://tadimaru.com/sharoben-news/77/</link>
+    <guid isPermaLink="true">https://tadimaru.com/sharoben-news/77/</guid>
+    <pubDate>Sat, 14 Nov 2026 22:00:00 GMT</pubDate>
+    <category>人事制度</category>
+    <description>「管理職だから残業代は出ない」が通るのは、労働基準法上の「管理監督者」に当たる場合だけです。この記事では、4つの判断要素、適用される規定、店長の通達を整理します。人事・労務の担当者と受験生向けです。労働基準法第41条は、第4章・第6章・第6章の2で定める労働時間、休憩及び休日に関する規定を、次の労働者には適用しないと定めています。第2号が、事業の種類にかかわらず「監督若しくは管理の地位にある者」…</description>
+  </item>
+  <item>
+    <title>数字が覚えられない人へ 罰則・日数・金額の3つの覚え方と、苦手だった分野</title>
+    <link>https://tadimaru.com/sharoben-news/78/</link>
+    <guid isPermaLink="true">https://tadimaru.com/sharoben-news/78/</guid>
+    <pubDate>Sat, 14 Nov 2026 22:00:00 GMT</pubDate>
+    <category>学習</category>
+    <description>社労士試験の勉強で、数字や暗記がなかなか頭に入らない人に向けた記事です。数字だけでなく、暗記全般が苦手だった筆者が、罰則・日数・金額をどう覚えようとしたかを書きます。あくまで筆者の個人的な経験です。ロジックで理解できる分野にも、暗記は残ります。たとえば年金は、仕組みそのものは理解しやすい分野です。それでも「何割ですか」と問われる部分は、暗記に頼ることになります。多くの法律に罰則の規定があり、刑の…</description>
+  </item>
+  <item>
     <title>過去問は何年分、いつやる？ 目安は7〜10年分、模試の前に本番どおり通しで</title>
     <link>https://tadimaru.com/sharoben-news/75/</link>
     <guid isPermaLink="true">https://tadimaru.com/sharoben-news/75/</guid>
@@ -229,22 +245,6 @@
     <pubDate>Sat, 31 Oct 2026 22:00:00 GMT</pubDate>
     <category>人事制度</category>
     <description>社員が退職したとき、会社（事業主）が行う手続きを、期限ごとに整理します。雇用保険は10日以内、健康保険・厚生年金保険は5日以内など、書類ごとに期限が違います。初めて担当する人向けに、条文と公的機関の案内にもとづいてまとめました。事業主は、被保険者でなくなった事実のあった日の翌日から起算して10日以内に、資格喪失届を事業所の所在地を管轄するハローワークへ提出します（雇用保険法施行規則第7条第1項）…</description>
-  </item>
-  <item>
-    <title>働きながら勉強時間をつくる：平日と休日の使い方、続かないときの考え方</title>
-    <link>https://tadimaru.com/sharoben-news/47/</link>
-    <guid isPermaLink="true">https://tadimaru.com/sharoben-news/47/</guid>
-    <pubDate>Fri, 30 Oct 2026 22:00:00 GMT</pubDate>
-    <category>学習</category>
-    <description>働きながら勉強する人は、時間をどうつくればよいのか。この記事では、筆者が平日と休日にどう時間を使っていたか、続かないときの考え方、そして残りの勉強時間の数え方と家族との折り合いについて書きます。筆者の平日の勉強は、1〜2時間ほどでした。飲み会が多いほうだったので、他部署の人との飲み会のときは、自分の仕事が終わったら先に会社を出て、ファストフード店で1時間ほど勉強していました。そのあと、残業が終わ…</description>
-  </item>
-  <item>
-    <title>有効求人倍率は1.19倍、失業率は2.4％（2026年9月分）</title>
-    <link>https://tadimaru.com/sharoben-news/51/</link>
-    <guid isPermaLink="true">https://tadimaru.com/sharoben-news/51/</guid>
-    <pubDate>Fri, 30 Oct 2026 22:00:00 GMT</pubDate>
-    <category>人事制度</category>
-    <description>2026年9月の有効求人倍率は1.19倍で、前月より0.01ポイント上昇しました。完全失業率は2.4％で、前月より0.1ポイント低下しています。人事・採用の現場で気になる数字を、前月との比較つきでまとめます。厚生労働省『一般職業紹介状況（令和8年9月分）』と、総務省統計局『労働力調査（基本集計）2026年9月分』（どちらも2026年10月30日公表）によります。本文の数字は、特に断りがなければ季…</description>
   </item>
 </channel>
 </rss>
