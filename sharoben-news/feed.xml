@@ -7,6 +7,22 @@
   <language>ja</language>
   <atom:link href="https://tadimaru.com/sharoben-news/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title>やる気が出ない日はどうする？ 計画が崩れたときの立て直し方と「逆縛り」</title>
+    <link>https://tadimaru.com/sharoben-news/80/</link>
+    <guid isPermaLink="true">https://tadimaru.com/sharoben-news/80/</guid>
+    <pubDate>Mon, 16 Nov 2026 22:00:00 GMT</pubDate>
+    <category>学習</category>
+    <description>社労士試験の勉強で、計画が崩れてやる気が出ない日が続いたとき、どう立て直すか。この記事では、やる気にムラがある筆者が、スケジュールの組み直しと「逆縛り」で立て直していた経験を書きます。あくまで筆者の個人的な経験です。筆者は、やる気にムラがあるタイプです。あまりよいタイプではないと自分でも思っています。ただ、試験の直前期にやる気が出なくなることはありませんでした。やる気が落ちるのは、試験まであと半…</description>
+  </item>
+  <item>
+    <title>忘年会の帰り道は労災？ 業務災害と通勤災害の線引きは、参加の扱いで分かれる</title>
+    <link>https://tadimaru.com/sharoben-news/81/</link>
+    <guid isPermaLink="true">https://tadimaru.com/sharoben-news/81/</guid>
+    <pubDate>Mon, 16 Nov 2026 22:00:00 GMT</pubDate>
+    <category>人事制度</category>
+    <description>忘年会の帰り道の事故が労災保険の対象になるかは、まず「忘年会そのものが業務といえるか」で分かれます。条文と通達（法律の運用を示す行政の通知）、労働保険審査会（労災保険の処分への不服を審理する機関）の裁決（審査の結論）から、線引きの考え方を整理します。労働者災害補償保険法第7条第1項は、仕事が原因のけがなどである業務災害と、通勤によるけがなどである通勤災害を分けています。通勤とは、就業に関し、住居…</description>
+  </item>
+  <item>
     <title>定期健康診断は会社の義務：費用は事業者負担、受診時間の賃金は労使協議で決める</title>
     <link>https://tadimaru.com/sharoben-news/79/</link>
     <guid isPermaLink="true">https://tadimaru.com/sharoben-news/79/</guid>
@@ -229,22 +245,6 @@
     <pubDate>Sun, 01 Nov 2026 22:00:00 GMT</pubDate>
     <category>人事制度</category>
     <description>常時10人以上の労働者を使用する使用者には、就業規則を作成して届け出る義務があります（労働基準法第89条）。この記事では、人事・労務の担当者向けに、作る義務、意見聴取、減給の制限、周知、労働契約法との関係、罰則を、条文と厚生労働省の解説で整理します。第89条は、常時10人以上の労働者を使用する使用者に、就業規則を作成し、行政官庁（所轄の労働基準監督署長）に届け出ることを求めています。記載事項を変…</description>
-  </item>
-  <item>
-    <title>賃金の改定額は1人平均13,926円、改定率は前年と同じ4.4％（常用労働者100人以上の企業・2026年調査）</title>
-    <link>https://tadimaru.com/sharoben-news/52/</link>
-    <guid isPermaLink="true">https://tadimaru.com/sharoben-news/52/</guid>
-    <pubDate>Sun, 01 Nov 2026 22:00:00 GMT</pubDate>
-    <category>人事制度</category>
-    <description>厚生労働省は2026年10月21日、「令和8（2026）年賃金引上げ等の実態に関する調査の概況」を公表しました。1人平均賃金の改定額は13,926円（前年13,601円）、改定率は4.4％で前年と同率でした。この調査の対象は常用労働者100人以上の会社組織の民営企業で、100人未満の会社は含まれません。自社の賃上げを検討するときの参考になる数字を整理します。調査は2026年7月20日から8月10…</description>
-  </item>
-  <item>
-    <title>年金の科目が苦手な人へ：覚えるより、しくみを理解する</title>
-    <link>https://tadimaru.com/sharoben-news/48/</link>
-    <guid isPermaLink="true">https://tadimaru.com/sharoben-news/48/</guid>
-    <pubDate>Sat, 31 Oct 2026 22:00:00 GMT</pubDate>
-    <category>学習</category>
-    <description>年金の科目が苦手な人は、覚え方を工夫するより、しくみを理解する方向で考えてみてはどうでしょうか。この記事では、年金が得意だった筆者の見方と、自分の年金を計算する・人生に置き換える・人に話すといった、年金が面白くなるきっかけを書きます。筆者にとって、年金は得意な科目で、むしろ点数源でした。年金は、制度設計がよくできていて、うまく回っているシステムだと筆者は感じています。そういうしくみを考えるのが好…</description>
   </item>
 </channel>
 </rss>
