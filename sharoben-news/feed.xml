@@ -7,6 +7,22 @@
   <language>ja</language>
   <atom:link href="https://tadimaru.com/sharoben-news/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title>育児休業中の社会保険料免除：月末に育休中か、同月14日以上。賞与は1か月超が条件</title>
+    <link>https://tadimaru.com/sharoben-news/83/</link>
+    <guid isPermaLink="true">https://tadimaru.com/sharoben-news/83/</guid>
+    <pubDate>Wed, 18 Nov 2026 22:00:00 GMT</pubDate>
+    <category>法改正</category>
+    <description>育児休業中の健康保険・厚生年金保険の保険料は、月ごとの保険料なら「月末に育休中」か「同じ月に14日以上」、賞与の保険料なら「1か月超」の育休で免除されます。2022年10月の改正の内容を、冬の賞与を前に整理します。健康保険法第159条第1項と厚生年金保険法第81条の2第1項は、育児休業や、それに準ずる休業（以下まとめて「育休」）をしている被保険者について事業主が申出をしたとき、保険料を徴収しない…</description>
+  </item>
+  <item>
+    <title>2回目・3回目の受験で変えたこと 2年目も予備校に通った筆者の場合</title>
+    <link>https://tadimaru.com/sharoben-news/84/</link>
+    <guid isPermaLink="true">https://tadimaru.com/sharoben-news/84/</guid>
+    <pubDate>Wed, 18 Nov 2026 22:00:00 GMT</pubDate>
+    <category>学習</category>
+    <description>社労士試験を今年受けて、来年また受けるかどうか考えている人に向けた記事です。筆者は2年目も3年目も予備校に通い、授業を一から受け直しました。勉強のしかたをどこまで変えたか、続けるかどうか迷ったかを書きます。あくまで筆者の個人的な経験です。初めて学ぶ1回目と比べると、2回目・3回目は、試験の全体像がある程度つかめている状態です。そのため、基本は法改正の確認とおさらいになるのだと思います。ただ、筆者…</description>
+  </item>
+  <item>
     <title>解雇予告と解雇予告手当：30日前の予告か、30日分以上の平均賃金か</title>
     <link>https://tadimaru.com/sharoben-news/82/</link>
     <guid isPermaLink="true">https://tadimaru.com/sharoben-news/82/</guid>
@@ -229,22 +245,6 @@
     <pubDate>Tue, 03 Nov 2026 22:00:00 GMT</pubDate>
     <category>学習</category>
     <description>社労士試験の一般常識（労働に関する一般常識・社会保険に関する一般常識）が不安な人に向けて、筆者の見方を書きます。範囲が広くて読めない科目とどう付き合うか、まず何を目標にするか、という話です。一般常識は、範囲がとても広く、どこが出るか読めません。すべての範囲を網羅して勉強できている人は、少ないと思います。だから、不安になるのは普通のことです。この科目でまず目指したいのは、足切り（科目ごとの基準点に…</description>
-  </item>
-  <item>
-    <title>割増賃金の計算：時間外・休日・深夜と、月60時間を超えたとき</title>
-    <link>https://tadimaru.com/sharoben-news/53/</link>
-    <guid isPermaLink="true">https://tadimaru.com/sharoben-news/53/</guid>
-    <pubDate>Mon, 02 Nov 2026 22:00:00 GMT</pubDate>
-    <category>人事制度</category>
-    <description>割増賃金の率を、時間外・休日・深夜の別に整理します。人事・労務の担当者向けに、月60時間を超えたときの50％、1時間あたり賃金の出し方、計算の基礎に入れない賃金もあわせて確認します。割増賃金は、労働基準法第37条にもとづいて支払います。最低の率は次のとおりです。法定労働時間は、1日8時間・週40時間です（第32条。一部の小規模な事業場には週44時間の特例があります）。法定休日とは、厚生労働省のF…</description>
-  </item>
-  <item>
-    <title>11月は過労死等防止啓発月間：過重労働解消キャンペーンで何が行われる？</title>
-    <link>https://tadimaru.com/sharoben-news/54/</link>
-    <guid isPermaLink="true">https://tadimaru.com/sharoben-news/54/</guid>
-    <pubDate>Mon, 02 Nov 2026 22:00:00 GMT</pubDate>
-    <category>人事制度</category>
-    <description>厚生労働省は2026年10月8日付の報道発表で、11月が「過労死等防止啓発月間」であり、「過重労働解消キャンペーン」を行うと発表しました。この記事では、キャンペーンの内容と、11月7日（土）に行われる無料の電話相談の電話番号・受付時間を整理します。過労死等防止対策推進法（平成26年法律第100号）の第5条は、国民の間に広く過労死等を防止することの重要性について自覚を促し、関心と理解を深めるため、…</description>
   </item>
 </channel>
 </rss>
