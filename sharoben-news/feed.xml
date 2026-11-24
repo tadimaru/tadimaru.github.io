@@ -7,6 +7,22 @@
   <language>ja</language>
   <atom:link href="https://tadimaru.com/sharoben-news/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title>新卒の就職内定率（10月1日現在）：2027年3月卒の大学生は73.0％</title>
+    <link>https://tadimaru.com/sharoben-news/91/</link>
+    <guid isPermaLink="true">https://tadimaru.com/sharoben-news/91/</guid>
+    <pubDate>Mon, 23 Nov 2026 22:00:00 GMT</pubDate>
+    <category>採用</category>
+    <description>2027年3月に卒業予定の大学生の就職内定率（2026年10月1日現在）は73.0％で、前年同期より0.4ポイント低下しました。校種別・文理別・男女別の違いと、数字の読み方を、採用担当者向けにまとめます。この数字は、厚生労働省と文部科学省が共同で行った『令和8年度大学等卒業予定者の就職内定状況調査』（令和8年11月20日公表）の結果です。この調査の就職内定率は、就職希望者に対する、現時点での就職…</description>
+  </item>
+  <item>
+    <title>退職金の放棄は有効か：「自由な意思」の基準と全額払の原則（シンガー・ソーイング・メシーン事件）</title>
+    <link>https://tadimaru.com/sharoben-news/92/</link>
+    <guid isPermaLink="true">https://tadimaru.com/sharoben-news/92/</guid>
+    <pubDate>Mon, 23 Nov 2026 22:00:00 GMT</pubDate>
+    <category>人事制度</category>
+    <description>支給条件が就業規則であらかじめ明確で、会社に支払義務がある退職金は賃金にあたり、労働基準法の「全額払の原則」が及びます。それでも、労働者が退職に際し自分の意思で退職金を放棄することまでは、禁じられていません。本件では放棄は有効とされました。ただし条件があります。この記事では、最高裁第二小法廷 昭和48年1月19日判決をもとに、その条件を整理します。この判決文には会社名が出てきません。「上告人」（…</description>
+  </item>
+  <item>
     <title>賃金支払いの5原則と例外：口座振込みの要件は労働者の同意、デジタル払いは国の指定を受けた事業者だけ</title>
     <link>https://tadimaru.com/sharoben-news/90/</link>
     <guid isPermaLink="true">https://tadimaru.com/sharoben-news/90/</guid>
@@ -229,22 +245,6 @@
     <pubDate>Sat, 07 Nov 2026 22:00:00 GMT</pubDate>
     <category>法改正</category>
     <description>自己都合で退職すると、雇用保険の基本手当（いわゆる失業給付）を受け取れない「給付制限」の期間があります。この期間は、退職日が2025年4月1日以降なら原則1か月です。この記事では、1か月の根拠、3か月になる場合、教育訓練を受けたときの解除を整理します。基本手当は、離職票の提出と求職の申込みをした日（受給資格決定日）から通算して7日間の待期期間が満了するまで支給されません。これは離職の理由にかかわ…</description>
-  </item>
-  <item>
-    <title>ノートは作る？ 作らない？ 時間をかけすぎないための考え方</title>
-    <link>https://tadimaru.com/sharoben-news/61/</link>
-    <guid isPermaLink="true">https://tadimaru.com/sharoben-news/61/</guid>
-    <pubDate>Fri, 06 Nov 2026 22:00:00 GMT</pubDate>
-    <category>学習</category>
-    <description>社労士試験の勉強で、まとめノートは作ったほうがよいのか。筆者は作っていませんでした。この記事では、ノートに時間をかけすぎる失敗と、人によって向き不向きがあること、代わりにやっていたことを書きます。予備校に通っている人は、まとめノートのようなものを予備校の側が用意してくれることが多いと思います。それでも自分で作りたい人は、作ってよいと思います。ノート作りで時間をかけすぎてしまう失敗は、よく聞く話で…</description>
-  </item>
-  <item>
-    <title>毎月勤労統計 9月分速報：現金給与総額4.6％増、夏季賞与の結果も同時公表</title>
-    <link>https://tadimaru.com/sharoben-news/66/</link>
-    <guid isPermaLink="true">https://tadimaru.com/sharoben-news/66/</guid>
-    <pubDate>Fri, 06 Nov 2026 22:00:00 GMT</pubDate>
-    <category>人事制度</category>
-    <description>厚生労働省が2026年11月6日に公表した「毎月勤労統計調査」の9月分結果速報で、賃金の動きと、同時に公表された夏季賞与の結果を整理します。なお、9月分は確報ではなく「速報」です。厚生労働省は「速報値は、確報で改訂される場合があります」としており、確報は2026年11月25日に公表される予定です。以下は断りのない限り、事業所規模5人以上の結果で、前年比は前年同月比です（夏季賞与は前年の夏季賞与と…</description>
   </item>
 </channel>
 </rss>
