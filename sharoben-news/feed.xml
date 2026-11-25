@@ -7,6 +7,22 @@
   <language>ja</language>
   <atom:link href="https://tadimaru.com/sharoben-news/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title>消費者物価指数（2026年10月分）：総合は前年同月比2.3％上昇、エネルギーが下落から上昇へ</title>
+    <link>https://tadimaru.com/sharoben-news/93/</link>
+    <guid isPermaLink="true">https://tadimaru.com/sharoben-news/93/</guid>
+    <pubDate>Tue, 24 Nov 2026 22:00:00 GMT</pubDate>
+    <category>人事制度</category>
+    <description>総務省統計局が2026年11月20日に公表した消費者物価指数（全国）の10月分について、総合は前年同月比2.3％の上昇でした。人事・労務の担当者に関わる点として、実質賃金の計算に使われる2つの物価のうち、「持家の帰属家賃を除く総合」は2.7％の上昇で、総合の2.3％より高い数字でした。主要3指標の動きと、9月からの変化、実質賃金とのつながりを整理します。消費者物価指数（CPI）は、家計が買う商品…</description>
+  </item>
+  <item>
+    <title>「自由な意思」はどこまで広がった？ 退職金の放棄だけの話ではない</title>
+    <link>https://tadimaru.com/sharoben-news/94/</link>
+    <guid isPermaLink="true">https://tadimaru.com/sharoben-news/94/</guid>
+    <pubDate>Tue, 24 Nov 2026 22:00:00 GMT</pubDate>
+    <category>人事制度</category>
+    <description>労働者が「同意した」「放棄した」と言えるのは、どんなときか。退職金の放棄で示された「自由な意思」の見方が使われた場面を、昭和48年の判決を出発点に、相殺・就業規則の変更・時間外手当の3つの最高裁判決で確かめます。退職金の放棄が争われた最高裁昭和48年1月19日判決（シンガー・ソーイング・メシーン事件）は、放棄の意思表示の効力を認めるには、自由な意思に基づくことが明確でなければならないとしました。…</description>
+  </item>
+  <item>
     <title>新卒の就職内定率（10月1日現在）：2027年3月卒の大学生は73.0％</title>
     <link>https://tadimaru.com/sharoben-news/91/</link>
     <guid isPermaLink="true">https://tadimaru.com/sharoben-news/91/</guid>
@@ -229,22 +245,6 @@
     <pubDate>Sun, 08 Nov 2026 22:00:00 GMT</pubDate>
     <category>学習</category>
     <description>社労士試験の勉強を、家族や職場、友人にどう話すか。この記事では、筆者の考えとして、話す時期と相手ごとの考え方、そして筆者自身がどうしていたかを書きます。最後に、落ちるのが気になる人へ伝えたいことも書きます。筆者の考えは、あまり外に言わないほうがよい、です。周りの人は、あなたが勉強していることに、それほど興味がありません。始めたばかりのころは、言いたくなります。特に労働基準法の知識は面白いので、ほ…</description>
-  </item>
-  <item>
-    <title>民間の給与所得者の平均給与は487万円（1年を通じて勤務した人）：国税庁「民間給与実態統計調査」（令和7年分）</title>
-    <link>https://tadimaru.com/sharoben-news/62/</link>
-    <guid isPermaLink="true">https://tadimaru.com/sharoben-news/62/</guid>
-    <pubDate>Sat, 07 Nov 2026 22:00:00 GMT</pubDate>
-    <category>人事制度</category>
-    <description>国税庁が2026年9月に公表した「令和7年分 民間給与実態統計調査」で、1年を通じて勤務した給与所得者の平均給与は487万円でした。前年（令和6年分）の478万円から1.9％増で、国税庁は5年連続の増加で過去最高としています。この記事では、487万円がどの範囲の人の平均なのかを中心に、調査結果を整理します。国税庁の報道発表資料によると、平均給与（1年を通じて勤務した給与所得者）は次のとおりです。…</description>
-  </item>
-  <item>
-    <title>自己都合で辞めたときの失業給付：給付制限は原則1か月に</title>
-    <link>https://tadimaru.com/sharoben-news/63/</link>
-    <guid isPermaLink="true">https://tadimaru.com/sharoben-news/63/</guid>
-    <pubDate>Sat, 07 Nov 2026 22:00:00 GMT</pubDate>
-    <category>法改正</category>
-    <description>自己都合で退職すると、雇用保険の基本手当（いわゆる失業給付）を受け取れない「給付制限」の期間があります。この期間は、退職日が2025年4月1日以降なら原則1か月です。この記事では、1か月の根拠、3か月になる場合、教育訓練を受けたときの解除を整理します。基本手当は、離職票の提出と求職の申込みをした日（受給資格決定日）から通算して7日間の待期期間が満了するまで支給されません。これは離職の理由にかかわ…</description>
   </item>
 </channel>
 </rss>
